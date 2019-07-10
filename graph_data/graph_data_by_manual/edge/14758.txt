@@ -1,0 +1,3 @@
+W MSG W 1 RG
+MSG S W 2 FW
+S VAR1 W 3 IT

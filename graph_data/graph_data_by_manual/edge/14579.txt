@@ -1,0 +1,2 @@
+W VAR1 W 1 FW
+VAR1 S W 2 RG

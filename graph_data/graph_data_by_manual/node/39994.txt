@@ -1,0 +1,4 @@
+S S LimitedAC W 1 MSG
+W W LimitedAC C 2 NULL
+C C NoLimit NULL 0 NULL
+VAR1 VAR1 C 1 ASSIGN

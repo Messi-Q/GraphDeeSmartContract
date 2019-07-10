@@ -1,0 +1,2 @@
+W VAR1 W 1 IF
+VAR1 S W 3 RH
