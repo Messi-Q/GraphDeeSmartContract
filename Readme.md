@@ -4,7 +4,7 @@ This repo is a python implementation of smart contract vulnerability detection b
 We also present a automation tool of generate graph.
 
 ### Running project
-* To run program, use this command: python SmConVulDetector.py --dataset [code_fragment_file], where code_fragment_file is one of the text files containing a fragment set.
+* To run program, use this command: python SmConVulDetector.py.
 * In addition, you can use specific hyperparameters to train the model. All the hyperparameters can be found in `parser.py`.
 
 Examples:
