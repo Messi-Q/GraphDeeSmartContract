@@ -15,10 +15,10 @@ from torch.utils.data import DataLoader
 from os.path import join as pjoin
 from parser import parameter_parser
 from models.gcn import GCN
-from models.gcn_test import GCN_TEST
-from models.gat import GAT
-from models.mgcn import MGCN
-from models.graphUnet import GraphUnet
+# from models.gcn_test import GCN_TEST
+# from models.gat import GAT
+# from models.mgcn import MGCN
+# from models.graphUnet import GraphUnet
 
 print('using torch', torch.__version__)
 
@@ -411,7 +411,7 @@ for fold_id in range(n_folds):
     loss_fn = F.cross_entropy
     for epoch in range(args.epochs):
         train(loaders[0])
-        acc = test(loaders[1])
+    acc = test(loaders[1])
     acc_folds.append(acc)
 
 print(acc_folds)

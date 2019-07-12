@@ -4,7 +4,7 @@ import argparse
 def parameter_parser():
     # Experiment parameters
     parser = argparse.ArgumentParser(description='Smart contract vulnerability detection based on graph neural network')
-    parser.add_argument('-D', '--dataset', type=str, default='SMART_CONTRACT_BY_AUTOMATIC_TOOL',
+    parser.add_argument('-D', '--dataset', type=str, default='SMART_CONTRACT_BY_MANUAL',
                         choices=['SMART_CONTRACT_BY_AUTOMATIC_TOOL', 'SMART_CONTRACT_BY_MANUAL'])
     parser.add_argument('-M', '--model', type=str, default='gcn', choices=['gcn', 'unet', 'mgcn', 'gat', 'gcn_test'])
     parser.add_argument('--lr', type=float, default=0.001, help='learning rate')
