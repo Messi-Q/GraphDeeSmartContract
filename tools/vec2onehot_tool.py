@@ -56,7 +56,7 @@ class vec2onehot:
             self.nodeAC_sentence.append(i + 1)
         for i in range(len(self.nodeOplist)):
             self.nodeOP_sentence.append(i + 1)
-        self.node_dict = dict(zip(self.nodelist, self.node_sentence))  # 映射函数方式来构造字典
+        self.node_dict = dict(zip(self.nodelist, self.node_sentence))
         self.var_dict = dict(zip(self.varlist, self.var_sentence))
         self.sn_dict = dict(zip(self.snlist, self.sn_sentence))
         self.varOP_dict = dict(zip(self.varOPlist, self.varOP_sentence))

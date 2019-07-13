@@ -1,8 +1,10 @@
 import torch
 import torch.nn as nn
 import numpy as np
+import math
 import torch.nn.functional as F
 from parser import parameter_parser
+from torch.nn.parameter import Parameter
 
 args = parameter_parser()
 
@@ -106,6 +108,51 @@ class GraphAttention(nn.Module):
             return F.elu(h_prime)
         else:
             return h_prime
+
+    def __repr__(self):
+        return self.__class__.__name__ + ' (' + str(self.in_features) + ' -> ' + str(self.out_features) + ')'
+
+
+class GraphConvolution(nn.Module):
+    """
+    Simple GCN layer
+    """
+    def __init__(self, in_features, out_features, bias=True):
+        super(GraphConvolution, self).__init__()
+        self.in_features = in_features
+        self.out_features = out_features
+        self.weight = Parameter(torch.FloatTensor(in_features, out_features))
+        if bias:
+            self.bias = Parameter(torch.FloatTensor(out_features))
+        else:
+            self.register_parameter('bias', None)
+        self.reset_parameters()
+
+    def reset_parameters(self):
+        stdv = 1. / math.sqrt(self.weight.size(1))
+        self.weight.data.uniform_(-stdv, stdv)
+        if self.bias is not None:
+            self.bias.data.uniform_(-stdv, stdv)
+
+    def forward(self, input, adj):
+        batch = input.shape[0]
+        output = []
+        for i in range(batch):
+            if len(input.shape) == 3:
+                support = torch.mm(input[i], self.weight)
+                out = torch.spmm(adj[i], support)
+                output.append(out.data.numpy())
+            else:
+                support = torch.mm(input[i], self.weight)
+                out = torch.spmm(adj[i], support[i])
+                output.append(out.data.numpy())
+        # output = torch.mean(output, dim=0, keepdim=True)
+        output = torch.from_numpy(np.array(output))
+        if self.bias is not None:
+            output = output + self.bias
+            return output
+        else:
+            return output
 
     def __repr__(self):
         return self.__class__.__name__ + ' (' + str(self.in_features) + ' -> ' + str(self.out_features) + ')'

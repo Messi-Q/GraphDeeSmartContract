@@ -6,13 +6,13 @@ from models.layers import GraphConv
 args = parameter_parser()
 
 
-class GCN(nn.Module):
+class GCN_MODIFY(nn.Module):
     """
     Baseline Graph Convolutional Network with a stack of Graph Convolution Layers and global pooling over nodes.
     """
     def __init__(self, in_features, out_features, filters=args.filters,
                  n_hidden=args.n_hidden, dropout=args.dropout, adj_sq=False, scale_identity=False):
-        super(GCN, self).__init__()
+        super(GCN_MODIFY, self).__init__()
         # Graph convolution layers
         self.gconv = nn.Sequential(*([GraphConv(in_features=in_features if layer == 0 else filters[layer - 1],
                                                 out_features=f, activation=nn.ReLU(inplace=True),

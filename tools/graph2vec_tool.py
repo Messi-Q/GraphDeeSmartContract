@@ -4,23 +4,6 @@ from tools.vec2onehot_tool import vec2onehot
 from tools.automatic_generate_graph import generate_graph, printResult
 
 """
-1. 三类结点：S, W, C, 其中，W和C可能存在多个W1, W2, W3...C1, C2, C3...;
-2. VAR作为变量结点：提取操作优先级最高的VAR;
-3. S, W, C三类结点的属性包括：Node Attribute + Edge Attribute + Var Attribute;
-   具体来说：Node self property + Incoming Var + Outgoing Var + Incoming Edge + Outgoing Edge
-"""
-
-"""
-# idea #
-1. GCN的模型训练(graph训练)
-   每个图的节点都标上label，三类结点主要是S, W1, W2..., C1, C2..., 重入的判断主要是对S点进行标注，W和C两类结点
-2. LSTM或者其他的RNN模型训练
-   每个图转化为一个向量，将S, W, C三类结点串接起来形成一条高维向量，每个图对应一条向量(三类点)对应一个label
-3. Graph Convolutional Networks for Text Classification(solidity source code)
-   
-"""
-
-"""
 encode: represent the corresponding number of every dict.
 embedding: represent the one_hot of node and edge.
 """
@@ -36,7 +19,6 @@ dict_VarOpName = {"NULL": 0, "BOOL": 1, "ASSIGN": 2, "INCRT": 3, "DECRT": 4}
 dict_EdgeOpName = {"NULL": 0, "FW": 1, "READ": 2, "IF": 3, "GB": 4, "GN": 5, "WHILE": 6, "DW": 7, "FOR": 8, "DF": 9,
                    "BREAK": 10, "CONTI": 11, "RE": 12, "AH": 13, "RG": 14, "RH": 15, "IT": 16}
 
-# 未用到该字典
 dict_AllOpName = {"NULL": 0, "FW": 1, "READ": 2, "ASSIGN": 3, "INCRT": 4, "DECRT": 5, "BOOL": 6, "IF": 7, "GB": 8,
                   "GN": 9, "WHILE": 10, "DW": 11, "FOR": 12, "DF": 13, "BREAK": 14, "CONTI": 15, "RE": 16, "ASSERT": 17,
                   "RG": 18, "REVERT": 19, "IT": 20}
@@ -106,11 +88,6 @@ def elimination_node(nodeNum, node_list, node_attribute_list):
         else:
             pass
 
-    # print("After the elimination...")
-    # print("NodeList: ", node_list)
-    # print("NodeAttributeList: ", node_attribute_list)
-    # print("ExtraVarList: ", extra_var_list)
-
     return node_attribute_list, extra_var_list
 
 
@@ -138,11 +115,6 @@ def elimination_multiple_node(nodeNum, node_list, node_attribute_list):
                 pass
         else:
             pass
-
-    # print("After the elimination...")
-    # print("NodeList: ", node_list)
-    # print("NodeAttributeList: ", node_attribute_list)
-    # print("ExtraVarList: ", extra_var_list)
 
     return node_attribute_list, extra_var_list
 
@@ -172,7 +144,6 @@ def embedding_node(node_attribute_list):
             vfm5 = v2o.nodeOP2vecEmbedding(node_attribute_list[j][5])
             nodeEmbedding = vfm1.tolist() + vfm2.tolist() + vfm3.tolist() + vfm4.tolist() + vfm5.tolist()
             node_embedding.append([vf0, np.array(nodeEmbedding)])
-            # print("Node After Embedding into oneHot: %s" % np.array(nodeEmbedding))
             temp = [vf1, vf2, vf3, vf4, vf5]
             node_encode.append([vf0, temp])
         else:
@@ -193,12 +164,6 @@ def embedding_node(node_attribute_list):
             temp = [vf1, vf2, vf3, vf4, vf5]
             var_encode.append([vf0, temp])
 
-    # print("NodeEncode: ", node_encode)
-    # print("VarEncode: ", var_encode)
-    # print("NodeEmbedding: ", node_embedding[0][1].tolist())
-    # print("VarEmbedding: ", var_embedding)
-    # node_embedding.astype(np.float64)  convert to float
-
     return node_encode, var_encode, node_embedding, var_embedding
 
 
@@ -215,7 +180,7 @@ def elimination_edge(edgeFile):
         edge = list(map(str, line.split()))
         edge_list.append(edge)
 
-    # 两个结点之间多条边的消融，取edge_operation优先级大的边
+    # The ablation of multiple edges between two nodes, taking the edge with the edge_operation priority
     for k in range(0, len(edge_list)):
         if k + 1 < len(edge_list):
             start1 = edge_list[k][0]  # start node
@@ -233,10 +198,6 @@ def elimination_edge(edgeFile):
                 else:
                     extra_edge_list.append(edge_list.pop(k + 1))
 
-    # print("EdgeList: ", edge_list)
-    # print("ExtraEdgeList: ", extra_edge_list)
-    # extra_edge_list 消除的多余的边
-
     return edge_list, extra_edge_list
 
 
@@ -252,7 +213,7 @@ def elimination_edge_multiple_node(edgeFile):
         edge = list(map(str, line.split()))
         edge_list.append(edge)
 
-    # 多点指向同一个点，对边做融合处理
+    # Multiple points point to the same point, and the side is fused
     for k in range(0, len(edge_list)):
         if k + 1 < len(edge_list):
             end1 = edge_list[k][1]  # end node
@@ -260,7 +221,7 @@ def elimination_edge_multiple_node(edgeFile):
             print(end1, end2)
 
             if end1 == end2:
-                print("进行向量的消融")
+                print("Vector ablation")
 
 
 def embedding_edge(edge_list):
@@ -286,9 +247,6 @@ def embedding_edge(edge_list):
 
         efm_temp = efm1.tolist() + efm2.tolist() + efm3.tolist()
         edge_embedding.append([start, end, np.array(efm_temp)])
-
-    # print("EdgeEncode: ", edge_encode)
-    # print("EdgeEmbedding: ", edge_embedding)
 
     return edge_encode, edge_embedding
 
@@ -449,7 +407,7 @@ if __name__ == "__main__":
     edge_path = "../graph_data/graph_data_by_automatic_tool/edge/"
 
     count = 0
-    dirs1 = os.listdir(inputFileDir)  # 具体的文件夹路径
+    dirs1 = os.listdir(inputFileDir)
     for file in dirs1:
         inputFilePath = inputFileDir + file
         node_feature, edge_feature = generate_graph(inputFilePath)

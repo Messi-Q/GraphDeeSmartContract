@@ -6,7 +6,8 @@ def parameter_parser():
     parser = argparse.ArgumentParser(description='Smart contract vulnerability detection based on graph neural network')
     parser.add_argument('-D', '--dataset', type=str, default='SMART_CONTRACT_BY_MANUAL',
                         choices=['SMART_CONTRACT_BY_AUTOMATIC_TOOL', 'SMART_CONTRACT_BY_MANUAL'])
-    parser.add_argument('-M', '--model', type=str, default='gcn', choices=['gcn', 'unet', 'mgcn', 'gat', 'gcn_test'])
+    parser.add_argument('-M', '--model', type=str, default='gcn_modify',
+                        choices=['gcn_modify', 'mgcn', 'gat', 'gcn_origin'])
     parser.add_argument('--lr', type=float, default=0.001, help='learning rate')
     parser.add_argument('--lr_decay_steps', type=str, default='10,20', help='learning rate')
     parser.add_argument('--wd', type=float, default=1e-4, help='weight decay')
@@ -22,13 +23,11 @@ def parameter_parser():
     parser.add_argument('--device', type=str, default='cpu', choices=['cuda', 'cpu'])
     parser.add_argument('--seed', type=int, default=80, help='random seed')
     parser.add_argument('--shuffle_nodes', action='store_true', default=False, help='shuffle nodes for debugging')
-    parser.add_argument('-g', '--torch_geom', action='store_true', default=False, help='use PyTorch Geometric')
+    parser.add_argument('-F', '--folds', default=5, choices=[5, 8, 10], help='n-fold cross validation')
     parser.add_argument('-a', '--adj_sq', action='store_true', default=False,
                         help='use A^2 instead of A as an adjacency matrix')
     parser.add_argument('-s', '--scale_identity', action='store_true', default=False,
                         help='use 2I instead of I for self connections')
-    parser.add_argument('-v', '--visualize', action='store_true', default=False,
-                        help='only for unet: save some adjacency matrices and other data as images')
     parser.add_argument('-c', '--use_cont_node_attr', action='store_true', default=True,
                         help='use continuous node attributes in addition to discrete ones')
     parser.add_argument('--alpha', type=float, default=0.2, help='Alpha value for the leaky_relu')
