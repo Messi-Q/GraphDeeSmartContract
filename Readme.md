@@ -10,7 +10,7 @@ We also present a automation tool of generate graph.
 Examples:
 ```shell
 python SmConVulDetector.py --dataset data/SMART_CONTRACT_BY_MANUAL
-python SmConVulDetector.py --dataset data/SMART_CONTRACT_BY_MANUALt --model gcn --n_hidden 192 --lr 0.001 -f 64,64,64 --dropout 0.1 --vector_dim 100 --epochs 50 --lr_decay_steps 10,20 
+python SmConVulDetector.py --dataset data/SMART_CONTRACT_BY_MANUALt --model gcn_modify --n_hidden 192 --lr 0.001 -f 64,64,64 --dropout 0.1 --vector_dim 100 --epochs 50 --lr_decay_steps 10,20 
 ```
 
 Using script：
