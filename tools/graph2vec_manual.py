@@ -52,11 +52,6 @@ def extract_node_features(nodeFile):
             node_list.append(node[1])
             nodeNum += 1
         node_attribute_list.append(node)
-    # node_attribute_list = [x for x in node_attribute_list if x]  remove white space from two-dimensional arrays
-
-    # print("NodeNum: ", nodeNum)
-    # print("NodeList: ", node_list)
-    # print("NodeAttributeList: ", node_attribute_list)
 
     return nodeNum, node_list, node_attribute_list
 
@@ -143,7 +138,6 @@ def embedding_node(node_attribute_list):
             vfm5 = v2o.nodeOP2vecEmbedding(node_attribute_list[j][5])
             nodeEmbedding = vfm1.tolist() + vfm2.tolist() + vfm3.tolist() + vfm4.tolist() + vfm5.tolist()
             node_embedding.append([vf0, np.array(nodeEmbedding)])
-            # print("Node After Embedding into oneHot: %s" % np.array(nodeEmbedding))
             temp = [vf1, vf2, vf3, vf4, vf5]
             node_encode.append([vf0, temp])
         else:
@@ -160,7 +154,6 @@ def embedding_node(node_attribute_list):
             vfm5 = v2o.nodeOP2vecEmbedding('NULL')
             varEmbedding = vfm1.tolist() + vfm2.tolist() + vfm3.tolist() + vfm4.tolist() + vfm5.tolist()
             var_embedding.append([vf0, np.array(varEmbedding)])
-            # print("Var After Embedding into oneHot: %s" % np.array(varEmbedding))
             temp = [vf1, vf2, vf3, vf4, vf5]
             var_encode.append([vf0, temp])
 
@@ -273,52 +266,40 @@ def construct_var_edge_vec(edge_list, node_embedding, var_embedding, edge_embedd
     if len(var_embedding) > 0:
         for k in range(len(edge_embedding)):
             if edge_list[k][0] in C_point:
-                # print("outgoing edge: %s -> %s; edgeFeature: %s" % ('C', edge_embedding[k][1], edge_embedding[k][2]))
                 for i in range(len(var_embedding)):
                     if str(var_embedding[i][0]) == str(edge_embedding[k][1]):
                         var_out.append([edge_embedding[k][0], var_embedding[i][1]])
                         edge_out.append([edge_embedding[k][0], edge_embedding[k][2]])
-                        # print("outgoing node: %s; outNodeFeature : %s" % (edge_embedding[k][1], var_embedding[i][1]))
             elif edge_list[k][1] in C_point:
-                # print("incoming edge: %s -> %s; edgeFeature: %s" % (edge_embedding[k][0], 'C', edge_embedding[k][2]))
                 for i in range(len(var_embedding)):
                     if str(var_embedding[i][0]) == str(edge_embedding[k][0]):
                         var_in.append([edge_embedding[k][1], var_embedding[i][1]])
                         edge_in.append([edge_embedding[k][1], edge_embedding[k][2]])
-                        # print("incoming node : %s; inNodeFeature : %s" % (edge_embedding[k][0], var_embedding[i][1]))
 
             elif edge_list[k][0] in W_point:
-                # print("outgoing edge: %s -> %s; edgeFeature: %s" % ('W', edge_embedding[k][1], edge_embedding[k][2]))
                 for i in range(len(var_embedding)):
                     if str(var_embedding[i][0]) == str(edge_embedding[k][1]):
                         var_out.append([edge_embedding[k][0], var_embedding[i][1]])
                         edge_out.append([edge_embedding[k][0], edge_embedding[k][2]])
-                        # print("outgoing node: %s; outNodeFeature : %s" % (edge_embedding[k][1], var_embedding[i][1]))
                         break
             elif edge_list[k][1] in W_point:
-                # print("incoming edge: %s -> %s; edgeFeature: %s" % (edge_embedding[k][0], 'W', edge_embedding[k][2]))
                 for i in range(len(var_embedding)):
                     if str(var_embedding[i][0]) == str(edge_embedding[k][0]):
                         var_in.append([edge_embedding[k][1], var_embedding[i][1]])
                         edge_in.append([edge_embedding[k][1], edge_embedding[k][2]])
-                        # print("incoming node : %s; inNodeFeature : %s" % (edge_embedding[k][0], var_embedding[i][1]))
 
             elif edge_list[k][0] in S_point:
-                # print("outgoing edge: %s -> %s; edgeFeature: %s" % ('S', edge_embedding[k][1], edge_embedding[k][2]))
                 S_OUT = []
                 for i in range(len(var_embedding)):
                     if str(var_embedding[i][0]) == str(edge_embedding[k][1]):
                         S_OUT.append(var_embedding[i][1])
                 var_out.append([edge_embedding[k][0], S_OUT[0]])
                 edge_out.append([edge_embedding[k][0], edge_embedding[k][2]])
-                # print("outgoing node: %s; outNodeFeature : %s" % (edge_embedding[k][1], S_OUT[1]))
             elif edge_list[k][1] in S_point:
-                # print("incoming edge: %s -> %s; edgeFeature: %s" % (edge_embedding[k][0], 'S', edge_embedding[k][2]))
                 for i in range(len(var_embedding)):
                     if str(var_embedding[i][0]) == str(edge_embedding[k][0]):
                         var_in.append([edge_embedding[k][1], var_embedding[i][1]])
                         edge_in.append([edge_embedding[k][1], edge_embedding[k][2]])
-                        # print("incoming node : %s; inNodeFeature : %s" % (edge_embedding[k][0], var_embedding[i][1]))
                         break
             else:
                 print("Edge from node %s to node %s:  edgeFeature: %s" % (

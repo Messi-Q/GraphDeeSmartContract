@@ -33,9 +33,12 @@ class GraphConv(nn.Module):
         a = I.shape
         if self.scale_identity:
             I = 2 * I  # increase weight of self connections
+        # A_hat = A
+        # add I represents self connections of nodes
         A_hat = I + A
-        D_hat = (torch.sum(A_hat, 1) + 1e-5) ** (-0.5)
+        D_hat = (torch.sum(A_hat, 1) + 1e-5) ** (-0.5)  # Adjacent matrix normalization
         L = D_hat.view(batch, N, 1) * A_hat * D_hat.view(batch, 1, N)
+        # L = A_hat  # remove D_hat
         return L
 
     def forward(self, data):
@@ -49,14 +52,12 @@ class GraphConv(nn.Module):
 
         if len(mask.shape) == 2:
             mask = mask.unsqueeze(2)
-
         x = x * mask
         # to make values of dummy nodes zeros again, otherwise the bias is added after applying self.fc
         # which affects node embeddings in the following layers
-        # print('out', x.shape, torch.sum(torch.abs(torch.sum(x, 2)) > 0))
         if self.activation is not None:
             x = self.activation(x)
-        return (x, A, mask)
+        return x, A, mask
 
 
 class GraphAttention(nn.Module):
@@ -74,13 +75,13 @@ class GraphAttention(nn.Module):
 
         self.W = nn.Parameter(nn.init.xavier_normal_(torch.Tensor(in_features, out_features).type(
             torch.cuda.FloatTensor if torch.cuda.is_available() else torch.FloatTensor), gain=np.sqrt(2.0)),
-                              requires_grad=True)
+            requires_grad=True)
         self.a1 = nn.Parameter(nn.init.xavier_normal_(torch.Tensor(out_features, 1).type(
             torch.cuda.FloatTensor if torch.cuda.is_available() else torch.FloatTensor), gain=np.sqrt(2.0)),
-                               requires_grad=True)
+            requires_grad=True)
         self.a2 = nn.Parameter(nn.init.xavier_normal_(torch.Tensor(out_features, 1).type(
             torch.cuda.FloatTensor if torch.cuda.is_available() else torch.FloatTensor), gain=np.sqrt(2.0)),
-                               requires_grad=True)
+            requires_grad=True)
 
         self.leakyrelu = nn.LeakyReLU(self.alpha)
 
@@ -117,6 +118,7 @@ class GraphConvolution(nn.Module):
     """
     Simple GCN layer
     """
+
     def __init__(self, in_features, out_features, bias=True):
         super(GraphConvolution, self).__init__()
         self.in_features = in_features

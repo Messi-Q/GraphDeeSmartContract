@@ -687,18 +687,18 @@ def printResult(file, node_feature, edge_feature):
 
 
 if __name__ == "__main__":
-    # test_contract = "../SmartContractDataSet/smart_contract_source_code/25196.sol"
-    # node_feature, edge_feature = generate_graph(test_contract)
-    # node_feature = sorted(node_feature, key=lambda x: (x[0]))
-    # edge_feature = sorted(edge_feature, key=lambda x: (x[2], x[3]))
-    # print("node_feature", node_feature)
-    # print("edge_feature", edge_feature)
+    test_contract = "../graph_data/smart_contract_source_code/31759.sol"
+    node_feature, edge_feature = generate_graph(test_contract)
+    node_feature = sorted(node_feature, key=lambda x: (x[0]))
+    edge_feature = sorted(edge_feature, key=lambda x: (x[2], x[3]))
+    print("node_feature", node_feature)
+    print("edge_feature", edge_feature)
 
-    inputFileDir = "../smart_contract_source_code/"
-    dirs = os.listdir(inputFileDir)
-    for file in dirs:
-        inputFilePath = inputFileDir + file
-        node_feature, edge_feature = generate_graph(inputFilePath)
-        node_feature = sorted(node_feature, key=lambda x: (x[0]))
-        edge_feature = sorted(edge_feature, key=lambda x: (x[2], x[3]))
-        printResult(file, node_feature, edge_feature)
+    # inputFileDir = "../graph_data/smart_contract_source_code/"
+    # dirs = os.listdir(inputFileDir)
+    # for file in dirs:
+    #     inputFilePath = inputFileDir + file
+    #     node_feature, edge_feature = generate_graph(inputFilePath)
+    #     node_feature = sorted(node_feature, key=lambda x: (x[0]))
+    #     edge_feature = sorted(edge_feature, key=lambda x: (x[2], x[3]))
+    #     printResult(file, node_feature, edge_feature)

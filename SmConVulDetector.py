@@ -47,7 +47,7 @@ class DataReader():
         self.use_cont_node_attr = use_cont_node_attr
         files = os.listdir(self.data_dir)
         data = {}
-        nodes, graphs = self.read_graph_nodes_relations(
+        nodes, graphs, unique_id = self.read_graph_nodes_relations(
             list(filter(lambda f: f.find('graph_indicator') >= 0, files))[0])
         data['features'] = self.read_node_features(list(filter(lambda f: f.find('node_labels') >= 0, files))[0],
                                                    nodes, graphs, fn=lambda s: int(s.strip()))
@@ -55,6 +55,7 @@ class DataReader():
         data['targets'] = np.array(
             self.parse_txt_file(list(filter(lambda f: f.find('graph_labels') >= 0, files))[0],
                                 line_parse_fn=lambda s: int(float(s.strip()))))
+        data['ids'] = unique_id
         if self.use_cont_node_attr:
             data['attr'] = self.read_node_features(list(filter(lambda f: f.find('node_attributes') >= 0, files))[0],
                                                    nodes, graphs,
@@ -157,15 +158,17 @@ class DataReader():
     def read_graph_nodes_relations(self, fpath):
         graph_ids = self.parse_txt_file(fpath, line_parse_fn=lambda s: int(s.rstrip()))
         nodes, graphs = {}, {}
+        unique_id = []
         for node_id, graph_id in enumerate(graph_ids):
             if graph_id not in graphs:
                 graphs[graph_id] = []
             graphs[graph_id].append(node_id)
             nodes[node_id] = graph_id
         graph_ids = np.unique(list(graphs.keys()))
+        unique_id = graph_ids
         for graph_id in graph_ids:
             graphs[graph_id] = np.array(graphs[graph_id])
-        return nodes, graphs
+        return nodes, graphs, unique_id
 
     def read_node_features(self, fpath, nodes, graphs, fn):
         node_features_all = self.parse_txt_file(fpath, line_parse_fn=fn)
@@ -237,6 +240,7 @@ for fold_id in range(n_folds):
     # loss_fn = F.nll_loss  # when model is gcn_origin or gat, use this
     loss_fn = F.cross_entropy  # when model is gcn_modify or mgcn, use this
 
+
     def train(train_loader):
         scheduler.step()
         model.train()
@@ -281,20 +285,28 @@ for fold_id in range(n_folds):
             pred = output.detach().cpu().max(1, keepdim=True)[1]
 
             for k in range(len(pred)):
-                if (pred.view_as(data[4])[k] == 1) & (data[4].detach().cpu()[k] == 1):
-                    # TP predict & label == 1
+                if (np.array(pred.view_as(data[4])[k]).tolist() == 1) & (
+                        np.array(data[4].detach().cpu()[k]).tolist() == 1):
+                    # TP predict == 1 & label == 1
                     tp += 1
-                if (pred.view_as(data[4])[k] == 0) & (data[4].detach().cpu()[k] == 0):
-                    # TN predict & label == 0
+                    continue
+                elif (np.array(pred.view_as(data[4])[k]).tolist() == 0) & (
+                        np.array(data[4].detach().cpu()[k]).tolist() == 0):
+                    # TN predict == 1 & label == 0
                     tn += 1
-                if (pred.view_as(data[4])[k] == 1) & (data[4].detach().cpu()[k] == 0):
+                    continue
+                elif (np.array(pred.view_as(data[4])[k]).tolist() == 0) & (
+                        np.array(data[4].detach().cpu()[k]).tolist() == 1):
                     # FN predict == 0 & label == 1
                     fn += 1
-                    fn_list.append(np.array(data[5].detach().cpu()[k]))
-                if (pred.view_as(data[4])[k] == 0) & (data[4].detach().cpu()[k] == 1):
+                    fn_list.append(np.array(data[5].detach().cpu()[k]).tolist())
+                    continue
+                elif (np.array(pred.view_as(data[4])[k]).tolist() == 1) & (
+                        np.array(data[4].detach().cpu()[k]).tolist() == 0):
                     # FP predict == 1 & label == 0
                     fp += 1
-                    fp_list.append(np.array(data[5].detach().cpu()[k]))
+                    fp_list.append(np.array(data[5].detach().cpu()[k]).tolist())
+                    continue
 
             accuracy += metrics.accuracy_score(data[4], pred.view_as(data[4]))
             recall += metrics.recall_score(data[4], pred.view_as(data[4]))

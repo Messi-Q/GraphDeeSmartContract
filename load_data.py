@@ -37,6 +37,7 @@ class GraphData(torch.utils.data.Dataset):
         self.idx = data['splits'][fold_id][self.split]
         # use deepcopy to make sure we don't alter objects in folds
         self.labels = copy.deepcopy([data['targets'][i] for i in self.idx])
+        self.ids = copy.deepcopy([data['ids'][i] for i in self.idx])
         self.adj_list = copy.deepcopy([data['adj_list'][i] for i in self.idx])
         self.features_onehot = copy.deepcopy([data['features_onehot'][i] for i in self.idx])
         print('%s: %d/%d' % (self.split.upper(), len(self.labels), len(data['targets'])))
@@ -49,7 +50,7 @@ class GraphData(torch.utils.data.Dataset):
         return [torch.from_numpy(self.features_onehot[index]).float(),  # node_features
                 torch.from_numpy(self.adj_list[index]).float(),  # adjacency matrix
                 int(self.labels[index]),  # graph labels
-                int(self.idx[index])  # graph id
+                int(self.ids[index])  # graph id
                 ]
 
 
@@ -58,7 +59,7 @@ def collate_batch(batch):
     Creates a batch of same size graphs by zero-padding node features and adjacency matrices up to
     the maximum number of nodes in the CURRENT batch rather than in the entire dataset.
     Graphs in the batches are usually much smaller than the largest graph in the dataset, so this method is fast.
-    :param batch: batch in the PyTorch Geometric format or [node_features*batch_size, A*batch_size, label*batch_size]
+    :param batch: [node_features * batch_size, A * batch_size, label * batch_size]
     :return: [node_features, A, graph_support, N_nodes, label]
     """
     B = len(batch)
