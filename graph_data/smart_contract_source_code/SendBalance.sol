@@ -1,17 +1,17 @@
 contract SendBalance {
- mapping (address => uint) userBalances ;
+ mapping (address => uint) userBalances;
  bool withdrawn = false ;
 
  function getBalance (address u) constant returns (uint){
-    return userBalances [u];
+    return userBalances[u];
  }
 
  function addToBalance () {
-    userBalances msg.sender] += msg . value ;
+    userBalances[msg.sender] += msg.value;
  }
 
  function withdrawBalance(){
-     if(!(msg.sender.call.value(userBalances[msg.sender])())) { throw ; }
+     if(!(msg.sender.call.value(userBalances[msg.sender])())) { throw; }
      userBalances[msg.sender] = 0;
  }
 }

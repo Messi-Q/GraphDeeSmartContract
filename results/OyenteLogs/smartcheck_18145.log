@@ -1,0 +1,18 @@
+WARNING:root:You are using solc version 0.4.21, The latest supported version is 0.4.19
+INFO:root:contract contracts/18145.sol:CrowdsaleProxy:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 72.7%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/18145.sol:37:41: Warning: Integer Underflow.
+            let success := delegatecall(sub(gas, 10000)
+INFO:symExec:contracts/18145.sol:90:5: Warning: Integer Overflow.
+    function ___upgradeToAndCall(address newTarget, bytes data) payable public _onlyProxyOwner {
+    ^
+Spanning multiple lines.
+INFO:symExec:	====== Analysis Completed ======

@@ -12,7 +12,7 @@ contract AmbiEnabled {
 
     modifier checkAccess(bytes32 _role) {
         if(address(ambiC) != 0x0 && ambiC.hasRelation(name, _role, msg.sender)){
-            _
+            _;
         }
     }
     
@@ -75,24 +75,24 @@ contract Safe {
              
             _safeSend(msg.sender, msg.value);
         }
-        _
+        _;
     }
 
     modifier onlyHuman {
         if (_isHuman()) {
-            _
+            _;
         }
     }
 
     modifier noCallback {
         if (!isCall) {
-            _
+            _;
         }
     }
 
     modifier immutable(address _address) {
         if (_address == 0) {
-            _
+            _;
         }
     }
 
@@ -112,7 +112,7 @@ contract Safe {
         if (!stackDepthLib.delegatecall(0x32921690, stackDepthLib, _depth)) {
             throw;
         }
-        _
+        _;
     }
 
      
@@ -242,7 +242,7 @@ contract RegistryICAP is AmbiEnabled, Safe {
 
     modifier onlyInstitutionOwner(string _institution) {
         if (msg.sender == institutionOwners[sha3(_institution)]) {
-            _
+            _;
         }
     }
 

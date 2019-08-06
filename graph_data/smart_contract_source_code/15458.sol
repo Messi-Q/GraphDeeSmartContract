@@ -184,7 +184,7 @@ contract MineableToken is owned {
 
    
   function transfer(address to, uint value, bytes data, string custom_fallback) public returns (bool success) {
-    _transfer( msg.sender, to, value, data )
+    _transfer( msg.sender, to, value, data );
     require(address(to).call.value(0)(bytes4(keccak256(custom_fallback)), msg.sender, value, data));
     return true;
   }

@@ -1,0 +1,21 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Forwarder
+Function name: fallback
+PC address: 403
+Estimated Gas Usage: 2874 - 6656
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/35878.sol:285
+
+forwardTo.call.value(msg.value)(msg.data)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x01010101, value: 0x0
+

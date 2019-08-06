@@ -1,0 +1,82 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Integer Underflow ====
+SWC ID: 101
+Severity: High
+Contract: AddressLottery
+Function name: forceReseed()
+PC address: 749
+Estimated Gas Usage: 32820 - 154751
+The binary subtraction can underflow.
+The operands of the subtraction operation are not sufficiently constrained. The subtraction could therefore result in an integer underflow. Prevent the underflow by checking inputs or ensure sure that the underflow is caught by an assertion.
+--------------------
+In file: /tmp/27024.sol:68
+
+block.number - 1
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: forceReseed(), txdata: 0x80ca7aec, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: AddressLottery
+Function name: forceReseed()
+PC address: 767
+Estimated Gas Usage: 32820 - 154751
+The binary multiplication can overflow.
+The operands of the multiplication operation are not sufficiently constrained. The multiplication could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/27024.sol:69
+
+block.number * 1337
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: forceReseed(), txdata: 0x80ca7aec, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: AddressLottery
+Function name: forceReseed()
+PC address: 779
+Estimated Gas Usage: 32820 - 154751
+The binary multiplication can overflow.
+The operands of the multiplication operation are not sufficiently constrained. The multiplication could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/27024.sol:70
+
+tx.gasprice * 7
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: forceReseed(), txdata: 0x80ca7aec, value: 0x0
+
+==== Use of tx.origin ====
+SWC ID: 111
+Severity: Medium
+Contract: AddressLottery
+Function name: participate()
+PC address: 852
+Estimated Gas Usage: 188 - 283
+Use of tx.origin is deprecated.
+The smart contract retrieves the transaction origin (tx.origin) using msg.origin. Use of msg.origin is deprecated and the instruction may be removed in the  future. Use msg.sender instead.
+See also: https://solidity.readthedocs.io/en/develop/security-considerations.html#tx-origin
+--------------------
+In file: /tmp/27024.sol:31
+
+tx.origin
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: participate(), txdata: 0xd11711a2, value: 0x0
+

@@ -1,0 +1,38 @@
+WARNING:root:You are using solc version 0.4.21, The latest supported version is 0.4.19
+INFO:root:contract contracts/31759.sol:TransferableMultsig:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 34.4%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/31759.sol:36:26: Warning: Integer Underflow.
+        bytes32 txHash = keccak256(byte(0x19),  byte(0), this, nonce++, destination, value, data  )
+INFO:symExec:contracts/31759.sol:44:5: Warning: Integer Overflow.
+    function transferOwnership(
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    sigV = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/31759.sol:34:5: Warning: Integer Overflow.
+    function execute(uint8[] sigV, bytes32[] sigR, bytes32[] sigS, address destination,  uint value, bytes data)  external {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    sigV = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/31759.sol:16:5: Warning: Integer Overflow.
+    address[] public owners
+contracts/31759.sol:59:13: Warning: Integer Overflow.
+            nonce++
+Integer Overflow occurs if:
+    nonce = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/31759.sol:36:26: Warning: Integer Overflow.
+        bytes32 txHash = keccak256(byte(0x19),  byte(0), this, nonce++, destination, value, data  )
+contracts/31759.sol:36:64: Warning: Integer Overflow.
+        bytes32 txHash = keccak256(byte(0x19),  byte(0), this, nonce++
+Integer Overflow occurs if:
+    nonce = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:	====== Analysis Completed ======

@@ -1,0 +1,34 @@
+WARNING:root:You are using an untested version of z3. 4.5.0 is the officially tested version
+WARNING:root:You are using solc version 0.4.25, The latest supported version is 0.4.17
+INFO:root:Contract smart_contract_source_code/19128.sol:HODLWallet:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 88.6%
+INFO:symExec:	  Callstack bug: 	 True
+smart_contract_source_code/19128.sol:HODLWallet:75:9
+to.call.value(amount)()
+^
+INFO:symExec:	  Money concurrency bug: True
+Flow 1:
+smart_contract_source_code/19128.sol:HODLWallet:75:9
+to.call.value(amount)()
+^
+Flow 2:
+smart_contract_source_code/19128.sol:HODLWallet:75:9
+to.call.value(amount)()
+^
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 True
+smart_contract_source_code/19128.sol:HODLWallet:75:9
+to.call.value(amount)()
+^
+INFO:root:Contract smart_contract_source_code/19128.sol:SafeMath:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 100.0%
+INFO:symExec:	  Callstack bug: 	 False
+INFO:symExec:	  Money concurrency bug: False
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 False
+INFO:symExec:	====== Analysis Completed ======
+INFO:symExec:	====== Analysis Completed ======

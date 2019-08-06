@@ -1,0 +1,288 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: BoomerangLiquidity
+Function name: withdrawAndSend()
+PC address: 772
+Estimated Gas Usage: 2392 - 36954
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/18438.sol:62
+
+sk2xContract.call.value(half)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeOwner(address), txdata: 0xa6f9dae1, value: 0x0
+Caller: [CREATOR], function: withdrawAndSend(), txdata: 0xd644af34, value: 0x0
+
+==== Multiple Calls in a Single Transaction ====
+SWC ID: 113
+Severity: Low
+Contract: BoomerangLiquidity
+Function name: withdrawAndSend()
+PC address: 772
+Estimated Gas Usage: 4807 - 107931
+Multiple calls are executed in the same transaction.
+This call is executed after a previous call in the same transaction. Try to isolate each call, transfer or send into its own transaction.
+--------------------
+In file: /tmp/18438.sol:62
+
+sk2xContract.call.value(half)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: withdrawAndSend(), txdata: 0xd644af34, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Low
+Contract: BoomerangLiquidity
+Function name: withdraw()
+PC address: 772
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/18438.sol:62
+
+sk2xContract.call.value(half)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: withdraw(), txdata: 0x3ccfd60b, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: BoomerangLiquidity
+Function name: withdrawAndSend()
+PC address: 965
+Estimated Gas Usage: 3970 - 72908
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/18438.sol:63
+
+p3dContract.buy.value(half)(msg.sender)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeOwner(address), txdata: 0xa6f9dae1, value: 0x0
+Caller: [CREATOR], function: withdrawAndSend(), txdata: 0xd644af34, value: 0x0
+
+==== Multiple Calls in a Single Transaction ====
+SWC ID: 113
+Severity: Low
+Contract: BoomerangLiquidity
+Function name: fallback
+PC address: 965
+Estimated Gas Usage: 2997 - 71840
+Multiple calls are executed in the same transaction.
+This call is executed after a previous call in the same transaction. Try to isolate each call, transfer or send into its own transaction.
+--------------------
+In file: /tmp/18438.sol:63
+
+p3dContract.buy.value(half)(msg.sender)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0x, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Low
+Contract: BoomerangLiquidity
+Function name: fallback
+PC address: 965
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/18438.sol:63
+
+p3dContract.buy.value(half)(msg.sender)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: BoomerangLiquidity
+Function name: withdraw()
+PC address: 1155
+Estimated Gas Usage: 938 - 1314
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/18438.sol:73
+
+p3dContract.withdraw.gas(1000000)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeOwner(address), txdata: 0xa6f9dae1, value: 0x0
+Caller: [CREATOR], function: withdraw(), txdata: 0x3ccfd60b, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: BoomerangLiquidity
+Function name: withdraw(address)
+PC address: 1294
+Estimated Gas Usage: 1022 - 1398
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/18438.sol:68
+
+P3D(token).withdraw.gas(1000000)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeOwner(address), txdata: 0xa6f9dae1, value: 0x0
+Caller: [CREATOR], function: withdraw(address), txdata: 0x51cff8d9, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: BoomerangLiquidity
+Function name: withdraw(address)
+PC address: 1294
+Estimated Gas Usage: 1022 - 1398
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/18438.sol:68
+
+P3D(token).withdraw.gas(1000000)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: withdraw(address), txdata: 0x51cff8d9bebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: BoomerangLiquidity
+Function name: donateToken(address)
+PC address: 1720
+Estimated Gas Usage: 1111 - 1582
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/18438.sol:87
+
+P3D(token).buy.value(msg.value).gas(1000000)(msg.sender)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeOwner(address), txdata: 0xa6f9dae1, value: 0x0
+Caller: [CREATOR], function: donateToken(address), txdata: 0x85a2f6af, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: BoomerangLiquidity
+Function name: donateToken(address)
+PC address: 1720
+Estimated Gas Usage: 1111 - 1582
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/18438.sol:87
+
+P3D(token).buy.value(msg.value).gas(1000000)(msg.sender)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: donateToken(address), txdata: 0x85a2f6afbebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: BoomerangLiquidity
+Function name: donateP3D()
+PC address: 2161
+Estimated Gas Usage: 1115 - 1586
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/18438.sol:91
+
+p3dContract.buy.value(msg.value).gas(1000000)(msg.sender)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeOwner(address), txdata: 0xa6f9dae1, value: 0x0
+Caller: [CREATOR], function: donateP3D(), txdata: 0xd586bd4e, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: BoomerangLiquidity
+Function name: withdrawAndSend()
+PC address: 2349
+Estimated Gas Usage: 1114 - 1490
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/18438.sol:78
+
+p3dContract.withdraw.gas(1000000)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeOwner(address), txdata: 0xa6f9dae1, value: 0x0
+Caller: [CREATOR], function: withdrawAndSend(), txdata: 0xd644af34, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: BoomerangLiquidity
+Function name: donate()
+PC address: 2446
+Estimated Gas Usage: 373 - 654
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/18438.sol:83
+
+sk2xContract.call.value(msg.value).gas(1000000)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeOwner(address), txdata: 0xa6f9dae1, value: 0x0
+Caller: [CREATOR], function: donate(), txdata: 0xed88c68e, value: 0x0

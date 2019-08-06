@@ -1,0 +1,142 @@
+WARNING:root:You are using evm version 1.8.2. The supported version is 1.7.3
+WARNING:root:You are using solc version 0.4.21, The latest supported version is 0.4.19
+INFO:root:contract contracts/28869.sol:MultiSigWallet:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 58.4%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/28869.sol:208:21: Warning: Integer Underflow.
+                if (txn.destination.call.value(txn.value)(txn.data)
+Integer Underflow occurs if:
+    confirmations[transactionId][owners[i]] = 0
+    owners.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    transactions[transactionId].executed = 0
+    confirmations[transactionId][owner] = 0
+    transactions[transactionId].destination = 1461501637330902918203684832716283019655932542975
+    isOwner[owner] = 255
+    required = 0
+contracts/28869.sol:23:9: Warning: Integer Underflow.
+        mapping (uint => Transaction) public transactions
+contracts/28869.sol:132:30: Warning: Integer Underflow.
+            for (uint i=0; i<owners.length - 1
+Integer Underflow occurs if:
+    owners.length = 0
+    isOwner[owner] = 255
+INFO:symExec:contracts/28869.sol:133:21: Warning: Integer Overflow.
+                if (owners[i]
+Integer Overflow occurs if:
+    owners.length = 28948022309329048855892746252171976963317496166410141009864396001978282409985
+    owners[i] = 1461501637330902918203684832716283019655932542975
+    isOwner[owner] = 255
+contracts/28869.sol:208:48: Warning: Integer Overflow.
+                if (txn.destination.call.value(txn.value
+Integer Overflow occurs if:
+    confirmations[transactionId][owners[i]] = 0
+    owners.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    transactions[transactionId].executed = 0
+    confirmations[transactionId][owner] = 0
+    transactions[transactionId].destination = 1461501637330902918203684832716283019655932542975
+    isOwner[owner] = 255
+    required = 0
+contracts/28869.sol:207:17: Warning: Integer Overflow.
+                txn.executed
+Integer Overflow occurs if:
+    confirmations[transactionId][owners[i]] = 0
+    owners.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    transactions[transactionId].executed = 0
+    confirmations[transactionId][owner] = 0
+    transactions[transactionId].destination = 1461501637330902918203684832716283019655932542975
+    isOwner[owner] = 255
+    required = 0
+contracts/28869.sol:280:36: Warning: Integer Overflow.
+                if (   pending && !transactions[i].executed
+Integer Overflow occurs if:
+    transactionCount = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/28869.sol:6:5: Warning: Integer Overflow.
+    contract MultiSigWallet {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    owners.length = 3
+    owners[i] = 1461501637330902918203684832716283019655932542975
+    owners[i] = 1461501637330902918203684832716283019655932542975
+    isOwner[owner] = 255
+contracts/28869.sol:26:9: Warning: Integer Overflow.
+        address[] public owners
+contracts/28869.sol:179:9: Warning: Integer Overflow.
+        function submitTransaction(address destination, uint value, bytes data) public returns (uint transactionId) {
+        ^
+Spanning multiple lines.
+contracts/28869.sol:208:21: Warning: Integer Overflow.
+                if (txn.destination.call.value(txn.value)(txn.data)
+Integer Overflow occurs if:
+    confirmations[transactionId][owners[i]] = 0
+    owners.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    transactions[transactionId].executed = 0
+    confirmations[transactionId][owner] = 0
+    transactions[transactionId].destination = 1461501637330902918203684832716283019655932542975
+    isOwner[owner] = 255
+    required = 0
+contracts/28869.sol:134:21: Warning: Integer Overflow.
+                    owners[i]
+Integer Overflow occurs if:
+    owners.length = 115792089237315578359361989538884080091855690640756977520912575179593175007232
+    owners[i] = 0
+    owners[i] = 1461501637330902918203684832716283019655932542975
+    owners[i] = 1461501637330902918203684832716283019655932542975
+    owners[i] = 1461501637330902918203684832716283019655932542975
+    owners[i] = 1461501637330902918203684832716283019655932542975
+    owners[i] = 1461501637330902918203684832716283019655932542975
+    owners[i] = 1461501637330902918203684832716283019655932542975
+    owners[i] = 1461501637330902918203684832716283019655932542975
+    owners[i] = 1461501637330902918203684832716283019655932542975
+    owners[i] = 1461501637330902918203684832716283019655932542975
+    isOwner[owner] = 255
+contracts/28869.sol:208:59: Warning: Integer Overflow.
+                if (txn.destination.call.value(txn.value)(txn.data
+Integer Overflow occurs if:
+    confirmations[transactionId][owners[i]] = 0
+    owners.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    transactions[transactionId].executed = 0
+    confirmations[transactionId][owner] = 0
+    transactions[transactionId].destination = 1461501637330902918203684832716283019655932542975
+    isOwner[owner] = 255
+    required = 0
+contracts/28869.sol:266:50: Warning: Integer Overflow.
+                if (confirmations[transactionId][owners[i]
+Integer Overflow occurs if:
+    owners.length = 115791205813783806231406193359937536394012070923692126229978523204812483330047
+    confirmations[transactionId][owners[i]] = 0
+contracts/28869.sol:227:50: Warning: Integer Overflow.
+                if (confirmations[transactionId][owners[i]
+Integer Overflow occurs if:
+    owners.length = 115792082335569848633007197573932045576244532214531591869071028845388905840639
+    required = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    confirmations[transactionId][owners[i]] = 0
+contracts/28869.sol:23:9: Warning: Integer Overflow.
+        mapping (uint => Transaction) public transactions
+contracts/28869.sol:134:33: Warning: Integer Overflow.
+                    owners[i] = owners[owners.length - 1]
+Integer Overflow occurs if:
+    owners.length = 115792089237315578359361989538884080091855690640756977520912575179593175007232
+    owners[i] = 0
+    owners[i] = 1461501637330902918203684832716283019655932542975
+    owners[i] = 1461501637330902918203684832716283019655932542975
+    owners[i] = 1461501637330902918203684832716283019655932542975
+    owners[i] = 1461501637330902918203684832716283019655932542975
+    owners[i] = 1461501637330902918203684832716283019655932542975
+    owners[i] = 1461501637330902918203684832716283019655932542975
+    owners[i] = 1461501637330902918203684832716283019655932542975
+    owners[i] = 1461501637330902918203684832716283019655932542975
+    owners[i] = 1461501637330902918203684832716283019655932542975
+    isOwner[owner] = 255
+contracts/28869.sol:281:36: Warning: Integer Overflow.
+                    || executed && transactions[i].executed
+Integer Overflow occurs if:
+    transactionCount = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:	====== Analysis Completed ======

@@ -1,0 +1,33 @@
+WARNING:root:You are using solc version 0.4.21, The latest supported version is 0.4.19
+INFO:root:contract contracts/18438.sol:BoomerangLiquidity:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 95.4%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 True
+INFO:symExec:Flow1
+contracts/18438.sol:62:21: Warning: Transaction-Ordering Dependency.
+            require(sk2xContract.call.value(half)()
+Flow2
+contracts/18438.sol:62:21: Warning: Transaction-Ordering Dependency.
+            require(sk2xContract.call.value(half)()
+INFO:symExec:contracts/18438.sol:62:21: Warning: Re-Entrancy Vulnerability.
+            require(sk2xContract.call.value(half)()
+contracts/18438.sol:63:13: Warning: Re-Entrancy Vulnerability.
+            p3dContract.buy.value(half)(msg.sender)
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/18438.sol:Owned:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.7%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======

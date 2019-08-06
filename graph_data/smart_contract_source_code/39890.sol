@@ -696,7 +696,7 @@ contract MilestoneTracker {
     function requestMilestonePayment(uint _idMilestone) campaignNotCanceled notChanging {
         if (_idMilestone >= milestones.length) throw;
         Milestone milestone = milestones[_idMilestone];
-        if ((msg.sender != milestone.milestoneLeadLink)&&(msg.sender != recipient))  hrow;
+        if ((msg.sender != milestone.milestoneLeadLink)&&(msg.sender != recipient))  throw;
         if ((milestone.status != MilestoneStatus.Completed) || (now < milestone.doneTime + milestone.reviewTime)) throw;
 
         authorizePayment(_idMilestone);
@@ -723,7 +723,7 @@ contract MilestoneTracker {
     function arbitrateApproveMilestone(uint _idMilestone) onlyArbitrator campaignNotCanceled notChanging {
         if (_idMilestone >= milestones.length) throw;
         Milestone milestone = milestones[_idMilestone];
-        if (milestone.status != MilestoneStatus.AcceptedAndInProgress) && (milestone.status != MilestoneStatus.Completed)) throw;
+        if ((milestone.status != MilestoneStatus.AcceptedAndInProgress) && (milestone.status != MilestoneStatus.Completed)) throw;
         authorizePayment(_idMilestone);
     }
 

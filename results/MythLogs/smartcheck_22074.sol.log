@@ -1,0 +1,22 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: SIMPLE_PIGGY_BANK
+Function name: fallback
+PC address: 168
+Estimated Gas Usage: 5561 - 25846
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/22074.sol:12
+
+Bal[msg.sender]+=msg.value
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0x01010101, value: 0x1
+Caller: [SOMEGUY], function: unknown, txdata: 0x, value: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+

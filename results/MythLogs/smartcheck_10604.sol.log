@@ -1,0 +1,199 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Balancer
+Function name: fallback
+PC address: 3427
+Estimated Gas Usage: 2577 - 3471
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/10604.sol:226
+
+target / balances.length
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: setLimitEth(uint256), txdata: 0x2e1bbe9801, value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x, value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: Balancer
+Function name: executeTransaction(address,uint256,bytes)
+PC address: 4328
+Estimated Gas Usage: 1388 - 5573
+Potential denial-of-service if block gas limit is reached.
+A message call is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit. This issue is reported for internal compiler generated code.
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: executeTransaction(address,uint256,bytes), txdata: 0x3f579f420000000000000000000000000000000000000000000000000000000000000021, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Balancer
+Function name: executeTransaction(address,uint256,bytes)
+PC address: 4409
+Estimated Gas Usage: 1388 - 5573
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/10604.sol:196
+
+to.call.value(value)(data)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: executeTransaction(address,uint256,bytes), txdata: 0x3f579f420000000000000000000000000000000000000000000000000000000000000021, value: 0x0
+
+==== Unchecked Call Return Value ====
+SWC ID: 104
+Severity: Low
+Contract: Balancer
+Function name: executeTransaction(address,uint256,bytes)
+PC address: 4409
+Estimated Gas Usage: 2184 - 40650
+The return value of a message call is not checked.
+External calls return a boolean value. If the callee contract halts with an exception, 'false' is returned and execution continues in the caller. It is usually recommended to wrap external calls into a require statement to prevent unexpected states.
+--------------------
+In file: /tmp/10604.sol:196
+
+to.call.value(value)(data)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: executeTransaction(address,uint256,bytes), txdata: 0x3f579f420000000000000000000000000000000000000000000000000000000000000021, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Balancer
+Function name: removeAccount(uint256,address)
+PC address: 5703
+Estimated Gas Usage: 1443 - 1868
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/10604.sol:182
+
+accounts[index]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: addWorker(address), txdata: 0x806ad57e, value: 0x0
+Caller: [CREATOR], function: removeAccount(uint256,address), txdata: 0xc3d7e350, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: Balancer
+Function name: handleTokens(address)
+PC address: 7258
+Estimated Gas Usage: 2893 - 3977
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/10604.sol:281
+
+token.balanceOf(address(this))
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: handleTokens(address), txdata: 0xc69e546dbebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: Balancer
+Function name: handleTokens(address)
+PC address: 7936
+Estimated Gas Usage: 5166 - 41002
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/10604.sol:294
+
+token.balanceOf(address(this))
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: handleTokens(address), txdata: 0xc69e546dbebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+
+==== Multiple Calls in a Single Transaction ====
+SWC ID: 113
+Severity: Low
+Contract: Balancer
+Function name: handleTokens(address)
+PC address: 7936
+Estimated Gas Usage: 8218 - 113508
+Multiple calls are executed in the same transaction.
+This call is executed after a previous call in the same transaction. Try to isolate each call, transfer or send into its own transaction.
+--------------------
+In file: /tmp/10604.sol:294
+
+token.balanceOf(address(this))
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: handleTokens(address), txdata: 0xc69e546d, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: Balancer
+Function name: handleTokens(address)
+PC address: 8204
+Estimated Gas Usage: 7312 - 78135
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/10604.sol:296
+
+token.transfer(coldWallet, toColdWallet)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: handleTokens(address), txdata: 0xc69e546dbebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Balancer
+Function name: accounts(uint256)
+PC address: 9306
+Estimated Gas Usage: 1120 - 1215
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/10604.sol:122
+
+address[] public accounts
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: addWorker(address), txdata: 0x806ad57e, value: 0x0
+Caller: [CREATOR], function: accounts(uint256), txdata: 0xf2a40db8, value: 0x0
+

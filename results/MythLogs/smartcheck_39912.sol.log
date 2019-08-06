@@ -1,0 +1,124 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: CampaignBeneficiary
+Function name: constructor
+PC address: 374
+Estimated Gas Usage: 11600 - 53247
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/39912.sol:28
+
+Resilience.call(setBeneficiarySig)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: CampaignBeneficiary
+Function name: simulatePathwayFromBeneficiary()
+PC address: 994
+Estimated Gas Usage: 777 - 1764
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/39912.sol:37
+
+Resilience.call.value(msg.value)(buySig)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: transferOwnership(address), txdata: 0xf2fde38b, value: 0x0
+Caller: [CREATOR], function: simulatePathwayFromBeneficiary(), txdata: 0xc1246d39, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: CampaignBeneficiary
+Function name: simulatePathwayFromBeneficiary()
+PC address: 1279
+Estimated Gas Usage: 2188 - 38257
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/39912.sol:40
+
+Resilience.call(transferSig, msg.sender, msg.value)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: transferOwnership(address), txdata: 0xf2fde38b, value: 0x0
+Caller: [ATTACKER], function: simulatePathwayFromBeneficiary(), txdata: 0xc1246d39, value: 0x0
+
+==== Multiple Calls in a Single Transaction ====
+SWC ID: 113
+Severity: Low
+Contract: CampaignBeneficiary
+Function name: simulatePathwayFromBeneficiary()
+PC address: 1279
+Estimated Gas Usage: 2930 - 72999
+Multiple calls are executed in the same transaction.
+This call is executed after a previous call in the same transaction. Try to isolate each call, transfer or send into its own transaction.
+--------------------
+In file: /tmp/39912.sol:40
+
+Resilience.call(transferSig, msg.sender, msg.value)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: simulatePathwayFromBeneficiary(), txdata: 0xc1246d39, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: CampaignBeneficiary
+Function name: closeCampaign()
+PC address: 1597
+Estimated Gas Usage: 1291 - 2608
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/39912.sol:54
+
+Resilience.call(closeCampaignSig)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: transferOwnership(address), txdata: 0xf2fde38bbebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeee, value: 0x0
+Caller: [SOMEGUY], function: closeCampaign(), txdata: 0xd7557f18, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: CampaignBeneficiary
+Function name: sell(uint256)
+PC address: 1925
+Estimated Gas Usage: 1400 - 2812
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/39912.sol:45
+
+Resilience.call(sellSig, _value)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: transferOwnership(address), txdata: 0xf2fde38bbebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeee, value: 0x0
+Caller: [SOMEGUY], function: sell(uint256), txdata: 0xe4849b32, value: 0x0
+

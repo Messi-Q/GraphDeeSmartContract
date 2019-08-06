@@ -1,0 +1,41 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: AdminUpgradeabilityProxy
+Function name: upgradeToAndCall(address,bytes)
+PC address: 742
+Estimated Gas Usage: 7555 - 30677
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/1879.sol:163
+
+address(this).call.value(msg.value)(data)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: upgradeToAndCall(address,bytes), txdata: 0x4f1ef286, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: FiatTokenProxy
+Function name: upgradeToAndCall(address,bytes)
+PC address: 742
+Estimated Gas Usage: 7555 - 30677
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/1879.sol:163
+
+address(this).call.value(msg.value)(data)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: upgradeToAndCall(address,bytes), txdata: 0x4f1ef286, value: 0x0
+

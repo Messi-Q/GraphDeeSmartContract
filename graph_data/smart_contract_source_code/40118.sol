@@ -23,11 +23,11 @@ contract DaoAccount
 
 	 
 
-	modifier noEther() {if (msg.value > 0) throw; _}
+	modifier noEther() {if (msg.value > 0) throw; _;}
 
-	modifier onlyOwner() {if (owner != msg.sender) throw; _}
+	modifier onlyOwner() {if (owner != msg.sender) throw; _;}
 
-	modifier onlyChallengeOwner() {if (challengeOwner != msg.sender) throw; _}
+	modifier onlyChallengeOwner() {if (challengeOwner != msg.sender) throw; _;}
 
 	 
 
@@ -39,7 +39,7 @@ contract DaoAccount
     challengeOwner = _challengeOwner;
 	}
 
-   
+    // 错误, Fallback function cannot return values.
 	function () onlyOwner returns (uint256 newBalance){
 		uint256 amount = msg.value;
 
@@ -95,9 +95,9 @@ contract DaoChallenge
 
 	 
 
-	modifier noEther() {if (msg.value > 0) throw; _}
+	modifier noEther() {if (msg.value > 0) throw; _;}
 
-	modifier onlyOwner() {if (owner != msg.sender) throw; _}
+	modifier onlyOwner() {if (owner != msg.sender) throw; _;}
 
 	 
 

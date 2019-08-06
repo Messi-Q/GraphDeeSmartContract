@@ -1,0 +1,13 @@
+WARNING:root:You are using solc version 0.4.25, The latest supported version is 0.4.17
+INFO:root:Contract smart_contract_source_code/dumbDAO.sol:dumbDAO:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 99.7%
+INFO:symExec:	  Callstack bug: 	 False
+INFO:symExec:	  Money concurrency bug: False
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 True
+smart_contract_source_code/dumbDAO.sol:dumbDAO:30:9
+_recipient.call.value(balances[msg.sender])()
+^
+INFO:symExec:	====== Analysis Completed ======

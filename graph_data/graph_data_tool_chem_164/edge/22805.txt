@@ -1,0 +1,3 @@
+ W0   VAR0   W0  1  FW
+ W0   VAR1   W0  1  FW
+ VAR1   S0   W0  2  RH

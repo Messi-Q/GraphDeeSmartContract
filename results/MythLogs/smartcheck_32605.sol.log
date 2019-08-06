@@ -1,0 +1,57 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: Proxy
+Function name: forward(address,uint256,bytes)
+PC address: 908
+Estimated Gas Usage: 1406 - 5591
+Potential denial-of-service if block gas limit is reached.
+A message call is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit. This issue is reported for internal compiler generated code.
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: transfer(address), txdata: 0x1a695230bebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeee, value: 0x0
+Caller: [SOMEGUY], function: forward(address,uint256,bytes), txdata: 0xd7f31eb90000000000000000000000000000000000000000000000000000000000000021, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Proxy
+Function name: forward(address,uint256,bytes)
+PC address: 989
+Estimated Gas Usage: 1406 - 5591
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/32605.sol:29
+
+destination.call.value(value)(data)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: transfer(address), txdata: 0x1a695230bebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeee, value: 0x0
+Caller: [SOMEGUY], function: forward(address,uint256,bytes), txdata: 0xd7f31eb90000000000000000000000000000000000000000000000000000000000000021, value: 0x0
+
+==== Integer Underflow ====
+SWC ID: 101
+Severity: High
+Contract: MetaIdentityManager
+Function name: registerIdentity(address,address)
+PC address: 7042
+Estimated Gas Usage: 14166 - 56218
+The binary subtraction can underflow.
+The operands of the subtraction operation are not sufficiently constrained. The subtraction could therefore result in an integer underflow. Prevent the underflow by checking inputs or ensure sure that the underflow is caught by an assertion.
+--------------------
+In file: /tmp/32605.sol:157
+
+now - adminTimeLock
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: registerIdentity(address,address), txdata: 0x781f5a83000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001, value: 0x0

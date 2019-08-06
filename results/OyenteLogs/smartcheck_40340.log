@@ -1,0 +1,54 @@
+WARNING:root:You are using evm version 1.8.2. The supported version is 1.7.3
+WARNING:root:You are using solc version 0.4.21, The latest supported version is 0.4.19
+INFO:root:contract contracts/40340.sol:Etheropt:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 9.8%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/40340.sol:264:9: Warning: Integer Overflow.
+    if (positions[user].expired
+Integer Overflow occurs if:
+    accountIDs[msg.sender] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/40340.sol:266:19: Warning: Integer Overflow.
+        int pnl = positions[user].cash
+Integer Overflow occurs if:
+    numOptions = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    positions[user].expired = 0
+    accountIDs[msg.sender] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/40340.sol:97:16: Warning: Integer Overflow.
+        return accounts[accountIDs[user]].capital
+Integer Overflow occurs if:
+    positions[user].expired = 255
+    accountIDs[msg.sender] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/40340.sol:85:9: Warning: Integer Overflow.
+        accounts[accountIDs[msg.sender]].capital
+Integer Overflow occurs if:
+    amount = 2
+    accounts[accountIDs[user]].capital = 2
+    positions[user].expired = 255
+    accountIDs[msg.sender] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/40340.sol:95:16: Warning: Integer Overflow.
+        return accounts[accountIDs[user]].capital
+Integer Overflow occurs if:
+    numMarketMakers = 6
+    accountIDs[user] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    accountIDs[user] = 0
+    accountIDs[user] = 0
+    accountIDs[user] = 0
+    accountIDs[user] = 0
+    accountIDs[user] = 0
+contracts/40340.sol:87:38: Warning: Integer Overflow.
+        Withdraw(msg.sender, amount, accounts[accountIDs[msg.sender]].capital
+Integer Overflow occurs if:
+    amount = 2
+    accounts[accountIDs[user]].capital = 2
+    positions[user].expired = 255
+    accountIDs[msg.sender] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:contracts/40340.sol:196:13: Warning: Callstack Depth Attack Vulnerability.
+            accounts[accountID].user.call.value(amountToSend)()
+INFO:symExec:	====== Analysis Completed ======

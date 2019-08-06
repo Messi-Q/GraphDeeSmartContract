@@ -1,0 +1,22 @@
+WARNING:root:You are using solc version 0.4.21, The latest supported version is 0.4.19
+INFO:root:contract contracts/21390.sol:Accrual_account:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 95.2%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 True
+INFO:symExec:contracts/21390.sol:32:12: Warning: Integer Underflow.
+           investors[_to] -= _am
+Integer Underflow occurs if:
+    investors[_to] = 57896044618658097711785492504343953926634992332820282019728792003956564819967
+INFO:symExec:contracts/21390.sol:22:12: Warning: Integer Overflow.
+           investors[_to] += _am
+Integer Overflow occurs if:
+    investors[_to] = 1
+INFO:symExec:contracts/21390.sol:31:15: Warning: Re-Entrancy Vulnerability.
+           if(_to.call.value(_am)()
+INFO:symExec:	====== Analysis Completed ======

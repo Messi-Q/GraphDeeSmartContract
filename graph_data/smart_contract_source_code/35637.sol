@@ -43,8 +43,7 @@ contract ERC223 {
 }
 
   
- 
- /* https: 
+
 contract SafeMath {
     uint48 constant public MAX_UINT48 =
     0xFFFFFFFFFFFF;

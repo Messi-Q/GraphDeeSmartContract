@@ -1,0 +1,116 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: DutchAuction
+Function name: constructor
+PC address: 610
+Estimated Gas Usage: 38590 - 183573
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/2013.sol:225
+
+oracle.decimals()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Low
+Contract: DutchAuction
+Function name: constructor
+PC address: 682
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/2013.sol:226
+
+oracle_price_decimals_factor = 10**oracle_decimals
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Low
+Contract: DutchAuction
+Function name: constructor
+PC address: 747
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/2013.sol:227
+
+art_token_contract = ERC20Interface(_art_token_contract)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: DutchAuction
+Function name: constructor
+PC address: 886
+Estimated Gas Usage: 51145 - 271585
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/2013.sol:228
+
+art_token_contract.decimals()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Low
+Contract: DutchAuction
+Function name: constructor
+PC address: 886
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/2013.sol:228
+
+art_token_contract.decimals()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Low
+Contract: DutchAuction
+Function name: constructor
+PC address: 992
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/2013.sol:229
+
+decimal_precission_difference_factor = 10**(art_token_decimals.sub(oracle_decimals))
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+

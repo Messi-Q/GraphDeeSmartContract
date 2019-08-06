@@ -1,0 +1,36 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: MineableToken
+Function name: approveAndCall(address,uint256,bytes)
+PC address: 5007
+Estimated Gas Usage: 9660 - 35000
+Potential denial-of-service if block gas limit is reached.
+A message call is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit. This issue is reported for internal compiler generated code.
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: approveAndCall(address,uint256,bytes), txdata: 0xcae9ca510000000000000000000000000000000000000000000000000000000000000021, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: MineableToken
+Function name: approveAndCall(address,uint256,bytes)
+PC address: 5107
+Estimated Gas Usage: 9660 - 35000
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/15458.sol:150
+
+recip.receiveApproval( msg.sender, value, context )
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: approveAndCall(address,uint256,bytes), txdata: 0xcae9ca51000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef000000000000000000000000000000000000000000000000000000000000000080, value: 0x0
+

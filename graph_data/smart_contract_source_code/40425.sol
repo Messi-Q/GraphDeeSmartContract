@@ -79,7 +79,7 @@ contract MyEtherBank
         {
             throw;       
         }
-        _ 
+        _;
     }
 
     modifier modifier_doesSenderHaveABankAccount() 
@@ -99,7 +99,7 @@ contract MyEtherBank
                 throw;        
             }
         }
-        _ 
+        _;
     }
 
     modifier modifier_wasValueSent()
@@ -110,7 +110,7 @@ contract MyEtherBank
              
             throw;        
         }
-        _ 
+        _;
     }
 
 
@@ -192,7 +192,7 @@ contract MyEtherBank
                 number: newBankAccountNumber,
                 balance: 0,
                 owner: msg.sender,
-                passwordSha3Hash: "0",
+                passwordSha3Hash: "0"
             }
             ));
 

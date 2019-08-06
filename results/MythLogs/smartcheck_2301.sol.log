@@ -1,0 +1,796 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: Pinakion
+Function name: constructor
+PC address: 399
+Estimated Gas Usage: 49978 - 236087
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit.
+--------------------
+In file: /tmp/2301.sol:80
+
+symbol = _tokenSymbol
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: Kleros
+Function name: constructor
+PC address: 408
+Estimated Gas Usage: 72698 - 357349
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit. This issue is reported for internal compiler generated code.
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 120
+Severity: Low
+Contract: BlockHashRNGFallback
+Function name: getUncorrelatedRN(uint256)
+PC address: 686
+Estimated Gas Usage: 1943 - 2889
+A control flow decision is made based on a predictable variable.
+The block.number environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/2301.sol:590
+
+_block<block.number && randomNumber[_block]==0
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getUncorrelatedRN(uint256), txdata: 0x1c73601e, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 120
+Severity: Medium
+Contract: BlockHashRNG
+Function name: getUncorrelatedRN(uint256)
+PC address: 694
+Estimated Gas Usage: 13579 - 89657
+A control flow decision is made based on a predictable variable.
+The block hash of a previous block is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/2301.sol:573
+
+if (blockhash(_block) != 0x0)
+            randomNumber[_block] = uint(blockhash(_block))
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getUncorrelatedRN(uint256), txdata: 0x1c73601e, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 120
+Severity: Low
+Contract: BlockHashRNGFallback
+Function name: getUncorrelatedRN(uint256)
+PC address: 715
+Estimated Gas Usage: 1943 - 2889
+A control flow decision is made based on a predictable variable.
+The block.number environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/2301.sol:590
+
+if (_block<block.number && randomNumber[_block]==0) {
+            if (blockhash(_block)!=0x0)
+                randomNumber[_block]=uint(blockhash(_block));
+            else
+                randomNumber[_block]=uint(blockhash(block.number-1));
+        }
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getUncorrelatedRN(uint256), txdata: 0x1c73601e, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 120
+Severity: Medium
+Contract: BlockHashRNGFallback
+Function name: saveRN(uint256)
+PC address: 733
+Estimated Gas Usage: 6498 - 27163
+A control flow decision is made based on a predictable variable.
+The block hash of a previous block is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/2301.sol:591
+
+if (blockhash(_block)!=0x0)
+                randomNumber[_block]=uint(blockhash(_block));
+            else
+                randomNumber[_block]=uint(blockhash(block.number-1))
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: saveRN(uint256), txdata: 0xb9a52203, value: 0x0
+
+==== Unchecked Call Return Value ====
+SWC ID: 104
+Severity: Low
+Contract: BlockHashRNG
+Function name: getUncorrelatedRN(uint256)
+PC address: 846
+Estimated Gas Usage: 13579 - 89657
+The return value of a message call is not checked.
+External calls return a boolean value. If the callee contract halts with an exception, 'false' is returned and execution continues in the caller. It is usually recommended to wrap external calls into a require statement to prevent unexpected states.
+--------------------
+In file: /tmp/2301.sol:578
+
+msg.sender.send(rewardToSend)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: getUncorrelatedRN(uint256), txdata: 0x1c73601e, value: 0x0
+Caller: [ATTACKER], function: getUncorrelatedRN(uint256), txdata: 0x1c73601e01, value: 0x0
+
+==== Unprotected Ether Withdrawal ====
+SWC ID: 105
+Severity: High
+Contract: BlockHashRNG
+Function name: saveRN(uint256)
+PC address: 846
+Estimated Gas Usage: 11589 - 52630
+Anyone can withdraw ETH from the contract account.
+Arbitrary senders other than the contract creator can withdraw ETH from the contract account without previously having sent an equivalent amount of ETH to it. This is likely to be a vulnerability.
+--------------------
+In file: /tmp/2301.sol:578
+
+msg.sender.send(rewardToSend)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: requestRN(uint256), txdata: 0x7b9c34e0, value: 0x1
+Caller: [ATTACKER], function: saveRN(uint256), txdata: 0xb9a52203, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: BlockHashRNG
+Function name: contribute(uint256)
+PC address: 883
+Estimated Gas Usage: 5765 - 26050
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/2301.sol:557
+
+reward[_block]+=msg.value
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: contribute(uint256), txdata: 0xc1cbbca7, value: 0x1
+Caller: [ATTACKER], function: contribute(uint256), txdata: 0xc1cbbca7, value: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Pinakion
+Function name: transferFrom(address,address,uint256)
+PC address: 5058
+Estimated Gas Usage: 4207 - 5953
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/2301.sol:252
+
+parentToken.balanceOfAt(_owner, min(_blockNumber, parentSnapShotBlock))
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: transferFrom(address,address,uint256), txdata: 0x23b872dd0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010201010101010101010101010101010101010101, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: Pinakion
+Function name: transfer(address,uint256)
+PC address: 5058
+Estimated Gas Usage: 4398 - 6144
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/2301.sol:252
+
+parentToken.balanceOfAt(_owner, min(_blockNumber, parentSnapShotBlock))
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: transfer(address,uint256), txdata: 0xa9059cbb000000000000000000000000010201010101010101010101010101010101010110, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Kleros
+Function name: disputeStatus(uint256)
+PC address: 5118
+Estimated Gas Usage: 752 - 847
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/2301.sol:1266
+
+disputes[_disputeID]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: passPeriod(), txdata: 0xb241ff03, value: 0x0
+Caller: [SOMEGUY], function: disputeStatus(uint256), txdata: 0x10f169e8, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Kleros
+Function name: currentRuling(uint256)
+PC address: 5388
+Estimated Gas Usage: 774 - 869
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/2301.sol:1260
+
+disputes[_disputeID]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: passPeriod(), txdata: 0xb241ff03, value: 0x0
+Caller: [ATTACKER], function: currentRuling(uint256), txdata: 0x1c3db16d, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Kleros
+Function name: amountJurors(uint256)
+PC address: 5705
+Estimated Gas Usage: 840 - 935
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/2301.sol:1097
+
+disputes[_disputeID]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: passPeriod(), txdata: 0xb241ff03, value: 0x0
+Caller: [SOMEGUY], function: amountJurors(uint256), txdata: 0x2dd40301, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: Pinakion
+Function name: createCloneToken(string,uint8,string,uint256,bool)
+PC address: 5829
+Estimated Gas Usage: 2588 - 9600
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/2301.sol:310
+
+tokenFactory.createCloneToken(
+            this,
+            _snapshotBlock,
+            _cloneTokenName,
+            _cloneDecimalUnits,
+            _cloneTokenSymbol,
+            _transfersEnabled
+            )
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: createCloneToken(string,uint8,string,uint256,bool), txdata: 0x6638c087, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Kleros
+Function name: withdraw(uint256)
+PC address: 6121
+Estimated Gas Usage: 9804 - 30890
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/2301.sol:835
+
+pinakion.transfer(msg.sender,_value)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: withdraw(uint256), txdata: 0x2e1a7d4d, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Pinakion
+Function name: destroyTokens(address,uint256)
+PC address: 7027
+Estimated Gas Usage: 3833 - 5294
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/2301.sol:277
+
+parentToken.totalSupplyAt(min(_blockNumber, parentSnapShotBlock))
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: destroyTokens(address,uint256), txdata: 0xd3ce77fe, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: Pinakion
+Function name: totalSupplyAt(uint256)
+PC address: 7027
+Estimated Gas Usage: 3170 - 4301
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/2301.sol:277
+
+parentToken.totalSupplyAt(min(_blockNumber, parentSnapShotBlock))
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: totalSupplyAt(uint256), txdata: 0x981b24d0, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Kleros
+Function name: disputes(uint256)
+PC address: 7517
+Estimated Gas Usage: 944 - 1039
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/2301.sol:783
+
+Dispute[] public disputes
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: passPeriod(), txdata: 0xb241ff03, value: 0x0
+Caller: [ATTACKER], function: disputes(uint256), txdata: 0x564a565d, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Kleros
+Function name: getVoteCount(uint256,uint256,uint256)
+PC address: 7795
+Estimated Gas Usage: 1067 - 1162
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/2301.sol:1231
+
+disputes[_disputeID]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: getVoteCount(uint256,uint256,uint256), txdata: 0x6c973248, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Kleros
+Function name: isDrawn(uint256,address,uint256)
+PC address: 8003
+Estimated Gas Usage: 1126 - 1221
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/2301.sol:1241
+
+disputes[_disputeID]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: isDrawn(uint256,address,uint256), txdata: 0x70d17adb, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Kleros
+Function name: getVoteAccount(uint256,uint256,uint256)
+PC address: 8436
+Estimated Gas Usage: 1155 - 1250
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/2301.sol:1211
+
+disputes[_disputeID]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: getVoteAccount(uint256,uint256,uint256), txdata: 0x82495626, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Pinakion
+Function name: claimTokens(address)
+PC address: 8454
+Estimated Gas Usage: 2022 - 2823
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/2301.sol:462
+
+token.balanceOf(this)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: claimTokens(address), txdata: 0xdf8de3e700000000000000000000000001, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Kleros
+Function name: executeRuling(uint256)
+PC address: 8601
+Estimated Gas Usage: 1145 - 1240
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/2301.sol:1165
+
+disputes[disputeID]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: executeRuling(uint256), txdata: 0x8bb04875, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Pinakion
+Function name: claimTokens(address)
+PC address: 8711
+Estimated Gas Usage: 4140 - 39928
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/2301.sol:463
+
+token.transfer(controller, balance)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: claimTokens(address), txdata: 0xdf8de3e700000000000000000000000001, value: 0x0
+
+==== Multiple Calls in a Single Transaction ====
+SWC ID: 113
+Severity: Low
+Contract: Pinakion
+Function name: claimTokens(address)
+PC address: 8711
+Estimated Gas Usage: 6977 - 77818
+Multiple calls are executed in the same transaction.
+This call is executed after a previous call in the same transaction. Try to isolate each call, transfer or send into its own transaction.
+--------------------
+In file: /tmp/2301.sol:463
+
+token.transfer(controller, balance)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: claimTokens(address), txdata: 0xdf8de3e700000000000000000000000001, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 120
+Severity: Low
+Contract: Pinakion
+Function name: transfer(address,uint256)
+PC address: 9232
+Estimated Gas Usage: 4398 - 6144
+A control flow decision is made based on a predictable variable.
+The block.number environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/2301.sol:140
+
+require(parentSnapShotBlock < block.number)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: transfer(address,uint256), txdata: 0xa9059cbb010101010101010101010101010201010101010101010101010101010101010108, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 120
+Severity: Low
+Contract: Pinakion
+Function name: totalSupply()
+PC address: 10019
+Estimated Gas Usage: 3802 - 39400
+A control flow decision is made based on a predictable variable.
+The block.number environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/2301.sol:436
+
+a < b ? a : b
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: totalSupply(), txdata: 0x18160ddd, value: 0x0
+
+==== Integer Underflow ====
+SWC ID: 101
+Severity: High
+Contract: Kleros
+Function name: passPeriod()
+PC address: 12518
+Estimated Gas Usage: 22614 - 119272
+The binary subtraction can underflow.
+The operands of the subtraction operation are not sufficiently constrained. The subtraction could therefore result in an integer underflow. Prevent the underflow by checking inputs or ensure sure that the underflow is caught by an assertion.
+--------------------
+In file: /tmp/2301.sol:845
+
+now-lastPeriodChange
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: passPeriod(), txdata: 0xb241ff03, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: Kleros
+Function name: passPeriod()
+PC address: 12526
+Estimated Gas Usage: 22614 - 119272
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/2301.sol:845
+
+require(now-lastPeriodChange >= timePerPeriod[uint8(period)])
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: passPeriod(), txdata: 0xb241ff03, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: Kleros
+Function name: passPeriod()
+PC address: 12581
+Estimated Gas Usage: 22614 - 119272
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/2301.sol:848
+
+block.number + 1
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: passPeriod(), txdata: 0xb241ff03, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Kleros
+Function name: passPeriod()
+PC address: 12737
+Estimated Gas Usage: 9311 - 30772
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/2301.sol:849
+
+rng.requestRN(rnBlock)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: passPeriod(), txdata: 0xb241ff03, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Low
+Contract: Kleros
+Function name: passPeriod()
+PC address: 12793
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/2301.sol:850
+
+period = Period.Draw
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: passPeriod(), txdata: 0xb241ff03, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Low
+Contract: Kleros
+Function name: passPeriod()
+PC address: 13422
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/2301.sol:868
+
+lastPeriodChange = now
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: passPeriod(), txdata: 0xb241ff03, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Kleros
+Function name: getVoteRuling(uint256,uint256,uint256)
+PC address: 13528
+Estimated Gas Usage: 1331 - 1426
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/2301.sol:1216
+
+disputes[_disputeID]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: getVoteRuling(uint256,uint256,uint256), txdata: 0xb3c7618e, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Kleros
+Function name: getLastSessionVote(uint256,address)
+PC address: 13625
+Estimated Gas Usage: 1332 - 1427
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/2301.sol:1236
+
+disputes[_disputeID]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: getLastSessionVote(uint256,address), txdata: 0xb5040f0a, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Kleros
+Function name: timePerPeriod(uint256)
+PC address: 13727
+Estimated Gas Usage: 918 - 1013
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/2301.sol:699
+
+uint[5] public timePerPeriod
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: timePerPeriod(uint256), txdata: 0xbaaaaad280, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Kleros
+Function name: getWinningChoice(uint256,uint256)
+PC address: 16221
+Estimated Gas Usage: 1458 - 1553
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/2301.sol:1221
+
+disputes[_disputeID]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: getWinningChoice(uint256,uint256), txdata: 0xc8860f41, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Kleros
+Function name: getWinningCount(uint256,uint256)
+PC address: 16404
+Estimated Gas Usage: 1590 - 1685
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/2301.sol:1226
+
+disputes[_disputeID]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: getWinningCount(uint256,uint256), txdata: 0xe07a31c7, value: 0x0

@@ -1,0 +1,250 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: ElectricQueue
+Function name: sendToCharger(uint256)
+PC address: 2376
+Estimated Gas Usage: 23915 - 111474
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/39662.sol:130
+
+Chargers[id].Address.getPrice()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: investInQueue(address,uint256), txdata: 0xb4821203, value: 0x0
+Caller: [CREATOR], function: sendToCharger(uint256), txdata: 0x5f87710880, value: 0x0
+
+==== Multiple Calls in a Single Transaction ====
+SWC ID: 113
+Severity: Low
+Contract: ElectricQueue
+Function name: sendToCharger(uint256)
+PC address: 2376
+Estimated Gas Usage: 11643 - 155507
+Multiple calls are executed in the same transaction.
+This call is executed after a previous call in the same transaction. Try to isolate each call, transfer or send into its own transaction.
+--------------------
+In file: /tmp/39662.sol:130
+
+Chargers[id].Address.getPrice()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: sendToCharger(uint256), txdata: 0x5f877108, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: ElectricQueue
+Function name: sendToCharger(uint256)
+PC address: 2552
+Estimated Gas Usage: 25323 - 147774
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/39662.sol:135
+
+Chargers[id].Address.call.value(_priceOfCharger)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: investInQueue(address,uint256), txdata: 0xb4821203, value: 0x0
+Caller: [CREATOR], function: sendToCharger(uint256), txdata: 0x5f877108c0, value: 0x0
+
+==== Multiple Calls in a Single Transaction ====
+SWC ID: 113
+Severity: Low
+Contract: ElectricQueue
+Function name: sendToCharger(uint256)
+PC address: 2552
+Estimated Gas Usage: 26070 - 182521
+Multiple calls are executed in the same transaction.
+This call is executed after a previous call in the same transaction. Try to isolate each call, transfer or send into its own transaction.
+--------------------
+In file: /tmp/39662.sol:135
+
+Chargers[id].Address.call.value(_priceOfCharger)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: investInQueue(address,uint256), txdata: 0xb4821203, value: 0x0
+Caller: [CREATOR], function: sendToCharger(uint256), txdata: 0x5f877108c0, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Low
+Contract: ElectricQueue
+Function name: sendToCharger(uint256)
+PC address: 2552
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/39662.sol:135
+
+Chargers[id].Address.call.value(_priceOfCharger)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: sendToCharger(uint256), txdata: 0x5f877108, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: ElectricQueue
+Function name: investInQueue(address,uint256)
+PC address: 3623
+Estimated Gas Usage: 4328 - 5986
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/39662.sol:72
+
+Investments[investmentId-1]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: investInQueue(address,uint256), txdata: 0xb4821203, value: 0x0
+Caller: [CREATOR], function: investInQueue(address,uint256), txdata: 0xb4821203, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: ElectricQueue
+Function name: investInQueue(address,uint256)
+PC address: 3647
+Estimated Gas Usage: 38348 - 161422
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/39662.sol:72
+
+Investments[investmentId-1].Balance+=msg.value
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: investInQueue(address,uint256), txdata: 0xb4821203, value: 0x0
+Caller: [CREATOR], function: investInQueue(address,uint256), txdata: 0xb482120300000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001, value: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: ElectricQueue
+Function name: investInQueue(address,uint256)
+PC address: 3696
+Estimated Gas Usage: 111132 - 518829
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/39662.sol:73
+
+Investments[investmentId-1].TotalSum+=msg.value
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: investInQueue(address,uint256), txdata: 0xb4821203, value: 0x8000000000000000000000000000000000000000000000000000000000000000
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: ElectricQueue
+Function name: sendToCharger(uint256)
+PC address: 6150
+Estimated Gas Usage: 21826 - 74584
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/39662.sol:189
+
+Chargers[id].Address.setInvestors(_ids,_addresses,_balances,chargerInvestments)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: investInQueue(address,uint256), txdata: 0xb4821203, value: 0x0
+Caller: [CREATOR], function: sendToCharger(uint256), txdata: 0x5f87710880, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: ElectricQueue
+Function name: sendToCharger(uint256)
+PC address: 7339
+Estimated Gas Usage: 10031 - 85519
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/39662.sol:164
+
+Chargers[id].Address.setInvestors(_ids,_addresses,_balances,queueInvestments)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: setManager(address), txdata: 0xd0ebdbe7bebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeee, value: 0x0
+Caller: [SOMEGUY], function: sendToCharger(uint256), txdata: 0x5f877108, value: 0x0
+
+==== Multiple Calls in a Single Transaction ====
+SWC ID: 113
+Severity: Low
+Contract: ElectricQueue
+Function name: sendToCharger(uint256)
+PC address: 7339
+Estimated Gas Usage: 12104 - 156298
+Multiple calls are executed in the same transaction.
+This call is executed after a previous call in the same transaction. Try to isolate each call, transfer or send into its own transaction.
+--------------------
+In file: /tmp/39662.sol:164
+
+Chargers[id].Address.setInvestors(_ids,_addresses,_balances,queueInvestments)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: setManager(address), txdata: 0xd0ebdbe7bebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeee, value: 0x0
+Caller: [SOMEGUY], function: sendToCharger(uint256), txdata: 0x5f877108, value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: ElectricQueue
+Function name: investInQueue(address,uint256)
+PC address: 7652
+Estimated Gas Usage: 108404 - 496340
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit.
+--------------------
+In file: /tmp/39662.sol:62
+
+Investment memory _newInvestment
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: investInQueue(address,uint256), txdata: 0xb4821203, value: 0x0
+Caller: [CREATOR], function: investInQueue(address,uint256), txdata: 0xb4821203000000000000000000000000000100000000000000000000000000010240020810, value: 0x0
+

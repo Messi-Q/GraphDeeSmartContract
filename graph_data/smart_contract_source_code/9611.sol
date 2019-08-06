@@ -1,4 +1,4 @@
-pragma solidity 0.4.24;
+pragma solidity ^0.4.24;
 
 interface CommAuctionIface {
     function getNextPrice(bytes32 democHash) external view returns (uint);

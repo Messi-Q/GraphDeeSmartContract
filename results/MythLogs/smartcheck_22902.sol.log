@@ -1,0 +1,405 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: ERC223ReceivingContract
+Function name: tokenFallback(address,uint256,bytes)
+PC address: 146
+Estimated Gas Usage: 1192 - 6649
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/22902.sol:660
+
+function tokenFallback(address _from, uint _value, bytes _data) public pure {
+    TKN memory tkn;
+    tkn.sender = _from;
+    tkn.value = _value;
+    tkn.data = _data;
+    if(_data.length > 0) {
+      uint32 u = uint32(_data[3]) + (uint32(_data[2]) << 8) + (uint32(_data[1]) << 16) + (uint32(_data[0]) << 24);
+      tkn.sig = bytes4(u);
+    }
+
+
+  }
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: tokenFallback(address,uint256,bytes), txdata: 0xc0ee0b8a010101010101010101010101010101010101010101010101010101010107fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe, value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: ConvertQuote
+Function name: constructor
+PC address: 318
+Estimated Gas Usage: 57253 - 284019
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit. This issue is reported for internal compiler generated code.
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: ERC223ReceivingContract
+Function name: tokenFallback(address,uint256,bytes)
+PC address: 466
+Estimated Gas Usage: 832 - 5069
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/22902.sol:666
+
+_data[1]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: tokenFallback(address,uint256,bytes), txdata: 0xc0ee0b8a0000000000000000000000000000000000000000000000000000000000000001, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: Crowdsale
+Function name: constructor
+PC address: 467
+Estimated Gas Usage: 87304 - 415672
+The binary multiplication can overflow.
+The operands of the multiplication operation are not sufficiently constrained. The multiplication could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/22902.sol:1053
+
+_softCap * 1 ether
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: Crowdsale
+Function name: constructor
+PC address: 484
+Estimated Gas Usage: 87304 - 415672
+The binary multiplication can overflow.
+The operands of the multiplication operation are not sufficiently constrained. The multiplication could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/22902.sol:1054
+
+_hardCap * 1 ether
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: ERC223ReceivingContract
+Function name: tokenFallback(address,uint256,bytes)
+PC address: 604
+Estimated Gas Usage: 945 - 5698
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/22902.sol:666
+
+_data[2]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: tokenFallback(address,uint256,bytes), txdata: 0xc0ee0b8a0000000000000000000000000000000000000000000000000000000000000002, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: ERC223ReceivingContract
+Function name: tokenFallback(address,uint256,bytes)
+PC address: 740
+Estimated Gas Usage: 1055 - 6324
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/22902.sol:666
+
+_data[3]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: tokenFallback(address,uint256,bytes), txdata: 0xc0ee0b8a0000000000000000000000000000000000000000000000000000000000000003, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: BuildingStatus
+Function name: setStatus(uint8)
+PC address: 898
+Estimated Gas Usage: 1649 - 2734
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/22902.sol:268
+
+status = newStatus
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeStage(uint8), txdata: 0xb9172decececececececececececececececececececececececececececececececec05, value: 0x0
+Caller: [CREATOR], function: setStatus(uint8), txdata: 0x2e49d78b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b3d, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Crowdsale
+Function name: getOverTokens()
+PC address: 7132
+Estimated Gas Usage: 7924 - 78934
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/22902.sol:1333
+
+token.transfer(msg.sender, balance)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getOverTokens(), txdata: 0x1b181e58, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Crowdsale
+Function name: getContributorTokens(address)
+PC address: 7585
+Estimated Gas Usage: 1610 - 2411
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/22902.sol:1274
+
+registry.getContributionTokens(contrib)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: getContributorTokens(address), txdata: 0x283557ac, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Crowdsale
+Function name: getContributorUSD(address)
+PC address: 9996
+Estimated Gas Usage: 1742 - 2543
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/22902.sol:1282
+
+registry.getContributionUSD(contrib)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: getContributorUSD(address), txdata: 0x44048aa5, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Crowdsale
+Function name: getContributorETH(address)
+PC address: 10566
+Estimated Gas Usage: 1874 - 2675
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/22902.sol:1278
+
+registry.getContributionETH(contrib)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: getContributorETH(address), txdata: 0x530c6868, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Crowdsale
+Function name: getContributorAmount()
+PC address: 11819
+Estimated Gas Usage: 1813 - 2519
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/22902.sol:1403
+
+registry.getContributorAmount()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: getContributorAmount(), txdata: 0x59c634b0, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Crowdsale
+Function name: getTokenBalance()
+PC address: 12500
+Estimated Gas Usage: 2031 - 2832
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/22902.sol:1383
+
+token.balanceOf(this)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: getTokenBalance(), txdata: 0x82b2e257, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Crowdsale
+Function name: editContribution(address,uint256,uint256,uint256,uint256)
+PC address: 14630
+Estimated Gas Usage: 2440 - 3241
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/22902.sol:1028
+
+permissionManager.isPermitted(msg.sender)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: editContribution(address,uint256,uint256,uint256,uint256), txdata: 0xa95609ca, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Crowdsale
+Function name: editContribution(address,uint256,uint256,uint256,uint256)
+PC address: 14976
+Estimated Gas Usage: 4567 - 40260
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/22902.sol:1424
+
+registry.getContributionETH(_contributor)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: editContribution(address,uint256,uint256,uint256,uint256), txdata: 0xa95609ca, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Crowdsale
+Function name: removeContributor(address)
+PC address: 17694
+Estimated Gas Usage: 2420 - 3221
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/22902.sol:1028
+
+permissionManager.isPermitted(msg.sender)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: removeContributor(address), txdata: 0xb3f3ab5c, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Crowdsale
+Function name: calculateMaxEthIssued()
+PC address: 21890
+Estimated Gas Usage: 2484 - 2579
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/22902.sol:535
+
+assert(c / a == b)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: calculateMaxEthIssued(), txdata: 0x626f9e20, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Crowdsale
+Function name: getOverTokens()
+PC address: 22178
+Estimated Gas Usage: 5762 - 41785
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/22902.sol:1270
+
+token.balanceOf(this)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getOverTokens(), txdata: 0x1b181e58, value: 0x0
+
+==== Multiple Calls in a Single Transaction ====
+SWC ID: 113
+Severity: Low
+Contract: Crowdsale
+Function name: getOverTokens()
+PC address: 22178
+Estimated Gas Usage: 9599 - 115427
+Multiple calls are executed in the same transaction.
+This call is executed after a previous call in the same transaction. Try to isolate each call, transfer or send into its own transaction.
+--------------------
+In file: /tmp/22902.sol:1270
+
+token.balanceOf(this)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getOverTokens(), txdata: 0x1b181e58, value: 0x0
+

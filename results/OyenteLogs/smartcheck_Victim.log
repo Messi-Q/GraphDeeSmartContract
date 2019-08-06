@@ -1,0 +1,16 @@
+WARNING:root:You are using solc version 0.4.25, The latest supported version is 0.4.17
+INFO:root:Contract smart_contract_source_code/Victim.sol:Victim:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 99.6%
+INFO:symExec:	  Callstack bug: 	 True
+smart_contract_source_code/Victim.sol:Victim:8:12
+msg.sender.call.value(_amount)()
+^
+INFO:symExec:	  Money concurrency bug: False
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 True
+smart_contract_source_code/Victim.sol:Victim:8:12
+msg.sender.call.value(_amount)()
+^
+INFO:symExec:	====== Analysis Completed ======

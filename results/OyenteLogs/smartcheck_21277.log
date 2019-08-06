@@ -1,0 +1,247 @@
+WARNING:root:You are using solc version 0.4.21, The latest supported version is 0.4.19
+INFO:root:contract contracts/21277.sol:Ethername:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 67.1%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 True
+INFO:symExec:contracts/21277.sol:203:5: Warning: Integer Underflow.
+    _value = nameToRecord[_name].attrs[_key]
+Integer Underflow occurs if:
+    _value = 1
+contracts/21277.sol:36:12: Warning: Integer Underflow.
+    return _to.call.value(_value).gas(_gas)(_code)
+Integer Underflow occurs if:
+    manager = 0
+INFO:symExec:contracts/21277.sol:362:3: Warning: Integer Overflow.
+  function detailsOf(string _name, string _key)
+  ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _name = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/21277.sol:158:3: Warning: Integer Overflow.
+  function rawWipeAttributes(bytes32 _name, bytes32[] _keys)
+  ^
+Spanning multiple lines.
+contracts/21277.sol:344:3: Warning: Integer Overflow.
+  function wipeAttributes(string _name, bytes32[] _keys) external {
+  ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _name = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/21277.sol:345:23: Warning: Integer Overflow.
+    rawWipeAttributes(_stringToBytes32(_name)
+contracts/21277.sol:333:12: Warning: Integer Overflow.
+    rawBuy(_stringToBytes32(_name)
+contracts/21277.sol:321:21: Warning: Integer Overflow.
+    rawApprove(_to, _stringToBytes32(_name)
+contracts/21277.sol:127:5: Warning: Integer Overflow.
+    nameToRecord[_name].price
+Integer Overflow occurs if:
+    nameToRecord[_name].owner = 0
+contracts/21277.sol:317:22: Warning: Integer Overflow.
+    rawTransfer(_to, _stringToBytes32(_name)
+contracts/21277.sol:341:21: Warning: Integer Overflow.
+    rawSetAttribute(_stringToBytes32(_name)
+contracts/21277.sol:91:3: Warning: Integer Overflow.
+  mapping (bytes32 => Record) public nameToRecord
+contracts/21277.sol:320:3: Warning: Integer Overflow.
+  function approve(address _to, string _name) external {
+  ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _name = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/21277.sol:251:22: Warning: Integer Overflow.
+    return _price * (10000 + commission
+Integer Overflow occurs if:
+    commission = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/21277.sol:329:17: Warning: Integer Overflow.
+    rawSetPrice(_stringToBytes32(_name)
+contracts/21277.sol:203:14: Warning: Integer Overflow.
+    _value = nameToRecord[_name].attrs
+contracts/21277.sol:336:3: Warning: Integer Overflow.
+  function useName(string _name) external {
+  ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _name = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/21277.sol:325:33: Warning: Integer Overflow.
+    rawTransferFrom(_from, _to, _stringToBytes32(_name)
+contracts/21277.sol:231:5: Warning: Integer Overflow.
+    nameToRecord[_name] = Record(_to, 0)
+Integer Overflow occurs if:
+    ownerToName[_from] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    nameToApproved[_name] = 0
+    nameToRecord[_name].owner = 0
+contracts/21277.sol:324:3: Warning: Integer Overflow.
+  function transferFrom(address _from, address _to, string _name) external {
+  ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _name = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/21277.sol:36:12: Warning: Integer Overflow.
+    return _to.call.value(_value).gas(_gas)(_code)
+Integer Overflow occurs if:
+    manager = 0
+contracts/21277.sol:149:3: Warning: Integer Overflow.
+  function rawSetAttribute(bytes32 _name, bytes32 _key, bytes _value)
+  ^
+Spanning multiple lines.
+contracts/21277.sol:337:16: Warning: Integer Overflow.
+    rawUseName(_stringToBytes32(_name)
+contracts/21277.sol:312:3: Warning: Integer Overflow.
+  function register(string _name) external payable {
+  ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _name = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/21277.sol:340:3: Warning: Integer Overflow.
+  function setAttribute(string _name, string _key, bytes _value) external {
+  ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _name = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/21277.sol:358:3: Warning: Integer Overflow.
+  function ownerOf(string _name) external view returns (address _owner) {
+  ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _name = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/21277.sol:328:3: Warning: Integer Overflow.
+  function setPrice(string _name, uint256 _price) external {
+  ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _name = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/21277.sol:332:3: Warning: Integer Overflow.
+  function buy(string _name) external payable {
+  ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _name = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/21277.sol:316:3: Warning: Integer Overflow.
+  function transfer(address _to, string _name) external {
+  ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _name = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/21277.sol:348:3: Warning: Integer Overflow.
+  function sendEther(string _name) external payable returns (bool _result) {
+  ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _name = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/21277.sol:349:28: Warning: Integer Overflow.
+    _result = rawSendEther(_stringToBytes32(_name)
+contracts/21277.sol:313:17: Warning: Integer Overflow.
+    rawRegister(_stringToBytes32(_name)
+contracts/21277.sol:359:25: Warning: Integer Overflow.
+    _owner = rawOwnerOf(_stringToBytes32(_name)
+contracts/21277.sol:202:28: Warning: Integer Overflow.
+    _price = _computePrice(nameToRecord[_name].price
+contracts/21277.sol:367:25: Warning: Integer Overflow.
+    return rawDetailsOf(_stringToBytes32(_name)
+INFO:symExec:Flow1
+contracts/21277.sol:28:5: Warning: Transaction-Ordering Dependency.
+    manager.transfer(address(this).balance)
+Flow2
+contracts/21277.sol:174:7: Warning: Transaction-Ordering Dependency.
+      _to.send(msg.value)
+INFO:symExec:contracts/21277.sol:36:12: Warning: Re-Entrancy Vulnerability.
+    return _to.call.value(_value).gas(_gas)(_code)
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/21277.sol:EthernameRaw:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 75.6%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 True
+INFO:symExec:contracts/21277.sol:203:5: Warning: Integer Underflow.
+    _value = nameToRecord[_name].attrs[_key]
+contracts/21277.sol:36:12: Warning: Integer Underflow.
+    return _to.call.value(_value).gas(_gas)(_code)
+Integer Underflow occurs if:
+    manager = 0
+INFO:symExec:contracts/21277.sol:36:12: Warning: Integer Overflow.
+    return _to.call.value(_value).gas(_gas)(_code)
+Integer Overflow occurs if:
+    manager = 0
+contracts/21277.sol:158:3: Warning: Integer Overflow.
+  function rawWipeAttributes(bytes32 _name, bytes32[] _keys)
+  ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _keys = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/21277.sol:91:3: Warning: Integer Overflow.
+  mapping (bytes32 => Record) public nameToRecord
+contracts/21277.sol:251:22: Warning: Integer Overflow.
+    return _price * (10000 + commission
+Integer Overflow occurs if:
+    commission = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/21277.sol:203:14: Warning: Integer Overflow.
+    _value = nameToRecord[_name].attrs
+contracts/21277.sol:149:3: Warning: Integer Overflow.
+  function rawSetAttribute(bytes32 _name, bytes32 _key, bytes _value)
+  ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _value = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/21277.sol:202:28: Warning: Integer Overflow.
+    _price = _computePrice(nameToRecord[_name].price
+contracts/21277.sol:127:5: Warning: Integer Overflow.
+    nameToRecord[_name].price
+Integer Overflow occurs if:
+    _price = 0
+    nameToRecord[_name].owner = 0
+contracts/21277.sol:231:5: Warning: Integer Overflow.
+    nameToRecord[_name] = Record(_to, 0)
+Integer Overflow occurs if:
+    _name = 0
+    ownerToName[_from] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    nameToApproved[_name] = 0
+    _from = 0
+    nameToRecord[_name].owner = 0
+INFO:symExec:Flow1
+contracts/21277.sol:28:5: Warning: Transaction-Ordering Dependency.
+    manager.transfer(address(this).balance)
+Flow2
+contracts/21277.sol:174:7: Warning: Transaction-Ordering Dependency.
+      _to.send(msg.value)
+INFO:symExec:contracts/21277.sol:36:12: Warning: Re-Entrancy Vulnerability.
+    return _to.call.value(_value).gas(_gas)(_code)
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/21277.sol:Managed:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.2%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 True
+INFO:symExec:contracts/21277.sol:36:12: Warning: Integer Underflow.
+    return _to.call.value(_value).gas(_gas)(_code)
+Integer Underflow occurs if:
+    manager = 0
+INFO:symExec:contracts/21277.sol:36:12: Warning: Integer Overflow.
+    return _to.call.value(_value).gas(_gas)(_code)
+Integer Overflow occurs if:
+    manager = 0
+INFO:symExec:Flow1
+contracts/21277.sol:28:5: Warning: Transaction-Ordering Dependency.
+    manager.transfer(address(this).balance)
+Flow2
+contracts/21277.sol:36:12: Warning: Transaction-Ordering Dependency.
+    return _to.call.value(_value).gas(_gas)(_code)
+INFO:symExec:contracts/21277.sol:36:12: Warning: Re-Entrancy Vulnerability.
+    return _to.call.value(_value).gas(_gas)(_code)
+INFO:symExec:	====== Analysis Completed ======

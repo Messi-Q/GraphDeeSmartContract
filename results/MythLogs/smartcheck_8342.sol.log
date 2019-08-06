@@ -1,0 +1,313 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: CHGameBase
+Function name: transferFrom(address,address,uint256)
+PC address: 6463
+Estimated Gas Usage: 32271 - 135596
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit.
+--------------------
+In file: /tmp/8342.sol:162
+
+shares[_from].sub(_value)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: transferFrom(address,address,uint256), txdata: 0x23b872dd000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: CHGameBase
+Function name: chickenOf(address)
+PC address: 6878
+Estimated Gas Usage: 1661 - 2417
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/8342.sol:291
+
+if (_timestamp > 0 && _timestamp < block.timestamp) {
+      return houses[_user].huntingPower.mul(
+        houses[_user].huntingMultiplier
+      ).mul(block.timestamp - _timestamp) / 100;
+    } else {
+      return 0;
+    }
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: saveChickenOf(address), txdata: 0xde2f827e, value: 0x0
+Caller: [CREATOR], function: chickenOf(address), txdata: 0x63fd7eb0, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: CHHouse
+Function name: items(uint256)
+PC address: 8167
+Estimated Gas Usage: 1252 - 1347
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/8342.sol:480
+
+Item[] public items
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: transferFrom(address,address,uint256), txdata: 0x23b872dd010101010101010101010101010000000000000000000000000000000000000001010101010101010101010101, value: 0x0
+Caller: [ATTACKER], function: items(uint256), txdata: 0xbfb231d2, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: CHArena
+Function name: items(uint256)
+PC address: 8403
+Estimated Gas Usage: 1274 - 1369
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/8342.sol:480
+
+Item[] public items
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: transferFrom(address,address,uint256), txdata: 0x23b872dd010101010101010101010101010000000000000000000000000000000000000001010101010101010101010101, value: 0x0
+Caller: [ATTACKER], function: items(uint256), txdata: 0xbfb231d2, value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: CHHunter
+Function name: transferFrom(address,address,uint256)
+PC address: 8540
+Estimated Gas Usage: 32293 - 135618
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit.
+--------------------
+In file: /tmp/8342.sol:162
+
+shares[_from].sub(_value)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: transferFrom(address,address,uint256), txdata: 0x23b872dd000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: CHAltar
+Function name: ethereumFromAltar()
+PC address: 8678
+Estimated Gas Usage: 2305 - 2968
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/8342.sol:656
+
+require(_tradeBook.altarRecordId < _id)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: ethereumFromAltar(), txdata: 0x98d714ac, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: CHHouse
+Function name: pets(uint256)
+PC address: 8697
+Estimated Gas Usage: 1340 - 1435
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/8342.sol:479
+
+Pet[] public pets
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: transferFrom(address,address,uint256), txdata: 0x23b872dd010101010101010101010101010000000000000000000000000000000000000001010101010101010101010101, value: 0x0
+Caller: [ATTACKER], function: pets(uint256), txdata: 0xcfb869bf, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: CHArena
+Function name: pets(uint256)
+PC address: 8933
+Estimated Gas Usage: 1362 - 1457
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/8342.sol:479
+
+Pet[] public pets
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: transferFrom(address,address,uint256), txdata: 0x23b872dd010101010101010101010101010000000000000000000000000000000000000001010101010101010101010101, value: 0x0
+Caller: [ATTACKER], function: pets(uint256), txdata: 0xcfb869bf, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: CHAltar
+Function name: items(uint256)
+PC address: 9370
+Estimated Gas Usage: 1384 - 1479
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/8342.sol:480
+
+Item[] public items
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: items(uint256), txdata: 0xbfb231d2, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: CHHouse
+Function name: buyItem(uint256)
+PC address: 9644
+Estimated Gas Usage: 1488 - 1583
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/8342.sol:517
+
+items[_id]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: transferFrom(address,address,uint256), txdata: 0x23b872dd000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002, value: 0x0
+Caller: [ATTACKER], function: buyItem(uint256), txdata: 0xe7fb74c7, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: CHAltar
+Function name: pets(uint256)
+PC address: 9900
+Estimated Gas Usage: 1472 - 1567
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/8342.sol:479
+
+Pet[] public pets
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: pets(uint256), txdata: 0xcfb869bf, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: CHArena
+Function name: buyItem(uint256)
+PC address: 10662
+Estimated Gas Usage: 1532 - 1627
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/8342.sol:517
+
+items[_id]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: buyItem(uint256), txdata: 0xe7fb74c7, value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: CHHouse
+Function name: transferFrom(address,address,uint256)
+PC address: 12252
+Estimated Gas Usage: 32337 - 135662
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit.
+--------------------
+In file: /tmp/8342.sol:162
+
+shares[_from].sub(_value)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: transferFrom(address,address,uint256), txdata: 0x23b872dd000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001, value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: CHArena
+Function name: transferFrom(address,address,uint256)
+PC address: 13294
+Estimated Gas Usage: 32337 - 135662
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit.
+--------------------
+In file: /tmp/8342.sol:162
+
+shares[_from].sub(_value)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: transferFrom(address,address,uint256), txdata: 0x23b872dd000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001, value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: CHAltar
+Function name: transferFrom(address,address,uint256)
+PC address: 14520
+Estimated Gas Usage: 32337 - 135662
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit.
+--------------------
+In file: /tmp/8342.sol:162
+
+shares[_from].sub(_value)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: transferFrom(address,address,uint256), txdata: 0x23b872dd000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001, value: 0x0
+

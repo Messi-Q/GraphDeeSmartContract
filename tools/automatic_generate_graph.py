@@ -687,7 +687,7 @@ def printResult(file, node_feature, edge_feature):
 
 
 if __name__ == "__main__":
-    test_contract = "../graph_data/smart_contract_source_code/31759.sol"
+    test_contract = "../graph_data/smart_contract_source_code/3054.sol"
     node_feature, edge_feature = generate_graph(test_contract)
     node_feature = sorted(node_feature, key=lambda x: (x[0]))
     edge_feature = sorted(edge_feature, key=lambda x: (x[2], x[3]))

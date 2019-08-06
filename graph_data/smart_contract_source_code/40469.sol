@@ -37,7 +37,7 @@ contract Asset {
 
     modifier onlyMultiAsset() {
         if (msg.sender == address(multiAsset)) {
-            _
+            _;
         }
     }
 
@@ -136,7 +136,7 @@ contract AmbiEnabled {
 
     modifier checkAccess(bytes32 _role) {
         if(address(ambiC) != 0x0 && ambiC.hasRelation(name, _role, msg.sender)){
-            _
+            _;
         }
     }
     

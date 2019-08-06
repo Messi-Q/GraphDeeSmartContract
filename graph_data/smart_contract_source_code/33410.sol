@@ -863,8 +863,7 @@ contract BCDCToken is SafeMath, ERC20 {
      
     function upgrade(uint256 value) external {
         if (!upgradeAgentStatus) throw;
-        /*if (getState() != State.Success) throw;  
-        if (upgradeAgent.owner() == 0x0) throw;  
+        if (upgradeAgent.owner() == 0x0) throw;
         if (finalizedUpgrade) throw;  
 
          

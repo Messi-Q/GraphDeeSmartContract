@@ -1,0 +1,217 @@
+WARNING:root:You are using evm version 1.8.2. The supported version is 1.7.3
+WARNING:root:You are using solc version 0.4.21, The latest supported version is 0.4.19
+INFO:root:contract contracts/29601.sol:CLC:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 68.4%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/29601.sol:80:5: Warning: Integer Underflow.
+    string public name
+contracts/29601.sol:84:5: Warning: Integer Underflow.
+    string public standard
+contracts/29601.sol:82:5: Warning: Integer Underflow.
+    string public symbol
+INFO:symExec:contracts/29601.sol:262:5: Warning: Integer Overflow.
+    function transfer(address to, uint256 value, bytes data) public returns (bool success) {
+    ^
+Spanning multiple lines.
+contracts/29601.sol:158:5: Warning: Integer Overflow.
+    function approveAndCall(address _spender, uint256 _value, bytes _extraData) public returns (bool success) {
+    ^
+Spanning multiple lines.
+contracts/29601.sol:270:5: Warning: Integer Overflow.
+    function transfer(address to, uint value, bytes data, string customFallback) public returns (bool success) {
+    ^
+Spanning multiple lines.
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/29601.sol:Clout:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 61.6%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/29601.sol:80:5: Warning: Integer Underflow.
+    string public name
+contracts/29601.sol:84:5: Warning: Integer Underflow.
+    string public standard
+contracts/29601.sol:82:5: Warning: Integer Underflow.
+    string public symbol
+INFO:symExec:contracts/29601.sol:463:9: Warning: Integer Overflow.
+        emissions[_i].blockTokens
+Integer Overflow occurs if:
+    emissions.length = 1
+    owner = 0
+contracts/29601.sol:447:9: Warning: Integer Overflow.
+        emissions.push(TokenEmission(_blockDuration, _blockTokens, _periodEndsAt, false))
+Integer Overflow occurs if:
+    emissions.push(TokenEmission(_blockDuration, _blockTokens, _periodEndsAt, false)) = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    owner = 0
+contracts/29601.sol:453:9: Warning: Integer Overflow.
+        emissions[_i]
+Integer Overflow occurs if:
+    emissions.length = 7237005577332262213973186563042994240829374041602535252466099000494570602497
+    owner = 0
+contracts/29601.sol:508:45: Warning: Integer Overflow.
+                    emission.blockDuration, emission.blockTokens
+Integer Overflow occurs if:
+    emissions.length = 3450873173395281893717377931138512726225554486085193277581262111899648
+    lastClaims[_address] = 107417984715241102183763253654894306490195001769145193141688271372286
+    balances[_address] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    emitTokensSince = 3618447358620966827693449672162712824546599828098501535651915363320911101951
+    minters[msg.sender] = 255
+contracts/29601.sol:498:17: Warning: Integer Overflow.
+            if (emission.removed
+Integer Overflow occurs if:
+    locked = 0
+    lastClaims[_address] = 1
+    emissions.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    balances[_address] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    emitTokensSince = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/29601.sol:502:34: Warning: Integer Overflow.
+            if (newCurrentTime < emission.periodEndsAt
+Integer Overflow occurs if:
+    locked = 0
+    lastClaims[_address] = 1
+    emissions.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    balances[_address] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    emitTokensSince = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/29601.sol:518:49: Warning: Integer Overflow.
+                        emission.blockDuration, emission.blockTokens
+Integer Overflow occurs if:
+    locked = 0
+    lastClaims[_address] = 1
+    emissions.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    balances[_address] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    emitTokensSince = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/29601.sol:496:46: Warning: Integer Overflow.
+            TokenEmission storage emission = emissions[i]
+Integer Overflow occurs if:
+    locked = 0
+    lastClaims[_address] = 2115620184325605350703103
+    emissions.length = 28948022309329048855892746252171976963317496166410141009864396001978282409984
+    balances[_address] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    emitTokensSince = 115792089237316195423570985008687907853269984665640561923837399682307778936832
+contracts/29601.sol:832:5: Warning: Integer Overflow.
+    function setEmissions(uint256[] array) public onlyOwner {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    array = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/29601.sol:413:5: Warning: Integer Overflow.
+    TokenEmission[] public emissions
+contracts/29601.sol:158:5: Warning: Integer Overflow.
+    function approveAndCall(address _spender, uint256 _value, bytes _extraData) public returns (bool success) {
+    ^
+Spanning multiple lines.
+contracts/29601.sol:463:9: Warning: Integer Overflow.
+        emissions[_i]
+Integer Overflow occurs if:
+    emissions.length = 7237005577332262213973186563042994240829374041602535252466099000494570602497
+    owner = 0
+contracts/29601.sol:504:36: Warning: Integer Overflow.
+                    uint256 diff = emission.periodEndsAt
+Integer Overflow occurs if:
+    locked = 0
+    lastClaims[_address] = 1
+    emissions.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    balances[_address] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    emitTokensSince = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/29601.sol:462:9: Warning: Integer Overflow.
+        emissions[_i]
+Integer Overflow occurs if:
+    emissions.length = 7237005577332262213973186563042994240829374041602535252466099000494570602497
+    owner = 0
+contracts/29601.sol:262:5: Warning: Integer Overflow.
+    function transfer(address to, uint256 value, bytes data) public returns (bool success) {
+    ^
+Spanning multiple lines.
+contracts/29601.sol:503:60: Warning: Integer Overflow.
+                if (newCurrentTime.add(remainingSeconds) > emission.periodEndsAt
+Integer Overflow occurs if:
+    locked = 0
+    lastClaims[_address] = 1
+    emissions.length = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    balances[_address] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    emitTokensSince = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/29601.sol:270:5: Warning: Integer Overflow.
+    function transfer(address to, uint value, bytes data, string customFallback) public returns (bool success) {
+    ^
+Spanning multiple lines.
+contracts/29601.sol:453:9: Warning: Integer Overflow.
+        emissions[_i].removed
+Integer Overflow occurs if:
+    emissions.length = 1
+    owner = 0
+contracts/29601.sol:59:21: Warning: Integer Overflow.
+        uint256 c = a + b
+Integer Overflow occurs if:
+    locked = 0
+    balances[_address] = 115792089237316195423570985008687907852844631706989390960128365748614829458910
+    balances[_address] = 57896044618658097711785492504343953926634992332820282019710345259882855102646
+    allowed[_from][msg.sender] = 57896044618658097711785492504343953926634992332820282019710345259882855102646
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/29601.sol:ERC20:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 68.5%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/29601.sol:80:5: Warning: Integer Underflow.
+    string public name
+contracts/29601.sol:84:5: Warning: Integer Underflow.
+    string public standard
+contracts/29601.sol:82:5: Warning: Integer Underflow.
+    string public symbol
+INFO:symExec:contracts/29601.sol:158:5: Warning: Integer Overflow.
+    function approveAndCall(address _spender, uint256 _value, bytes _extraData) public returns (bool success) {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _extraData = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/29601.sol:59:21: Warning: Integer Overflow.
+        uint256 c = a + b
+Integer Overflow occurs if:
+    locked = 0
+    _value = 57896044618658097711785492504343953926634992332820282019710345259882855102646
+    balances[_to] = 115792089237316195423570985008687907852844631706989390960128365748614829458910
+    balances[_from] = 57896044618658097711785492504343953926634992332820282019710345259882855102646
+    allowed[_from][msg.sender] = 57896044618658097711785492504343953926634992332820282019710345259882855102646
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/29601.sol:ERC223Token:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 61.7%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+Traceback (most recent call last):
+  File "oyente.py", line 221, in <module>
+    main()
+  File "oyente.py", line 216, in main
+    exit_code = analyze_solidity()
+  File "oyente.py", line 109, in analyze_solidity
+    results, exit_code = run_solidity_analysis(inputs)
+  File "oyente.py", line 86, in run_solidity_analysis
+    result, return_code = symExec.run(disasm_file=inp['disasm_file'], source_map=inp['source_map'], source_file=inp['source'])
+  File "/oyente/oyente/symExec.py", line 2458, in run
+    ret = detect_vulnerabilities()
+  File "/oyente/oyente/symExec.py", line 2277, in detect_vulnerabilities
+    detect_parity_multisig_bug_2()
+  File "/oyente/oyente/symExec.py", line 2154, in detect_parity_multisig_bug_2
+    parity_multisig_bug_2 = ParityMultisigBug2(g_src_map)
+  File "/oyente/oyente/vulnerability.py", line 193, in __init__
+    self.pairs = self._get_contracts_containing_selfdestruct_opcode()
+  File "/oyente/oyente/vulnerability.py", line 222, in _get_contracts_containing_selfdestruct_opcode
+    disasm_data = open(pair[0] + ".evm.disasm").read()
+IOError: [Errno 2] No such file or directory: u'contracts/29601.sol:ContractReceiver.evm.disasm'

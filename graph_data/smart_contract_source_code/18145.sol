@@ -1,4 +1,4 @@
-pragma solidity 0.4.21;
+pragma solidity ^0.4.21;
 
 contract CrowdsaleProxyTarget {
     function isActive() public returns(bool);

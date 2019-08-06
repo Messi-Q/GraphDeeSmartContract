@@ -1,0 +1,16 @@
+WARNING:root:You are using solc version 0.4.25, The latest supported version is 0.4.17
+INFO:root:Contract smart_contract_source_code/EtherStore.sol:EtherStore:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 99.1%
+INFO:symExec:	  Callstack bug: 	 False
+INFO:symExec:	  Money concurrency bug: False
+INFO:symExec:	  Time dependency bug: 	 True
+smart_contract_source_code/EtherStore.sol:EtherStore:18:9
+require(now >= lastWithdrawTime[msg.sender] + 1 weeks)
+^
+INFO:symExec:	  Reentrancy bug: 	 True
+smart_contract_source_code/EtherStore.sol:EtherStore:19:17
+msg.sender.call.value(_weiToWithdraw)()
+^
+INFO:symExec:	====== Analysis Completed ======

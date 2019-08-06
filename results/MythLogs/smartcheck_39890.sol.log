@@ -1,0 +1,21 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: MilestoneTracker
+Function name: milestones(uint256)
+PC address: 5762
+Estimated Gas Usage: 966 - 1061
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/39890.sol:457
+
+Milestone[] public milestones
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: milestones(uint256), txdata: 0xe89e4ed6, value: 0x0
+

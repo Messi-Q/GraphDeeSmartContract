@@ -12,13 +12,13 @@ contract DaoAccount
   address challengeOwner;
 
 
-	modifier noEther() {if (msg.value > 0) throw; _}
+	modifier noEther() {if (msg.value > 0) throw; _;}
 
-	modifier onlyOwner() {if (owner != msg.sender) throw; _}
+	modifier onlyOwner() {if (owner != msg.sender) throw; _;}
 
-	modifier onlyDaoChallenge() {if (daoChallenge != msg.sender) throw; _}
+	modifier onlyDaoChallenge() {if (daoChallenge != msg.sender) throw; _;}
 
-	modifier onlyChallengeOwner() {if (challengeOwner != msg.sender) throw; _}
+	modifier onlyChallengeOwner() {if (challengeOwner != msg.sender) throw; _;}
 
 
   function DaoAccount (address _owner, uint256 _tokenPrice, address _challengeOwner) noEther {
@@ -96,9 +96,9 @@ contract DaoChallenge
 
 	 
 
-	modifier noEther() {if (msg.value > 0) throw; _}
+	modifier noEther() {if (msg.value > 0) throw; _;}
 
-	modifier onlyChallengeOwner() {if (challengeOwner != msg.sender) throw; _}
+	modifier onlyChallengeOwner() {if (challengeOwner != msg.sender) throw; _;}
 
 	 
 

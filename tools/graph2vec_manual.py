@@ -382,9 +382,9 @@ def construct_var_edge_vec(edge_list, node_embedding, var_embedding, edge_embedd
 
 
 if __name__ == "__main__":
-    result = "../graph_data_by_manual/result/result.txt"
-    vertex_path = "../graph_data_by_manual/node/"
-    edge_path = "../graph_data_by_manual/edge/"
+    result = "../graph_data/graph_data_by_manual/result/smartcheck_result.log"
+    vertex_path = "../graph_data/graph_data_by_manual/node/"
+    edge_path = "../graph_data/graph_data_by_manual/edge/"
     dirs = os.listdir(vertex_path)
     for i in dirs:
         nodeFile = vertex_path + i

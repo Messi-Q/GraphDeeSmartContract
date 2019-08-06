@@ -1,0 +1,12 @@
+INFO:root:Contract smart_contract_source_code/simple_dao_fixed.sol:SimpleDAO:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 99.0%
+INFO:symExec:	  Callstack bug: 	 False
+INFO:symExec:	  Money concurrency bug: False
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 True
+smart_contract_source_code/simple_dao_fixed.sol:SimpleDAO:13:15
+msg.sender.call.value(amount)()
+^
+INFO:symExec:	====== Analysis Completed ======

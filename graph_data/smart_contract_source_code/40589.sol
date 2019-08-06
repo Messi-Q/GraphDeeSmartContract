@@ -5,7 +5,7 @@ contract owned {
 
     address public owner;
 
-    modifier onlyowner { if (msg.sender != owner) throw; _ }
+    modifier onlyowner { if (msg.sender != owner) throw; _; }
 
     event OwnershipTransfer(address indexed from, address indexed to);
 

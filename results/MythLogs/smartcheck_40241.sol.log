@@ -1,0 +1,2 @@
+/tmp/40241.sol:106:3: Error: Member "value" not found or not visible after argument-dependent lookup in function (uint256) external - did you forget the "payable" modifier?
+                recipient.receiveTokens.value(tokens * tokenPrice)(tokens);

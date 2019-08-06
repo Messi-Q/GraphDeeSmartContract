@@ -1,0 +1,189 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: RequestSale
+Function name: fallback
+PC address: 232
+Estimated Gas Usage: 6862 - 27477
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/36334.sol:87
+
+this.balance + msg.value
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x, value: 0x1
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: RequestSale
+Function name: fallback
+PC address: 313
+Estimated Gas Usage: 6862 - 27477
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/36334.sol:89
+
+balances[msg.sender] += msg.value
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0x10040110, value: 0x1
+Caller: [SOMEGUY], function: unknown, txdata: 0x, value: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: RequestSale
+Function name: buy_the_tokens()
+PC address: 1290
+Estimated Gas Usage: 13764 - 55695
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/36334.sol:71
+
+sale.call.value(contract_eth_value)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: refund_me(), txdata: 0x81702c34, value: 0x0
+Caller: [CREATOR], function: buy_the_tokens(), txdata: 0x28b8e9cf, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: RequestSale
+Function name: perform_withdrawal(address)
+PC address: 1570
+Estimated Gas Usage: 1624 - 2425
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/36334.sol:40
+
+token.balanceOf(address(this))
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: buy_the_tokens(), txdata: 0x28b8e9cf, value: 0x0
+Caller: [CREATOR], function: perform_withdrawal(address), txdata: 0x6c0ebc6c, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Medium
+Contract: RequestSale
+Function name: perform_withdrawal(address)
+PC address: 1801
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/36334.sol:46
+
+contract_eth_value -= balances[msg.sender]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: buy_the_tokens(), txdata: 0x28b8e9cf, value: 0x0
+Caller: [ATTACKER], function: perform_withdrawal(address), txdata: 0x6c0ebc6cbebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Medium
+Contract: RequestSale
+Function name: perform_withdrawal(address)
+PC address: 1869
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/36334.sol:48
+
+balances[msg.sender] = 0
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: buy_the_tokens(), txdata: 0x28b8e9cf, value: 0x0
+Caller: [ATTACKER], function: perform_withdrawal(address), txdata: 0x6c0ebc6cbebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: RequestSale
+Function name: perform_withdrawal(address)
+PC address: 2036
+Estimated Gas Usage: 15298 - 91326
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/36334.sol:50
+
+token.transfer(msg.sender, tokens_to_withdraw)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: buy_the_tokens(), txdata: 0x28b8e9cf, value: 0x0
+Caller: [CREATOR], function: perform_withdrawal(address), txdata: 0x6c0ebc6c, value: 0x0
+
+==== Multiple Calls in a Single Transaction ====
+SWC ID: 113
+Severity: Low
+Contract: RequestSale
+Function name: perform_withdrawal(address)
+PC address: 2036
+Estimated Gas Usage: 16145 - 126359
+Multiple calls are executed in the same transaction.
+This call is executed after a previous call in the same transaction. Try to isolate each call, transfer or send into its own transaction.
+--------------------
+In file: /tmp/36334.sol:50
+
+token.transfer(msg.sender, tokens_to_withdraw)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: buy_the_tokens(), txdata: 0x28b8e9cf, value: 0x0
+Caller: [CREATOR], function: perform_withdrawal(address), txdata: 0x6c0ebc6c, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Medium
+Contract: RequestSale
+Function name: perform_withdrawal(address)
+PC address: 2036
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/36334.sol:50
+
+token.transfer(msg.sender, tokens_to_withdraw)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: buy_the_tokens(), txdata: 0x28b8e9cf, value: 0x0
+Caller: [ATTACKER], function: perform_withdrawal(address), txdata: 0x6c0ebc6cbebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+

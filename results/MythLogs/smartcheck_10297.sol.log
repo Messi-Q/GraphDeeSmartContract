@@ -1,0 +1,199 @@
+--2019-08-03 08:54:01--  https://github.com/ethereum/solidity/releases/download/v0.4.25/solc-static-linux
+Resolving github.com (github.com)... 192.30.255.113
+Connecting to github.com (github.com)|192.30.255.113|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://github-production-release-asset-2e65be.s3.amazonaws.com/40892817/0369a500-b797-11e8-8f18-aad07835b96c?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20190803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20190803T085401Z&X-Amz-Expires=300&X-Amz-Signature=c2de8148d82d5315e60737d37e60aea203c3647e6fd68d8ead38ae6497907b20&X-Amz-SignedHeaders=host&actor_id=0&response-content-disposition=attachment%3B%20filename%3Dsolc-static-linux&response-content-type=application%2Foctet-stream [following]
+--2019-08-03 08:54:02--  https://github-production-release-asset-2e65be.s3.amazonaws.com/40892817/0369a500-b797-11e8-8f18-aad07835b96c?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20190803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20190803T085401Z&X-Amz-Expires=300&X-Amz-Signature=c2de8148d82d5315e60737d37e60aea203c3647e6fd68d8ead38ae6497907b20&X-Amz-SignedHeaders=host&actor_id=0&response-content-disposition=attachment%3B%20filename%3Dsolc-static-linux&response-content-type=application%2Foctet-stream
+Resolving github-production-release-asset-2e65be.s3.amazonaws.com (github-production-release-asset-2e65be.s3.amazonaws.com)... 52.216.165.155
+Connecting to github-production-release-asset-2e65be.s3.amazonaws.com (github-production-release-asset-2e65be.s3.amazonaws.com)|52.216.165.155|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 4973312 (4.7M) [application/octet-stream]
+Saving to: ‘/root/.py-solc/solc-v0.4.25/bin/solc’
+
+     0K .......... .......... .......... .......... ..........  1% 96.7K 50s
+    50K .......... .......... .......... .......... ..........  2%  376K 31s
+   100K .......... .......... .......... .......... ..........  3%  380K 25s
+   150K .......... .......... .......... .......... ..........  4%  545K 20s
+   200K .......... .......... .......... .......... ..........  5%  313K 19s
+   250K .......... .......... .......... .......... ..........  6% 2.33M 16s
+   300K .......... .......... .......... .......... ..........  7% 2.16M 14s
+   350K .......... .......... .......... .......... ..........  8% 2.31M 12s
+   400K .......... .......... .......... .......... ..........  9%  268K 13s
+   450K .......... .......... .......... .......... .......... 10% 3.66M 11s
+   500K .......... .......... .......... .......... .......... 11% 2.21M 10s
+   550K .......... .......... .......... .......... .......... 12% 2.08M 10s
+   600K .......... .......... .......... .......... .......... 13% 2.47M 9s
+   650K .......... .......... .......... .......... .......... 14%  279K 9s
+   700K .......... .......... .......... .......... .......... 15% 3.95M 9s
+   750K .......... .......... .......... .......... .......... 16% 2.11M 8s
+   800K .......... .......... .......... .......... .......... 17% 2.23M 8s
+   850K .......... .......... .......... .......... .......... 18% 1.94M 7s
+   900K .......... .......... .......... .......... .......... 19% 2.23M 7s
+   950K .......... .......... .......... .......... .......... 20% 2.39M 6s
+  1000K .......... .......... .......... .......... .......... 21% 2.27M 6s
+  1050K .......... .......... .......... .......... .......... 22% 2.28M 6s
+  1100K .......... .......... .......... .......... .......... 23% 2.19M 6s
+  1150K .......... .......... .......... .......... .......... 24% 2.25M 5s
+  1200K .......... .......... .......... .......... .......... 25% 1.08M 5s
+  1250K .......... .......... .......... .......... .......... 26% 3.31M 5s
+  1300K .......... .......... .......... .......... .......... 27% 2.35M 5s
+  1350K .......... .......... .......... .......... .......... 28% 2.13M 5s
+  1400K .......... .......... .......... .......... .......... 29% 2.27M 4s
+  1450K .......... .......... .......... .......... .......... 30% 2.35M 4s
+  1500K .......... .......... .......... .......... .......... 31% 2.21M 4s
+  1550K .......... .......... .......... .......... .......... 32% 2.19M 4s
+  1600K .......... .......... .......... .......... .......... 33% 2.24M 4s
+  1650K .......... .......... .......... .......... .......... 35% 2.24M 4s
+  1700K .......... .......... .......... .......... .......... 36% 3.27M 4s
+  1750K .......... .......... .......... .......... .......... 37% 2.25M 3s
+  1800K .......... .......... .......... .......... .......... 38% 2.21M 3s
+  1850K .......... .......... .......... .......... .......... 39% 2.31M 3s
+  1900K .......... .......... .......... .......... .......... 40% 2.27M 3s
+  1950K .......... .......... .......... .......... .......... 41% 2.14M 3s
+  2000K .......... .......... .......... .......... .......... 42% 2.11M 3s
+  2050K .......... .......... .......... .......... .......... 43% 2.17M 3s
+  2100K .......... .......... .......... .......... .......... 44% 1.39M 3s
+  2150K .......... .......... .......... .......... .......... 45% 1.76M 3s
+  2200K .......... .......... .......... .......... .......... 46% 4.93M 3s
+  2250K .......... .......... .......... .......... .......... 47% 3.92M 2s
+  2300K .......... .......... .......... .......... .......... 48% 2.29M 2s
+  2350K .......... .......... .......... .......... .......... 49% 1.94M 2s
+  2400K .......... .......... .......... .......... .......... 50% 2.74M 2s
+  2450K .......... .......... .......... .......... .......... 51% 2.16M 2s
+  2500K .......... .......... .......... .......... .......... 52% 2.25M 2s
+  2550K .......... .......... .......... .......... .......... 53% 3.20M 2s
+  2600K .......... .......... .......... .......... .......... 54% 1.77M 2s
+  2650K .......... .......... .......... .......... .......... 55% 2.58M 2s
+  2700K .......... .......... .......... .......... .......... 56% 2.25M 2s
+  2750K .......... .......... .......... .......... .......... 57% 2.46M 2s
+  2800K .......... .......... .......... .......... .......... 58% 2.42M 2s
+  2850K .......... .......... .......... .......... .......... 59% 2.29M 2s
+  2900K .......... .......... .......... .......... .......... 60% 2.47M 2s
+  2950K .......... .......... .......... .......... .......... 61% 2.42M 2s
+  3000K .......... .......... .......... .......... .......... 62% 1.64M 2s
+  3050K .......... .......... .......... .......... .......... 63% 2.70M 1s
+  3100K .......... .......... .......... .......... .......... 64% 2.41M 1s
+  3150K .......... .......... .......... .......... .......... 65% 2.32M 1s
+  3200K .......... .......... .......... .......... .......... 66% 2.23M 1s
+  3250K .......... .......... .......... .......... .......... 67% 2.59M 1s
+  3300K .......... .......... .......... .......... .......... 68% 2.38M 1s
+  3350K .......... .......... .......... .......... .......... 70% 2.37M 1s
+  3400K .......... .......... .......... .......... .......... 71% 1.74M 1s
+  3450K .......... .......... .......... .......... .......... 72% 2.59M 1s
+  3500K .......... .......... .......... .......... .......... 73% 2.29M 1s
+  3550K .......... .......... .......... .......... .......... 74% 2.39M 1s
+  3600K .......... .......... .......... .......... .......... 75% 2.35M 1s
+  3650K .......... .......... .......... .......... .......... 76% 2.37M 1s
+  3700K .......... .......... .......... .......... .......... 77%  131K 1s
+  3750K .......... .......... .......... .......... .......... 78% 4.73M 1s
+  3800K .......... .......... .......... .......... .......... 79% 3.58M 1s
+  3850K .......... .......... .......... .......... .......... 80% 4.76M 1s
+  3900K .......... .......... .......... .......... .......... 81% 4.72M 1s
+  3950K .......... .......... .......... .......... .......... 82% 5.75M 1s
+  4000K .......... .......... .......... .......... .......... 83% 7.34M 1s
+  4050K .......... .......... .......... .......... .......... 84% 16.9M 1s
+  4100K .......... .......... .......... .......... .......... 85% 20.4M 1s
+  4150K .......... .......... .......... .......... .......... 86% 16.2M 1s
+  4200K .......... .......... .......... .......... .......... 87% 12.1M 0s
+  4250K .......... .......... .......... .......... .......... 88%  431K 0s
+  4300K .......... .......... .......... .......... .......... 89% 2.36M 0s
+  4350K .......... .......... .......... .......... .......... 90% 2.59M 0s
+  4400K .......... .......... .......... .......... .......... 91% 4.51M 0s
+  4450K .......... .......... .......... .......... .......... 92% 22.0M 0s
+  4500K .......... .......... .......... .......... .......... 93% 23.6M 0s
+  4550K .......... .......... .......... .......... .......... 94% 25.5M 0s
+  4600K .......... .......... .......... .......... .......... 95%  427K 0s
+  4650K .......... .......... .......... .......... .......... 96% 32.5M 0s
+  4700K .......... .......... .......... .......... .......... 97% 36.3M 0s
+  4750K .......... .......... .......... .......... .......... 98%  111M 0s
+  4800K .......... .......... .......... .......... .......... 99% 83.0M 0s
+  4850K ......                                                100% 12875G=3.6s
+
+2019-08-03 08:54:07 (1.32 MB/s) - ‘/root/.py-solc/solc-v0.4.25/bin/solc’ saved [4973312/4973312]
+
+Downloading static linux binary from https://github.com/ethereum/solidity/releases/download/v0.4.25/solc-static-linux
+Executing: wget https://github.com/ethereum/solidity/releases/download/v0.4.25/solc-static-linux -c -O /root/.py-solc/solc-v0.4.25/bin/solc
+Checking installed executable version @ /root/.py-solc/solc-v0.4.25/bin/solc
+Executing: /root/.py-solc/solc-v0.4.25/bin/solc --version
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: FsTKColdWallet
+Function name: authorities(uint256)
+PC address: 2237
+Estimated Gas Usage: 454 - 549
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/10297.sol:142
+
+address[256] public authorities
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: authorities(uint256), txdata: 0x494503d48000000000000000000000000000000000000000000000000000000000000000, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: FsTKColdWallet
+Function name: pendingOperation(uint256)
+PC address: 2291
+Estimated Gas Usage: 876 - 971
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/10297.sol:145
+
+bytes32[] public pendingOperation
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: pendingOperation(uint256), txdata: 0x59ed55e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: FsTKColdWallet
+Function name: getAuthority(uint256)
+PC address: 5209
+Estimated Gas Usage: 1484 - 2190
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/10297.sol:172
+
+index + 1
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: getAuthority(uint256), txdata: 0xffae2c5bffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: FsTKColdWallet
+Function name: getAuthority(uint256)
+PC address: 5221
+Estimated Gas Usage: 837 - 932
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/10297.sol:172
+
+authorities[index + 1]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: getAuthority(uint256), txdata: 0xffae2c5b8000000000000000000000000000000000000000000000000000000000000000, value: 0x0
+
+

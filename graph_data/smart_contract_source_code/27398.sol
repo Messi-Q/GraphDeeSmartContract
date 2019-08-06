@@ -4,7 +4,7 @@ contract Pie
 {
     address public Owner = msg.sender;
    
-    function() publicpayable {
+    function() public payable {
         
     }
    

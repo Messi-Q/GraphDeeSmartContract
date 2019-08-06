@@ -1,0 +1,159 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: FishProxy
+Function name: fallback
+PC address: 251
+Estimated Gas Usage: 1107 - 1532
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/36563.sol:103
+
+assert(lockAddr == address(0) || this.balance <= 1e17)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x01010101, value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: SharkProxy
+Function name: forward(address,uint256,bytes)
+PC address: 874
+Estimated Gas Usage: 1385 - 5570
+Potential denial-of-service if block gas limit is reached.
+A message call is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit. This issue is reported for internal compiler generated code.
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: transferOwnership(address), txdata: 0xf2fde38bbebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+Caller: [ATTACKER], function: forward(address,uint256,bytes), txdata: 0xd7f31eb90000000000000000000000000000000000000000000000000000000000000021, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: SharkProxy
+Function name: forward(address,uint256,bytes)
+PC address: 955
+Estimated Gas Usage: 1385 - 5570
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/36563.sol:45
+
+_destination.call.value(_value)(_data)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: transferOwnership(address), txdata: 0xf2fde38bbebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+Caller: [ATTACKER], function: forward(address,uint256,bytes), txdata: 0xd7f31eb90000000000000000000000000000000000000000000000000000000000000021, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: SharkProxy
+Function name: forward(address,uint256,bytes)
+PC address: 966
+Estimated Gas Usage: 2113 - 40298
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/36563.sol:45
+
+assert(_destination.call.value(_value)(_data))
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: transferOwnership(address), txdata: 0xf2fde38bbebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+Caller: [ATTACKER], function: forward(address,uint256,bytes), txdata: 0xd7f31eb90000000000000000000000000000000000000000000000000000000000000021, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: FishProxy
+Function name: unlock(bytes32,bytes32,bytes32)
+PC address: 1089
+Estimated Gas Usage: 809 - 1234
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/36563.sol:78
+
+assert(lockAddr != 0x0)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: unlock(bytes32,bytes32,bytes32), txdata: 0xd41bdea7, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: FishProxy
+Function name: unlock(bytes32,bytes32,bytes32)
+PC address: 1141
+Estimated Gas Usage: 882 - 1307
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/36563.sol:89
+
+assert(target == uint88(address(this)))
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: unlock(bytes32,bytes32,bytes32), txdata: 0xd41bdea7, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: FishProxy
+Function name: unlock(bytes32,bytes32,bytes32)
+PC address: 1196
+Estimated Gas Usage: 922 - 1347
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/36563.sol:90
+
+assert(newOwner == msg.sender)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: unlock(bytes32,bytes32,bytes32), txdata: 0xd41bdea70101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101a8748e62bd7734ae19b51f, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: FishProxy
+Function name: unlock(bytes32,bytes32,bytes32)
+PC address: 1689
+Estimated Gas Usage: 6054 - 42645
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/36563.sol:92
+
+assert(ecrecover(sha3(uint8(0), target, newOwner), v, _r, _s) == lockAddr)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: unlock(bytes32,bytes32,bytes32), txdata: 0xd41bdea7dededededededededededededededededededededededededededededededededededededededededededededededededededededededededededededededede01a8748e62bd7734ae19b51fdeadbeefdeadbeefdeadbeefdeadbeefdeadbeee, value: 0x0
+

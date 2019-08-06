@@ -1,9 +1,3 @@
-pragma solidity ^0.4.15;
-
- 
-
- 
-
 pragma solidity ^0.4.14;
 
 library strings {
@@ -530,8 +524,10 @@ library strings {
 }
 
  
+contract MyWill {
 
- 
+    using strings for *;
+
     address club;
 
      

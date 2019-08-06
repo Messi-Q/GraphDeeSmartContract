@@ -1,0 +1,438 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: TokenPool
+Function name: constructor
+PC address: 273
+Estimated Gas Usage: 1159 - 4773
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/39019.sol:30
+
+list.add(this)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Medium
+Contract: TokenPool
+Function name: constructor
+PC address: 326
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/39019.sol:32
+
+fundingLimit = _fundingLimit
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Medium
+Contract: TokenPool
+Function name: constructor
+PC address: 333
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/39019.sol:33
+
+rewardPercentage = _rewardPercentage
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Medium
+Contract: TokenPool
+Function name: constructor
+PC address: 398
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/39019.sol:34
+
+tokenContract = _tokenContract
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Medium
+Contract: TokenPool
+Function name: constructor
+PC address: 463
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/39019.sol:35
+
+tokenCreateContract = _tokenCreateContract
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: TokenPoolList
+Function name: list(uint256)
+PC address: 649
+Estimated Gas Usage: 636 - 731
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/39019.sol:96
+
+address[] public list
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: list(uint256), txdata: 0x80c9419e, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Medium
+Contract: TokenPool
+Function name: constructor
+PC address: 656
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/39019.sol:37
+
+tokenCreateFunctionHash = bytes4(sha3(tokenCreateFunction))
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: TokenPoolList
+Function name: getAddress(uint256)
+PC address: 724
+Estimated Gas Usage: 683 - 778
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/39019.sol:110
+
+list[index]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: getAddress(uint256), txdata: 0xb93f9b0a, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Low
+Contract: TokenPool
+Function name: constructor
+PC address: 731
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities. This issue is reported for internal compiler generated code.
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: TokenPool
+Function name: Fund()
+PC address: 1070
+Estimated Gas Usage: 12460 - 52745
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/39019.sol:43
+
+amountRaised += amount
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x01010101, value: 0x1
+Caller: [ATTACKER], function: Fund(), txdata: 0x6ce1417e, value: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: TokenPool
+Function name: fallback
+PC address: 1164
+Estimated Gas Usage: 12283 - 52568
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/39019.sol:45
+
+funders[msg.sender] += amount
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x01010101, value: 0x1
+Caller: [ATTACKER], function: unknown, txdata: 0x, value: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+
+==== Unchecked Call Return Value ====
+SWC ID: 104
+Severity: Low
+Contract: TokenPool
+Function name: Withdraw()
+PC address: 1778
+Estimated Gas Usage: 23906 - 138757
+The return value of a message call is not checked.
+External calls return a boolean value. If the callee contract halts with an exception, 'false' is returned and execution continues in the caller. It is usually recommended to wrap external calls into a require statement to prevent unexpected states.
+--------------------
+In file: /tmp/39019.sol:58
+
+msg.sender.send(amount)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0x01010101, value: 0x1
+Caller: [SOMEGUY], function: Withdraw(), txdata: 0x57ea89b6, value: 0x0
+
+==== Integer Underflow ====
+SWC ID: 101
+Severity: High
+Contract: TokenPool
+Function name: ClaimReward()
+PC address: 1990
+Estimated Gas Usage: 8303 - 63244
+The binary subtraction can underflow.
+The operands of the subtraction operation are not sufficiently constrained. The subtraction could therefore result in an integer underflow. Prevent the underflow by checking inputs or ensure sure that the underflow is caught by an assertion.
+--------------------
+In file: /tmp/39019.sol:85
+
+100 - rewardPercentage
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: CreateTokens(), txdata: 0x8e14cc91, value: 0x0
+Caller: [CREATOR], function: ClaimReward(), txdata: 0x79372f9a, value: 0x0
+
+==== Unchecked Call Return Value ====
+SWC ID: 104
+Severity: Low
+Contract: TokenPool
+Function name: ClaimReward()
+PC address: 2061
+Estimated Gas Usage: 2836 - 37447
+The return value of a message call is not checked.
+External calls return a boolean value. If the callee contract halts with an exception, 'false' is returned and execution continues in the caller. It is usually recommended to wrap external calls into a require statement to prevent unexpected states.
+--------------------
+In file: /tmp/39019.sol:87
+
+msg.sender.send(reward)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: CreateTokens(), txdata: 0x8e14cc91, value: 0x0
+Caller: [CREATOR], function: ClaimReward(), txdata: 0x79372f9a, value: 0x0
+
+==== Integer Underflow ====
+SWC ID: 101
+Severity: High
+Contract: TokenPool
+Function name: CreateTokens()
+PC address: 2180
+Estimated Gas Usage: 15911 - 126169
+The binary subtraction can underflow.
+The operands of the subtraction operation are not sufficiently constrained. The subtraction could therefore result in an integer underflow. Prevent the underflow by checking inputs or ensure sure that the underflow is caught by an assertion.
+--------------------
+In file: /tmp/39019.sol:66
+
+100 - rewardPercentage
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: CreateTokens(), txdata: 0x8e14cc91, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: TokenPool
+Function name: CreateTokens()
+PC address: 2184
+Estimated Gas Usage: 15911 - 126169
+The binary multiplication can overflow.
+The operands of the multiplication operation are not sufficiently constrained. The multiplication could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/39019.sol:66
+
+amountRaised * (100 - rewardPercentage)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x08024000, value: 0x2
+Caller: [SOMEGUY], function: CreateTokens(), txdata: 0x8e14cc91, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: TokenPool
+Function name: CreateTokens()
+PC address: 2390
+Estimated Gas Usage: 2599 - 3635
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/39019.sol:67
+
+tokenCreateContract.call.value(amount)(tokenCreateFunctionHash)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x01010101, value: 0x0
+Caller: [ATTACKER], function: CreateTokens(), txdata: 0x8e14cc91, value: 0x0
+
+==== Unprotected Ether Withdrawal ====
+SWC ID: 105
+Severity: High
+Contract: TokenPool
+Function name: CreateTokens()
+PC address: 2390
+Estimated Gas Usage: 2599 - 3635
+Anyone can withdraw ETH from the contract account.
+Arbitrary senders other than the contract creator can withdraw ETH from the contract account without previously having sent an equivalent amount of ETH to it. This is likely to be a vulnerability.
+--------------------
+In file: /tmp/39019.sol:67
+
+tokenCreateContract.call.value(amount)(tokenCreateFunctionHash)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: Fund(), txdata: 0x6ce1417e, value: 0x1
+Caller: [ATTACKER], function: CreateTokens(), txdata: 0x8e14cc91, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: TokenPool
+Function name: CreateTokens()
+PC address: 2598
+Estimated Gas Usage: 4612 - 40354
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/39019.sol:68
+
+tokenContract.balanceOf(this)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x01010101, value: 0x0
+Caller: [ATTACKER], function: CreateTokens(), txdata: 0x8e14cc91, value: 0x0
+
+==== Multiple Calls in a Single Transaction ====
+SWC ID: 113
+Severity: Low
+Contract: TokenPool
+Function name: CreateTokens()
+PC address: 2598
+Estimated Gas Usage: 15911 - 126169
+Multiple calls are executed in the same transaction.
+This call is executed after a previous call in the same transaction. Try to isolate each call, transfer or send into its own transaction.
+--------------------
+In file: /tmp/39019.sol:68
+
+tokenContract.balanceOf(this)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: CreateTokens(), txdata: 0x8e14cc91, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Medium
+Contract: TokenPool
+Function name: CreateTokens()
+PC address: 2659
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/39019.sol:68
+
+tokensCreated = tokenContract.balanceOf(this)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: CreateTokens(), txdata: 0x8e14cc91, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Medium
+Contract: TokenPool
+Function name: CreateTokens()
+PC address: 2724
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/39019.sol:69
+
+tokenCreator = msg.sender
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: CreateTokens(), txdata: 0x8e14cc91, value: 0x0
+

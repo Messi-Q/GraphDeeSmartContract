@@ -1,0 +1,231 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: TradersWallet
+Function name: EtherDeltaDeposit(uint256)
+PC address: 1844
+Estimated Gas Usage: 1881 - 2917
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/37474.sol:120
+
+ethDelta.deposit.value(amount)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeEtherDeltaDeposit(address), txdata: 0x89165dcb, value: 0x0
+Caller: [CREATOR], function: EtherDeltaDeposit(uint256), txdata: 0x00882097, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: TradersWallet
+Function name: sendToken(address,address,uint256)
+PC address: 2131
+Estimated Gas Usage: 1631 - 2527
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/37474.sol:76
+
+token.transfer(sendTo, amount)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeEtherDeltaDeposit(address), txdata: 0x89165dcb, value: 0x0
+Caller: [CREATOR], function: sendToken(address,address,uint256), txdata: 0x2fdcfbd2, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: TradersWallet
+Function name: EtherDeltaWithdrawToken(address,uint256)
+PC address: 2485
+Estimated Gas Usage: 2021 - 3247
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/37474.sol:94
+
+ethDelta.withdrawToken(tokenAddress, amount)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeEtherDeltaDeposit(address), txdata: 0x89165dcb, value: 0x0
+Caller: [CREATOR], function: EtherDeltaWithdrawToken(address,uint256), txdata: 0x31f4a23f, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: TradersWallet
+Function name: EtherDeltaDepositToken(address,uint256)
+PC address: 3336
+Estimated Gas Usage: 2131 - 3357
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/37474.sol:107
+
+ethDelta.depositToken(tokenAddress, amount)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeEtherDeltaDeposit(address), txdata: 0x89165dcb, value: 0x0
+Caller: [CREATOR], function: EtherDeltaDepositToken(address,uint256), txdata: 0x99d3acd3, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: TradersWallet
+Function name: execute(address,uint256,bytes)
+PC address: 3670
+Estimated Gas Usage: 1084 - 3999
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/37474.sol:82
+
+_to.call.value(_value)(_data)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeEtherDeltaDeposit(address), txdata: 0x89165dcb, value: 0x0
+Caller: [CREATOR], function: execute(address,uint256,bytes), txdata: 0xb61d27f6, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: TradersWallet
+Function name: EtherDeltaTokenBalance(address)
+PC address: 3946
+Estimated Gas Usage: 1732 - 2628
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/37474.sol:88
+
+ethDelta.balanceOf(tokenAddress, this)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeEtherDeltaDeposit(address), txdata: 0x89165dcb, value: 0x0
+Caller: [SOMEGUY], function: EtherDeltaTokenBalance(address), txdata: 0xc0846957, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: TradersWallet
+Function name: tokenBalance(address)
+PC address: 4339
+Estimated Gas Usage: 1316 - 1787
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/37474.sol:50
+
+token.balanceOf(this)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeEtherDeltaDeposit(address), txdata: 0x89165dcb, value: 0x0
+Caller: [SOMEGUY], function: tokenBalance(address), txdata: 0xeedc966a, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: TradersWallet
+Function name: tokenBalance(address)
+PC address: 4339
+Estimated Gas Usage: 1316 - 1787
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/37474.sol:50
+
+token.balanceOf(this)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: tokenBalance(address), txdata: 0xeedc966abebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: TradersWallet
+Function name: EtherDeltaApproveToken(address,uint256)
+PC address: 4737
+Estimated Gas Usage: 2296 - 3522
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/37474.sol:114
+
+token.approve(ethDeltaDepositAddress, amount)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeEtherDeltaDeposit(address), txdata: 0x89165dcb, value: 0x0
+Caller: [CREATOR], function: EtherDeltaApproveToken(address,uint256), txdata: 0xf766eca7, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: TradersWallet
+Function name: transferFromToken(address,address,address,uint256)
+PC address: 5113
+Estimated Gas Usage: 2007 - 2998
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/37474.sol:57
+
+token.transferFrom(sendTo, sendFrom, amount)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeEtherDeltaDeposit(address), txdata: 0x89165dcb, value: 0x0
+Caller: [CREATOR], function: transferFromToken(address,address,address,uint256), txdata: 0xfb3c0d70, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: TradersWallet
+Function name: EtherDeltaWithdraw(uint256)
+PC address: 5416
+Estimated Gas Usage: 2285 - 3416
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/37474.sol:126
+
+ethDelta.withdraw(amount)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeEtherDeltaDeposit(address), txdata: 0x89165dcb, value: 0x0
+Caller: [CREATOR], function: EtherDeltaWithdraw(uint256), txdata: 0xfc91e03d, value: 0x0
+

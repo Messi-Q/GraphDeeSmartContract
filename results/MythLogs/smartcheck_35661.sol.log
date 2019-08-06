@@ -1,0 +1,109 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: PreICOProxyBuyer
+Function name: getState()
+PC address: 2172
+Estimated Gas Usage: 1577 - 2283
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/35661.sol:935
+
+if(now >= freezeEndsAt) {
+         return State.Refunding;
+      } else {
+        return State.Funding;
+      }
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getState(), txdata: 0x1865c57d, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: StandardToken
+Function name: transfer(address,uint256)
+PC address: 2492
+Estimated Gas Usage: 848 - 1133
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/35661.sol:24
+
+assert(b <= a)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: transferFrom(address,address,uint256), txdata: 0x23b872dd, value: 0x0
+Caller: [CREATOR], function: transfer(address,uint256), txdata: 0xa9059cbb000000000000000000000000000000000000000000000000000000000000000001, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: PreICOProxyBuyer
+Function name: investors(uint256)
+PC address: 3250
+Estimated Gas Usage: 746 - 841
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/35661.sol:699
+
+address[] public investors
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: buyWithCustomerId(uint128), txdata: 0x99e9376c, value: 0x101010101010101010101010101010101010101010101010101010101010101
+Caller: [CREATOR], function: investors(uint256), txdata: 0x3feb5f2b80, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: PreICOProxyBuyer
+Function name: refund()
+PC address: 3982
+Estimated Gas Usage: 8387 - 29898
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/35661.sol:904
+
+investor.call.value(amount)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: buyWithCustomerId(uint128), txdata: 0x99e9376c, value: 0x101010101010101010101010101010101010101010101010101010101010101
+Caller: [ATTACKER], function: refund(), txdata: 0x590e1ae3, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: PreICOProxyBuyer
+Function name: buyWithCustomerId(uint128)
+PC address: 6082
+Estimated Gas Usage: 27509 - 109639
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/35661.sol:30
+
+assert(c>=a && c>=b)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: buyWithCustomerId(uint128), txdata: 0x99e9376c, value: 0x8080808080808080808080808080808080808080808080808080808080808080
+Caller: [SOMEGUY], function: buyWithCustomerId(uint128), txdata: 0x99e9376c, value: 0x8080808080808080808080808080808080808080808080808080808080808080
+

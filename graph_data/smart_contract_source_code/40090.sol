@@ -5,7 +5,7 @@ contract Delegate {
 
     modifier onlyDelegate(address _sender) {
         if (_sender == msg.sender || address(this) == msg.sender || senderDelegates[_sender][msg.sender]) {
-            _
+            _;
         }
     }
 
@@ -80,13 +80,13 @@ contract MultiAccess is Delegate {
 
     modifier onlyowner(address _owner) {
         if (multiAccessIsOwner(_owner)) {
-            _
+            _;
         }
     }
 
     modifier onlymanyowners(address _owner, bytes32 _operation) {
         if (_confirmAndCheck(_owner, _operation)) {
-            _
+            _;
         }
     }
 
@@ -251,6 +251,7 @@ contract MultiAccess is Delegate {
         return _to.call.value(_value)(_data);
     }
 
+    // 错误，fallback函数无返回值
     function() returns(bool) {
         return multiAccessCall(multiAccessRecipient, msg.value, msg.data);
     }

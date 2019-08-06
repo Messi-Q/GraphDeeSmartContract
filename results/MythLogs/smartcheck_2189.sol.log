@@ -1,0 +1,90 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Salvageable
+Function name: emergencyERC20Drain(address,uint256)
+PC address: 2472
+Estimated Gas Usage: 2171 - 3397
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/2189.sol:290
+
+oddToken.transfer(launcher, amount)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: setMinter(address), txdata: 0xfca3b5aa, value: 0x0
+Caller: [CREATOR], function: emergencyERC20Drain(address,uint256), txdata: 0xdb0e16f100000000000000000000000001, value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: GOeureka
+Function name: mint(address,uint256)
+PC address: 4558
+Estimated Gas Usage: 8205 - 29670
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit.
+--------------------
+In file: /tmp/2189.sol:453
+
+balances[_to].add(_amount)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: mint(address,uint256), txdata: 0x40c10f19, value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: GOeureka
+Function name: sendBatchCS(address[],uint256[])
+PC address: 6932
+Estimated Gas Usage: 17300 - 59559
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit.
+--------------------
+In file: /tmp/2189.sol:468
+
+for (uint i = 0; i < _values.length; i++) {
+            uint value = _values[i];
+            address to = _recipients[i];
+            require(senderBalance >= value);
+            senderBalance = senderBalance - value;
+            balances[to] += value;
+            emit Transfer(msg.sender, to, value);
+        }
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: sendBatchCS(address[],uint256[]), txdata: 0x9c1d979080, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: GOeureka
+Function name: emergencyERC20Drain(address,uint256)
+PC address: 7901
+Estimated Gas Usage: 2677 - 3903
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/2189.sol:290
+
+oddToken.transfer(launcher, amount)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: emergencyERC20Drain(address,uint256), txdata: 0xdb0e16f100000000000000000000000001, value: 0x0
+
+

@@ -1,0 +1,71 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: NinjaToken
+Function name: buy(string)
+PC address: 3619
+Estimated Gas Usage: 2901 - 6479
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/39866.sol:125
+
+fundingAccount.call.value(msg.value)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: buy(string), txdata: 0x492cc769, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Low
+Contract: NinjaToken
+Function name: buy(string)
+PC address: 3714
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/39866.sol:126
+
+balances[msg.sender]+=msg.value*price
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: buy(string), txdata: 0x492cc769, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Low
+Contract: NinjaToken
+Function name: buy(string)
+PC address: 6689
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities. This issue is reported for internal compiler generated code.
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: buy(string), txdata: 0x492cc769, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Low
+Contract: NinjaToken
+Function name: buy(string)
+PC address: 6702
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities. This issue is reported for internal compiler generated code.
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: buy(string), txdata: 0x492cc76980, value: 0x0
+

@@ -1,0 +1,61 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: BasicMathLib
+Function name: plus(uint256,uint256)
+PC address: 470
+Estimated Gas Usage: 423 - 894
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/31912.sol:1215
+
+add(a,b)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: plus(uint256,uint256), txdata: 0x66098d4fb63fffffffffffffffffffffbfbfbfefbfbfffbfbfb3bffbbfbfbfffffffffdf80, value: 0x0
+
+==== Integer Underflow ====
+SWC ID: 101
+Severity: High
+Contract: BasicMathLib
+Function name: plus(uint256,uint256)
+PC address: 483
+Estimated Gas Usage: 423 - 894
+The binary subtraction can underflow.
+The operands of the subtraction operation are not sufficiently constrained. The subtraction could therefore result in an integer underflow. Prevent the underflow by checking inputs or ensure sure that the underflow is caught by an assertion.
+--------------------
+In file: /tmp/31912.sol:1216
+
+sub(res,b)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: plus(uint256,uint256), txdata: 0x66098d4fff7e0000000000000000000000000008c041005113ab00023e00c0100000612201, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: BasicMathLib
+Function name: minus(uint256,uint256)
+PC address: 596
+Estimated Gas Usage: 473 - 944
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/31912.sol:1233
+
+add(res,b)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: minus(uint256,uint256), txdata: 0xf4f3bdc10815440ec50204001480ba60d39ddb9900a954786a8af7bce7bd74000000000046, value: 0x0
+

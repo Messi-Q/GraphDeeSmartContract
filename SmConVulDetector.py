@@ -158,7 +158,6 @@ class DataReader():
     def read_graph_nodes_relations(self, fpath):
         graph_ids = self.parse_txt_file(fpath, line_parse_fn=lambda s: int(s.rstrip()))
         nodes, graphs = {}, {}
-        unique_id = []
         for node_id, graph_id in enumerate(graph_ids):
             if graph_id not in graphs:
                 graphs[graph_id] = []
@@ -262,6 +261,7 @@ for fold_id in range(n_folds):
         print('Train Epoch: {} [{}/{} ({:.0f}%)] Loss: {:.6f} (avg: {:.6f})  sec/iter: {:.4f}'.format(
             epoch + 1, n_samples, len(train_loader.dataset), 100. * (batch_idx + 1) / len(train_loader),
             loss.item(), train_loss / n_samples, time_iter / (batch_idx + 1)))
+        # torch.save(model, 'Smartcheck.pth')
 
 
     def test(test_loader):

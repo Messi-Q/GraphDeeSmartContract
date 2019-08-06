@@ -1,0 +1,176 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: Proxy
+Function name: proxy(address,bytes)
+PC address: 476
+Estimated Gas Usage: 791 - 4646
+Potential denial-of-service if block gas limit is reached.
+A message call is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit. This issue is reported for internal compiler generated code.
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: proxy(address,bytes), txdata: 0xbe6d055a0000000000000000000000000000000000000000000000000000000000000021, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Proxy
+Function name: proxy(address,bytes)
+PC address: 557
+Estimated Gas Usage: 716 - 4383
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/1751.sol:8
+
+target.call.value(msg.value)(data)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: transferOwner(address), txdata: 0x4fb2e45d, value: 0x0
+Caller: [SOMEGUY], function: proxy(address,bytes), txdata: 0xbe6d055a0000000000000000000000000000000000000000000000000000000000000001, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: Proxy
+Function name: proxy(address,bytes)
+PC address: 557
+Estimated Gas Usage: 791 - 4646
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/1751.sol:8
+
+target.call.value(msg.value)(data)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: proxy(address,bytes), txdata: 0xbe6d055a000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef80, value: 0x0
+
+==== Unchecked Call Return Value ====
+SWC ID: 104
+Severity: Low
+Contract: Proxy
+Function name: proxy(address,bytes)
+PC address: 557
+Estimated Gas Usage: 1440 - 39107
+The return value of a message call is not checked.
+External calls return a boolean value. If the callee contract halts with an exception, 'false' is returned and execution continues in the caller. It is usually recommended to wrap external calls into a require statement to prevent unexpected states.
+--------------------
+In file: /tmp/1751.sol:8
+
+target.call.value(msg.value)(data)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: transferOwner(address), txdata: 0x4fb2e45d, value: 0x0
+Caller: [SOMEGUY], function: proxy(address,bytes), txdata: 0xbe6d055a0000000000000000000000000000000000000000000000000000000000000001, value: 0x0
+
+==== Use of tx.origin ====
+SWC ID: 111
+Severity: Medium
+Contract: VaultProxy
+Function name: Vault()
+PC address: 564
+Estimated Gas Usage: 100 - 195
+Use of tx.origin is deprecated.
+The smart contract retrieves the transaction origin (tx.origin) using msg.origin. Use of msg.origin is deprecated and the instruction may be removed in the  future. Use msg.sender instead.
+See also: https://solidity.readthedocs.io/en/develop/security-considerations.html#tx-origin
+--------------------
+In file: /tmp/1751.sol:19
+
+tx.origin
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: Vault(), txdata: 0x2d2c44f2, value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: VaultProxy
+Function name: proxy(address,bytes)
+PC address: 1202
+Estimated Gas Usage: 879 - 4734
+Potential denial-of-service if block gas limit is reached.
+A message call is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit. This issue is reported for internal compiler generated code.
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: proxy(address,bytes), txdata: 0xbe6d055a0000000000000000000000000000000000000000000000000000000000000021, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: VaultProxy
+Function name: proxy(address,bytes)
+PC address: 1283
+Estimated Gas Usage: 663 - 3624
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/1751.sol:8
+
+target.call.value(msg.value)(data)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: deposit(), txdata: 0xd0e30db0, value: 0x6f05b59d3b20001
+Caller: [ATTACKER], function: proxy(address,bytes), txdata: 0xbe6d055a010101010101010101010101deadbeefdeadbeefdeadbeefdeadbeefdeadbeef40, value: 0x0
+
+==== Unchecked Call Return Value ====
+SWC ID: 104
+Severity: Low
+Contract: VaultProxy
+Function name: proxy(address,bytes)
+PC address: 1283
+Estimated Gas Usage: 1603 - 39458
+The return value of a message call is not checked.
+External calls return a boolean value. If the callee contract halts with an exception, 'false' is returned and execution continues in the caller. It is usually recommended to wrap external calls into a require statement to prevent unexpected states.
+--------------------
+In file: /tmp/1751.sol:8
+
+target.call.value(msg.value)(data)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: proxy(address,bytes), txdata: 0xbe6d055a0000000000000000000000000000000000000000000000000000000000000021, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: VaultProxy
+Function name: Vault()
+PC address: 1378
+Estimated Gas Usage: 11181 - 51796
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/1751.sol:27
+
+Deposits[msg.sender] += msg.value
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: Vault(), txdata: 0x2d2c44f2, value: 0x6f05b59d3b20001
+Caller: [SOMEGUY], function: Vault(), txdata: 0x2d2c44f2, value: 0xfffffffffffffffffffffffffffffffffffffffffffffffff90fa4a62c4dffff
+

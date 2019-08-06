@@ -81,7 +81,7 @@ contract ReserveToken is StandardToken {
             minter = msg.sender;
         }
     }
-    modifier onlyMinter { if (msg.sender == minter) _ }
+    modifier onlyMinter { if (msg.sender == minter) _; }
     function create(address account, uint amount) onlyMinter {
         balancesVersions[version].balances[account] += amount;
         totalSupply += amount;

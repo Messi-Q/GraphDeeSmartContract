@@ -1,0 +1,19 @@
+WARNING:root:You are using an untested version of z3. 4.5.0 is the officially tested version
+WARNING:root:You are using solc version 0.4.25, The latest supported version is 0.4.17
+INFO:root:Contract smart_contract_source_code/39644.sol:AddressOwnershipVerification:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 99.7%
+INFO:symExec:	  Callstack bug: 	 False
+INFO:symExec:	  Money concurrency bug: True
+Flow 1:
+smart_contract_source_code/39644.sol:AddressOwnershipVerification:101:14
+transactee.call.value(deposit).gas(23000)()
+^
+Flow 2:
+smart_contract_source_code/39644.sol:AddressOwnershipVerification:101:14
+transactee.call.value(deposit).gas(23000)()
+^
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 False
+INFO:symExec:	====== Analysis Completed ======

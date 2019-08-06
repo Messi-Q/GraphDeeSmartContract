@@ -1,3 +1,5 @@
+pragma solidity ^0.4.24;
+
 contract Bank{
     mapping (address => uint256) public balances;
     function wallet() constant returns(uint256 result){

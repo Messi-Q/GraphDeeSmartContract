@@ -1,0 +1,126 @@
+WARNING:root:You are using solc version 0.4.21, The latest supported version is 0.4.19
+INFO:root:contract contracts/39973.sol:AssetMin:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 77.2%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/39973.sol:81:5: Warning: Integer Underflow.
+    string public name
+INFO:symExec:contracts/39973.sol:137:5: Warning: Integer Overflow.
+    function transferToICAPWithReference(bytes32 _icap, uint _value, string _reference) returns(bool) {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _reference = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/39973.sol:123:5: Warning: Integer Overflow.
+    function transferWithReference(address _to, uint _value, string _reference) returns(bool) {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _reference = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/39973.sol:93:5: Warning: Integer Overflow.
+    function setName(string _name) returns(bool) {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _name = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/39973.sol:GMT:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 72.9%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/39973.sol:81:5: Warning: Integer Underflow.
+    string public name
+contracts/39973.sol:262:24: Warning: Integer Underflow.
+        uint refund = (_startGas - msg.gas
+Integer Underflow occurs if:
+    txGasPriceLimit = 0
+    approveCallGas = 0
+contracts/39973.sol:203:24: Warning: Integer Underflow.
+        uint refund = (startGas - msg.gas
+Integer Underflow occurs if:
+    contractOwner = 0
+contracts/39973.sol:211:21: Warning: Integer Underflow.
+        refundGas = startGas - msg.gas
+Integer Underflow occurs if:
+    txGasPriceLimit = 0
+    treasury = 1461501637330902918203684832716283019655932542975
+    contractOwner = 0
+INFO:symExec:contracts/39973.sol:383:25: Warning: Integer Overflow.
+        uint startGas = msg.gas + forwardCallGas
+Integer Overflow occurs if:
+    forwardCallGas = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/39973.sol:362:5: Warning: Integer Overflow.
+    function checkTransferWithReference(address _to, uint _value, string _reference) constant returns(bool, bool) {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _reference = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/39973.sol:330:5: Warning: Integer Overflow.
+    function transferWithReference(address _to, uint _value, string _reference) returns(bool) {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _reference = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/39973.sol:378:5: Warning: Integer Overflow.
+    function checkForward(bytes _data) constant returns(bool, bool) {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _data = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/39973.sol:93:5: Warning: Integer Overflow.
+    function setName(string _name) returns(bool) {
+    ^
+Spanning multiple lines.
+contracts/39973.sol:366:5: Warning: Integer Overflow.
+    function checkTransferToICAPWithReference(bytes32 _icap, uint _value, string _reference) constant returns(bool, bool) {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _reference = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/39973.sol:336:5: Warning: Integer Overflow.
+    function transferToICAPWithReference(bytes32 _icap, uint _value, string _reference) returns(bool) {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _reference = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:Flow1
+contracts/39973.sol:33:16: Warning: Transaction-Ordering Dependency.
+        return _to.call.value(_value)()
+Flow2
+contracts/39973.sol:33:16: Warning: Transaction-Ordering Dependency.
+        return _to.call.value(_value)()
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/39973.sol:Owned:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 98.6%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/39973.sol:SafeMin:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 100.0%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======

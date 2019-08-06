@@ -1,0 +1,123 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: payoutAllC
+Function name: constructor
+PC address: 107
+Estimated Gas Usage: 171 - 2851
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/9611.sol:36
+
+assert(initPayTo != address(0))
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: payoutAllC
+Function name: payoutAll()
+PC address: 621
+Estimated Gas Usage: 7225 - 28872
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/9611.sol:24
+
+toAddr.call.value(amount)(data)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: payoutAll(), txdata: 0x4da2317f, value: 0x0
+Caller: [CREATOR], function: payoutAll(), txdata: 0x4da2317f, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Low
+Contract: payoutAllC
+Function name: payoutAll()
+PC address: 766
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/9611.sol:25
+
+txMutex3847834 = false
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: payoutAll(), txdata: 0x4da2317f, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: hasAdmins
+Function name: getAdminLog(uint256)
+PC address: 1203
+Estimated Gas Usage: 639 - 734
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/9611.sol:160
+
+adminLog[n]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: setAdmin(address,bool), txdata: 0x4b0bddd2010101010101010101010101010101010101010101010101010101010101010101, value: 0x0
+Caller: [CREATOR], function: getAdminLog(uint256), txdata: 0x21fb986980, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: CommunityAuctionSimple
+Function name: ballotLog(address,uint256)
+PC address: 1269
+Estimated Gas Usage: 732 - 1017
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/9611.sol:100
+
+mapping (address => Record[]) public ballotLog
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: noteBallotDeployed(bytes32), txdata: 0x0ba5890a, value: 0x0
+Caller: [CREATOR], function: ballotLog(address,uint256), txdata: 0x0d5be2df, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: permissioned
+Function name: getAdminLog(uint256)
+PC address: 2177
+Estimated Gas Usage: 683 - 778
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/9611.sol:160
+
+adminLog[n]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: setAdmin(address,bool), txdata: 0x4b0bddd2010101010101010101010101010101010101010101010101010101010101010101, value: 0x0
+Caller: [CREATOR], function: getAdminLog(uint256), txdata: 0x21fb986980, value: 0x0

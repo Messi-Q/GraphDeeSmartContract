@@ -1,0 +1,127 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: EtherBet
+Function name: bet()
+PC address: 382
+Estimated Gas Usage: 413 - 884
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/9221.sol:9
+
+(random()%2==1) && (msg.value == 1 ether)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: bet(), txdata: 0x11610c25, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: EtherBet
+Function name: fallback
+PC address: 401
+Estimated Gas Usage: 368 - 839
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/9221.sol:9
+
+(random()%2==1) && (msg.value == 1 ether) && (!locked)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0x, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: EtherBet
+Function name: fallback
+PC address: 425
+Estimated Gas Usage: 368 - 839
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/9221.sol:9
+
+if ((random()%2==1) && (msg.value == 1 ether) && (!locked)) {
+                        if (!msg.sender.call.value(2 ether)())
+                                throw;
+                }
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0x, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: EtherBet
+Function name: releaseFunds(uint256)
+PC address: 610
+Estimated Gas Usage: 1469 - 36080
+The binary multiplication can overflow.
+The operands of the multiplication operation are not sufficiently constrained. The multiplication could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/9221.sol:42
+
+amount * (1 ether)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: own(address), txdata: 0xf349e3e3bebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeee, value: 0x0
+Caller: [SOMEGUY], function: releaseFunds(uint256), txdata: 0x4d68282f80, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: EtherBet
+Function name: releaseFunds(uint256)
+PC address: 626
+Estimated Gas Usage: 728 - 1339
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/9221.sol:42
+
+msg.sender.call.value( amount * (1 ether))()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: own(address), txdata: 0xf349e3e3bebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+Caller: [ATTACKER], function: releaseFunds(uint256), txdata: 0x4d68282f, value: 0x0
+
+==== Unprotected Ether Withdrawal ====
+SWC ID: 105
+Severity: High
+Contract: EtherBet
+Function name: releaseFunds(uint256)
+PC address: 626
+Estimated Gas Usage: 728 - 1339
+Anyone can withdraw ETH from the contract account.
+Arbitrary senders other than the contract creator can withdraw ETH from the contract account without previously having sent an equivalent amount of ETH to it. This is likely to be a vulnerability.
+--------------------
+In file: /tmp/9221.sol:42
+
+msg.sender.call.value( amount * (1 ether))()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: own(address), txdata: 0xf349e3e3bebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+Caller: [ATTACKER], function: releaseFunds(uint256), txdata: 0x4d68282f000001, value: 0x0
+

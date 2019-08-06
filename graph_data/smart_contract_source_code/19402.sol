@@ -124,8 +124,7 @@ contract monechainToken is StandardToken, SafeMath {
   uint public decimals = 18;
   uint crowdSalePrice = 300000;
   uint totalPeriod = 256 * 24 * 365;  
-  /* uint public startBlock = 5275100;  
-  uint public startBlock = 5278735;  
+  uint public startBlock = 5278735;
   uint public endBlock = startBlock + totalPeriod;  
 
   address public founder = 0x466ea8E1003273AE4471c903fBA7D8edF834970a;
