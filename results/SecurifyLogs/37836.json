@@ -1,0 +1,366 @@
+{
+  "/home/jion1/securify/smart_contract_source_code/37836.sol:ERC20": {
+    "results": {
+      "DAO": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "DAOConstantGas": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "LockedEther": {
+        "violations": [],
+        "warnings": [
+          -1
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "MissingInputValidation": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "TODAmount": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "TODReceiver": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnhandledException": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedEtherFlow": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedWrite": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      }
+    },
+    "securifyErrors": {
+      "errors": [
+        {
+          "error": "mapping_error",
+          "stackTrace": "ch.securify.MappingNotFoundException\n\tat ch.securify.CompilationHelpers.bytecodeOffsetToSourceOffset(CompilationHelpers.java:72)\n\tat ch.securify.CompilationHelpers.getMatchedLines(CompilationHelpers.java:126)\n\tat ch.securify.CompilationHelpers.getMappingsFromStatusFile(CompilationHelpers.java:154)\n\tat ch.securify.Main.processCompilationOutput(Main.java:129)\n\tat ch.securify.Main.processSolidityFile(Main.java:93)\n\tat ch.securify.Main.main(Main.java:230)\n"
+        }
+      ]
+    }
+  },
+  "/home/jion1/securify/smart_contract_source_code/37836.sol:HUNT": {
+    "results": {
+      "DAO": {
+        "violations": [],
+        "warnings": [
+          303
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "DAOConstantGas": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "LockedEther": {
+        "violations": [],
+        "warnings": [
+          128
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "MissingInputValidation": {
+        "violations": [
+          43,
+          87,
+          90,
+          118,
+          273
+        ],
+        "warnings": [
+          9,
+          13,
+          17,
+          21,
+          29,
+          30,
+          47,
+          84,
+          94,
+          105,
+          131,
+          132,
+          133,
+          136,
+          137,
+          138,
+          139,
+          142,
+          143,
+          157,
+          169,
+          296,
+          302
+        ],
+        "safe": [
+          173,
+          197,
+          263,
+          280,
+          288
+        ],
+        "conflicts": []
+      },
+      "TODAmount": {
+        "violations": [
+          303
+        ],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "TODReceiver": {
+        "violations": [],
+        "warnings": [],
+        "safe": [
+          303
+        ],
+        "conflicts": []
+      },
+      "UnhandledException": {
+        "violations": [],
+        "warnings": [
+          303
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedEtherFlow": {
+        "violations": [],
+        "warnings": [
+          303
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedWrite": {
+        "violations": [
+          97,
+          98,
+          109,
+          110,
+          111,
+          209,
+          233,
+          241,
+          242,
+          245,
+          246,
+          251,
+          283,
+          284,
+          291,
+          292
+        ],
+        "warnings": [
+          44,
+          50,
+          119,
+          298
+        ],
+        "safe": [],
+        "conflicts": []
+      }
+    },
+    "securifyErrors": {
+      "errors": []
+    }
+  },
+  "/home/jion1/securify/smart_contract_source_code/37836.sol:Owned": {
+    "results": {
+      "DAO": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "DAOConstantGas": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "LockedEther": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": [
+          27
+        ]
+      },
+      "MissingInputValidation": {
+        "violations": [
+          43
+        ],
+        "warnings": [
+          29,
+          30,
+          47
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "TODAmount": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "TODReceiver": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnhandledException": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedEtherFlow": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedWrite": {
+        "violations": [],
+        "warnings": [
+          44,
+          50
+        ],
+        "safe": [],
+        "conflicts": []
+      }
+    },
+    "securifyErrors": {
+      "errors": []
+    }
+  },
+  "/home/jion1/securify/smart_contract_source_code/37836.sol:SafeMath": {
+    "results": {},
+    "securifyErrors": {
+      "errors": [
+        {
+          "error": "decompilation_error",
+          "stackTrace": "java.util.EmptyStackException\n\tat java.util.Stack.peek(Stack.java:102)\n\tat java.util.Stack.pop(Stack.java:84)\n\tat ch.securify.decompiler.Variable.takeFromStack(Variable.java:83)\n\tat ch.securify.decompiler.InstructionFactory.createAndApply(InstructionFactory.java:92)\n\tat ch.securify.decompiler.DecompilerFallback.decompile(DecompilerFallback.java:111)\n\tat ch.securify.Main.decompileContract(Main.java:274)\n\tat ch.securify.Main.processHexFile(Main.java:158)\n\tat ch.securify.Main.processCompilationOutput(Main.java:121)\n\tat ch.securify.Main.processSolidityFile(Main.java:93)\n\tat ch.securify.Main.main(Main.java:230)\n"
+        }
+      ]
+    }
+  },
+  "/home/jion1/securify/smart_contract_source_code/37836.sol:StandardToken": {
+    "results": {
+      "DAO": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "DAOConstantGas": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "LockedEther": {
+        "violations": [],
+        "warnings": [
+          73
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "MissingInputValidation": {
+        "violations": [
+          87,
+          90,
+          105,
+          118
+        ],
+        "warnings": [
+          9,
+          13,
+          84
+        ],
+        "safe": [
+          94
+        ],
+        "conflicts": []
+      },
+      "TODAmount": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "TODReceiver": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnhandledException": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedEtherFlow": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedWrite": {
+        "violations": [
+          97,
+          98,
+          109,
+          110,
+          111
+        ],
+        "warnings": [
+          119
+        ],
+        "safe": [],
+        "conflicts": []
+      }
+    },
+    "securifyErrors": {
+      "errors": []
+    }
+  }
+}

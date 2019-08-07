@@ -1,0 +1,434 @@
+{
+  "/home/jion1/securify/smart_contract_source_code/40092.sol:CertificationCentre": {
+    "results": {
+      "DAO": {
+        "violations": [],
+        "warnings": [
+          86
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "DAOConstantGas": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "LockedEther": {
+        "violations": [],
+        "warnings": [
+          171
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "MissingInputValidation": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "TODAmount": {
+        "violations": [],
+        "warnings": [],
+        "safe": [
+          86
+        ],
+        "conflicts": []
+      },
+      "TODReceiver": {
+        "violations": [],
+        "warnings": [
+          86
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnhandledException": {
+        "violations": [],
+        "warnings": [
+          86
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedEtherFlow": {
+        "violations": [],
+        "warnings": [],
+        "safe": [
+          86
+        ],
+        "conflicts": []
+      },
+      "UnrestrictedWrite": {
+        "violations": [
+          63,
+          64,
+          85,
+          98,
+          171
+        ],
+        "warnings": [
+          84
+        ],
+        "safe": [],
+        "conflicts": [
+          3,
+          42,
+          137,
+          171,
+          213,
+          214,
+          215,
+          226,
+          227,
+          228
+        ]
+      }
+    },
+    "securifyErrors": {
+      "errors": []
+    }
+  },
+  "/home/jion1/securify/smart_contract_source_code/40092.sol:CertificationCentreI": {
+    "results": {
+      "DAO": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "DAOConstantGas": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "LockedEther": {
+        "violations": [],
+        "warnings": [
+          -1
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "MissingInputValidation": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "TODAmount": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "TODReceiver": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnhandledException": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedEtherFlow": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedWrite": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      }
+    },
+    "securifyErrors": {
+      "errors": [
+        {
+          "error": "mapping_error",
+          "stackTrace": "ch.securify.MappingNotFoundException\n\tat ch.securify.CompilationHelpers.bytecodeOffsetToSourceOffset(CompilationHelpers.java:72)\n\tat ch.securify.CompilationHelpers.getMatchedLines(CompilationHelpers.java:126)\n\tat ch.securify.CompilationHelpers.getMappingsFromStatusFile(CompilationHelpers.java:154)\n\tat ch.securify.Main.processCompilationOutput(Main.java:129)\n\tat ch.securify.Main.processSolidityFile(Main.java:93)\n\tat ch.securify.Main.main(Main.java:230)\n"
+        }
+      ]
+    }
+  },
+  "/home/jion1/securify/smart_contract_source_code/40092.sol:Owned": {
+    "results": {
+      "DAO": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "DAOConstantGas": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "LockedEther": {
+        "violations": [],
+        "warnings": [
+          13
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "MissingInputValidation": {
+        "violations": [],
+        "warnings": [
+          28,
+          34
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "TODAmount": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "TODReceiver": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnhandledException": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedEtherFlow": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedWrite": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": [
+          42
+        ]
+      }
+    },
+    "securifyErrors": {
+      "errors": []
+    }
+  },
+  "/home/jion1/securify/smart_contract_source_code/40092.sol:OwnedI": {
+    "results": {
+      "DAO": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "DAOConstantGas": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "LockedEther": {
+        "violations": [],
+        "warnings": [
+          -1
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "MissingInputValidation": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "TODAmount": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "TODReceiver": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnhandledException": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedEtherFlow": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedWrite": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      }
+    },
+    "securifyErrors": {
+      "errors": [
+        {
+          "error": "mapping_error",
+          "stackTrace": "ch.securify.MappingNotFoundException\n\tat ch.securify.CompilationHelpers.bytecodeOffsetToSourceOffset(CompilationHelpers.java:72)\n\tat ch.securify.CompilationHelpers.getMatchedLines(CompilationHelpers.java:126)\n\tat ch.securify.CompilationHelpers.getMappingsFromStatusFile(CompilationHelpers.java:154)\n\tat ch.securify.Main.processCompilationOutput(Main.java:129)\n\tat ch.securify.Main.processSolidityFile(Main.java:93)\n\tat ch.securify.Main.main(Main.java:230)\n"
+        }
+      ]
+    }
+  },
+  "/home/jion1/securify/smart_contract_source_code/40092.sol:PullPaymentCapable": {
+    "results": {
+      "DAO": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "DAOConstantGas": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "LockedEther": {
+        "violations": [],
+        "warnings": [
+          -1
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "MissingInputValidation": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "TODAmount": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "TODReceiver": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnhandledException": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedEtherFlow": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedWrite": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      }
+    },
+    "securifyErrors": {
+      "errors": [
+        {
+          "error": "mapping_error",
+          "stackTrace": "ch.securify.MappingNotFoundException\n\tat ch.securify.CompilationHelpers.bytecodeOffsetToSourceOffset(CompilationHelpers.java:72)\n\tat ch.securify.CompilationHelpers.getMatchedLines(CompilationHelpers.java:126)\n\tat ch.securify.CompilationHelpers.getMappingsFromStatusFile(CompilationHelpers.java:154)\n\tat ch.securify.Main.processCompilationOutput(Main.java:129)\n\tat ch.securify.Main.processSolidityFile(Main.java:93)\n\tat ch.securify.Main.main(Main.java:230)\n"
+        }
+      ]
+    }
+  },
+  "/home/jion1/securify/smart_contract_source_code/40092.sol:WithBeneficiary": {
+    "results": {
+      "DAO": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "DAOConstantGas": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "LockedEther": {
+        "violations": [],
+        "warnings": [
+          -1
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "MissingInputValidation": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "TODAmount": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "TODReceiver": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnhandledException": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedEtherFlow": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedWrite": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      }
+    },
+    "securifyErrors": {
+      "errors": [
+        {
+          "error": "mapping_error",
+          "stackTrace": "ch.securify.MappingNotFoundException\n\tat ch.securify.CompilationHelpers.bytecodeOffsetToSourceOffset(CompilationHelpers.java:72)\n\tat ch.securify.CompilationHelpers.getMatchedLines(CompilationHelpers.java:126)\n\tat ch.securify.CompilationHelpers.getMappingsFromStatusFile(CompilationHelpers.java:154)\n\tat ch.securify.Main.processCompilationOutput(Main.java:129)\n\tat ch.securify.Main.processSolidityFile(Main.java:93)\n\tat ch.securify.Main.main(Main.java:230)\n"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "/home/jion1/securify/smart_contract_source_code/35649.sol:DSSafeAddSub": {
+    "results": {},
+    "securifyErrors": {
+      "errors": [
+        {
+          "error": "decompilation_error",
+          "stackTrace": "java.util.EmptyStackException\n\tat java.util.Stack.peek(Stack.java:102)\n\tat java.util.Stack.pop(Stack.java:84)\n\tat ch.securify.decompiler.Variable.takeFromStack(Variable.java:83)\n\tat ch.securify.decompiler.InstructionFactory.createAndApply(InstructionFactory.java:92)\n\tat ch.securify.decompiler.DecompilerFallback.decompile(DecompilerFallback.java:111)\n\tat ch.securify.Main.decompileContract(Main.java:274)\n\tat ch.securify.Main.processHexFile(Main.java:158)\n\tat ch.securify.Main.processCompilationOutput(Main.java:121)\n\tat ch.securify.Main.processSolidityFile(Main.java:93)\n\tat ch.securify.Main.main(Main.java:230)\n"
+        }
+      ]
+    }
+  },
+  "/home/jion1/securify/smart_contract_source_code/35649.sol:MyDice": {
+    "results": {
+      "DAO": {
+        "violations": [
+          206
+        ],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "DAOConstantGas": {
+        "violations": [
+          148,
+          171
+        ],
+        "warnings": [
+          304
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "LockedEther": {
+        "violations": [],
+        "warnings": [
+          23
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "MissingInputValidation": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "TODAmount": {
+        "violations": [],
+        "warnings": [
+          171
+        ],
+        "safe": [
+          206
+        ],
+        "conflicts": [
+          148,
+          304
+        ]
+      },
+      "TODReceiver": {
+        "violations": [],
+        "warnings": [
+          206
+        ],
+        "safe": [
+          148,
+          171
+        ],
+        "conflicts": [
+          304
+        ]
+      },
+      "UnhandledException": {
+        "violations": [],
+        "warnings": [
+          148,
+          171,
+          206,
+          304
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedEtherFlow": {
+        "violations": [],
+        "warnings": [],
+        "safe": [
+          206
+        ],
+        "conflicts": [
+          148,
+          171,
+          304
+        ]
+      },
+      "UnrestrictedWrite": {
+        "violations": [
+          23
+        ],
+        "warnings": [
+          204,
+          211
+        ],
+        "safe": [],
+        "conflicts": [
+          23,
+          111,
+          112,
+          114,
+          135,
+          140,
+          152,
+          155,
+          165,
+          173,
+          176,
+          187,
+          194,
+          223,
+          238,
+          255,
+          271,
+          286,
+          301,
+          312,
+          319,
+          327
+        ]
+      }
+    },
+    "securifyErrors": {
+      "errors": []
+    }
+  }
+}

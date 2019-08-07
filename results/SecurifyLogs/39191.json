@@ -1,0 +1,95 @@
+{
+  "/home/jion1/securify/smart_contract_source_code/39191.sol:AccountingLib": {
+    "results": {
+      "DAO": {
+        "violations": [],
+        "warnings": [
+          82,
+          99,
+          103
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "DAOConstantGas": {
+        "violations": [],
+        "warnings": [
+          81
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "LockedEther": {
+        "violations": [],
+        "warnings": [
+          4
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "MissingInputValidation": {
+        "violations": [],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "TODAmount": {
+        "violations": [],
+        "warnings": [
+          81,
+          82,
+          99,
+          103
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "TODReceiver": {
+        "violations": [],
+        "warnings": [
+          81,
+          82,
+          99,
+          103
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnhandledException": {
+        "violations": [],
+        "warnings": [
+          81,
+          82,
+          103
+        ],
+        "safe": [
+          99
+        ],
+        "conflicts": []
+      },
+      "UnrestrictedEtherFlow": {
+        "violations": [
+          81,
+          82,
+          99,
+          103
+        ],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedWrite": {
+        "violations": [
+          19,
+          70
+        ],
+        "warnings": [],
+        "safe": [],
+        "conflicts": []
+      }
+    },
+    "securifyErrors": {
+      "errors": []
+    }
+  }
+}

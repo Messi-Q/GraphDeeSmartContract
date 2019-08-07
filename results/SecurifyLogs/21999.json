@@ -1,0 +1,109 @@
+{
+  "/home/jion1/securify/smart_contract_source_code/21999.sol:Owned": {
+    "results": {},
+    "securifyErrors": {
+      "errors": [
+        {
+          "error": "decompilation_error",
+          "stackTrace": "java.util.EmptyStackException\n\tat java.util.Stack.peek(Stack.java:102)\n\tat java.util.Stack.pop(Stack.java:84)\n\tat ch.securify.decompiler.Variable.takeFromStack(Variable.java:83)\n\tat ch.securify.decompiler.InstructionFactory.createAndApply(InstructionFactory.java:92)\n\tat ch.securify.decompiler.DecompilerFallback.decompile(DecompilerFallback.java:111)\n\tat ch.securify.Main.decompileContract(Main.java:274)\n\tat ch.securify.Main.processHexFile(Main.java:158)\n\tat ch.securify.Main.processCompilationOutput(Main.java:121)\n\tat ch.securify.Main.processSolidityFile(Main.java:93)\n\tat ch.securify.Main.main(Main.java:230)\n"
+        }
+      ]
+    }
+  },
+  "/home/jion1/securify/smart_contract_source_code/21999.sol:WalletWithEmergencyTransfer": {
+    "results": {
+      "DAO": {
+        "violations": [],
+        "warnings": [
+          47
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "DAOConstantGas": {
+        "violations": [],
+        "warnings": [
+          39
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "LockedEther": {
+        "violations": [],
+        "warnings": [
+          16
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "MissingInputValidation": {
+        "violations": [
+          51
+        ],
+        "warnings": [
+          21,
+          32,
+          37
+        ],
+        "safe": [
+          43,
+          56
+        ],
+        "conflicts": []
+      },
+      "TODAmount": {
+        "violations": [],
+        "warnings": [
+          39
+        ],
+        "safe": [
+          47
+        ],
+        "conflicts": []
+      },
+      "TODReceiver": {
+        "violations": [],
+        "warnings": [
+          39
+        ],
+        "safe": [
+          47
+        ],
+        "conflicts": []
+      },
+      "UnhandledException": {
+        "violations": [],
+        "warnings": [
+          39,
+          47
+        ],
+        "safe": [],
+        "conflicts": []
+      },
+      "UnrestrictedEtherFlow": {
+        "violations": [],
+        "warnings": [],
+        "safe": [
+          47
+        ],
+        "conflicts": [
+          39
+        ]
+      },
+      "UnrestrictedWrite": {
+        "violations": [
+          58
+        ],
+        "warnings": [],
+        "safe": [],
+        "conflicts": [
+          52,
+          53
+        ]
+      }
+    },
+    "securifyErrors": {
+      "errors": []
+    }
+  }
+}
