@@ -37,8 +37,8 @@ class GraphConv(nn.Module):
         # add I represents self connections of nodes
         A_hat = I + A
         D_hat = (torch.sum(A_hat, 1) + 1e-5) ** (-0.5)  # Adjacent matrix normalization
-        # L = D_hat.view(batch, N, 1) * A_hat * D_hat.view(batch, 1, N)
-        L = A_hat  # remove D_hat
+        L = D_hat.view(batch, N, 1) * A_hat * D_hat.view(batch, 1, N)
+        # L = A_hat  # remove D_hat
         return L
 
     def forward(self, data):

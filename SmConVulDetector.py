@@ -292,7 +292,7 @@ for fold_id in range(n_folds):
                     continue
                 elif (np.array(pred.view_as(data[4])[k]).tolist() == 0) & (
                         np.array(data[4].detach().cpu()[k]).tolist() == 0):
-                    # TN predict == 1 & label == 0
+                    # TN predict == 0 & label == 0
                     tn += 1
                     continue
                 elif (np.array(pred.view_as(data[4])[k]).tolist() == 0) & (
@@ -313,15 +313,17 @@ for fold_id in range(n_folds):
             precision += metrics.precision_score(data[4], pred.view_as(data[4]))
             F1 += metrics.f1_score(data[4], pred.view_as(data[4]))
 
+        print(tp, fp, tn, fn)
         accuracy = 100. * accuracy / count
         recall = 100. * recall / count
         precision = 100. * precision / count
         F1 = 100. * F1 / count
+        FPR = fp / (fp + tn)
 
         print(
             'Test set (epoch {}): Average loss: {:.4f}, Accuracy: ({:.2f}%), Recall: ({:.2f}%), Precision: ({:.2f}%), '
-            'F1-Score: ({:.2f}%)  sec/iter: {:.4f}\n'.format(
-                epoch + 1, test_loss / n_samples, accuracy, recall, precision, F1,
+            'F1-Score: ({:.2f}%), FPR: ({:.2f}%)  sec/iter: {:.4f}\n'.format(
+                epoch + 1, test_loss / n_samples, accuracy, recall, precision, F1, FPR,
                 (time.time() - start) / len(test_loader))
         )
 
@@ -329,29 +331,32 @@ for fold_id in range(n_folds):
         print("fp_list(predict == 1 & label == 0):", fp_list)
         print()
 
-        return accuracy, recall, precision, F1
+        return accuracy, recall, precision, F1, FPR
 
 
     for epoch in range(args.epochs):
         train(loaders[0])
-    accuracy, recall, precision, F1 = test(loaders[1])
-    result_folds.append([accuracy, recall, precision, F1])
+    accuracy, recall, precision, F1, FPR = test(loaders[1])
+    result_folds.append([accuracy, recall, precision, F1, FPR])
 
 print(result_folds)
 acc_list = []
 recall_list = []
 precision_list = []
 F1_list = []
+FPR_list = []
 
 for i in range(len(result_folds)):
     acc_list.append(result_folds[i][0])
     recall_list.append(result_folds[i][1])
     precision_list.append(result_folds[i][2])
     F1_list.append(result_folds[i][3])
+    FPR_list.append(result_folds[i][4])
 
 print(
     '{}-fold cross validation avg acc (+- std): {}% ({}%), recall (+- std): {}% ({}%), precision (+- std): {}% ({}%), '
-    'F1-Score (+- std): {}% ({}%)'.format(
+    'F1-Score (+- std): {}% ({}%), FPR (+- fpr): {}% ({}%)'.format(
         n_folds, np.mean(acc_list), np.std(acc_list), np.mean(recall_list), np.std(recall_list),
-        np.mean(precision_list), np.std(precision_list), np.mean(F1_list), np.std(F1_list))
+        np.mean(precision_list), np.std(precision_list), np.mean(F1_list), np.std(F1_list), np.mean(FPR_list),
+        np.std(FPR_list))
 )

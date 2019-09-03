@@ -384,9 +384,9 @@ def construct_var_edge_vec(edge_list, node_embedding, var_embedding, edge_embedd
 
 if __name__ == "__main__":
     inputFileDir = "../graph_data/smart_contract_source_code/"
-    result = "../graph_data/graph_data_by_automatic_tool/result/result1.txt"
-    vertex_path = "../graph_data/graph_data_by_automatic_tool/node/"
-    edge_path = "../graph_data/graph_data_by_automatic_tool/edge/"
+    result = "../graph_data/graph_data_by_tool/result/result1.txt"
+    vertex_path = "../graph_data/graph_data_by_tool/node/"
+    edge_path = "../graph_data/graph_data_by_tool/edge/"
 
     count = 0
     dirs1 = os.listdir(inputFileDir)

@@ -669,8 +669,8 @@ def generate_graph(filepath):
 
 
 def printResult(file, node_feature, edge_feature):
-    nodeOutPath = "../graph_data/graph_data_by_automatic_tool/node/" + file
-    edgeOutPath = "../graph_data/graph_data_by_automatic_tool/edge/" + file
+    nodeOutPath = "../graph_data/graph_data_by_tool/node/" + file
+    edgeOutPath = "../graph_data/graph_data_by_tool/edge/" + file
 
     f_node = open(nodeOutPath, 'a')
     for i in range(len(node_feature)):

@@ -33,9 +33,7 @@ class GCN_MODIFY(nn.Module):
 
     def forward(self, data):
         x = self.gconv(data)[0]
-        a = x.shape
         x = torch.max(x, dim=1)[0].squeeze()  # max pooling over nodes (usually performs better than average)
-        b = x.shape
         x = self.fc(x)
         return x
 
