@@ -1,6 +1,0 @@
-S1 S1 LimitedAC W1 1 MSG
-S2 S2 LimitedAC W2 1 MSG
-W1 W1 LimitedAC C1 1 NULL
-W2 W2 LimitedAC C2 1 NULL
-C1 C1 LimitedAC NULL 0 NULL
-C2 C2 NoLimit NULL 0 NULL

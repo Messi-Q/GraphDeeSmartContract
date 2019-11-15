@@ -1,0 +1,404 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: multiowned
+Function name: getOwner(uint256)
+PC address: 2143
+Estimated Gas Usage: 892 - 1268
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/40038.sol:335
+
+ownerIndex + 1
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getOwner(uint256), txdata: 0xc41a360affffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: multiowned
+Function name: getOwner(uint256)
+PC address: 2155
+Estimated Gas Usage: 399 - 494
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/40038.sol:335
+
+m_owners[ownerIndex + 1]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeOwner(address,address), txdata: 0xf00d4b5d010101010101010101010101affeaffeaffeaffeaffeaffeaffeaffeaffeaffe, value: 0x0
+Caller: [SOMEGUY], function: getOwner(uint256), txdata: 0xc41a360a40, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: Token
+Function name: currentSwapRate()
+PC address: 3108
+Estimated Gas Usage: 1616 - 1992
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/40038.sol:172
+
+creationTime + 1 weeks
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: currentSwapRate(), txdata: 0x5334c231, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: Token
+Function name: currentSwapRate()
+PC address: 3114
+Estimated Gas Usage: 1616 - 1992
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/40038.sol:172
+
+if (creationTime + 1 weeks > now) {
+          return 130;
+      }
+      else if (creationTime + 2 weeks > now) {
+          return 120;
+      }
+      else if (creationTime + 4 weeks > now) {
+          return 100;
+      }
+      else {
+          return 0;
+      }
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: currentSwapRate(), txdata: 0x5334c231, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: Token
+Function name: currentSwapRate()
+PC address: 3132
+Estimated Gas Usage: 1616 - 1992
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/40038.sol:175
+
+creationTime + 2 weeks
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: currentSwapRate(), txdata: 0x5334c231, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: Token
+Function name: currentSwapRate()
+PC address: 3138
+Estimated Gas Usage: 1616 - 1992
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/40038.sol:175
+
+if (creationTime + 2 weeks > now) {
+          return 120;
+      }
+      else if (creationTime + 4 weeks > now) {
+          return 100;
+      }
+      else {
+          return 0;
+      }
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: currentSwapRate(), txdata: 0x5334c231, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: Token
+Function name: currentSwapRate()
+PC address: 3156
+Estimated Gas Usage: 1616 - 1992
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/40038.sol:178
+
+creationTime + 4 weeks
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: currentSwapRate(), txdata: 0x5334c231, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: Token
+Function name: currentSwapRate()
+PC address: 3162
+Estimated Gas Usage: 1616 - 1992
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/40038.sol:178
+
+if (creationTime + 4 weeks > now) {
+          return 100;
+      }
+      else {
+          return 0;
+      }
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: currentSwapRate(), txdata: 0x5334c231, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Wallet
+Function name: execute(address,uint256,bytes)
+PC address: 5353
+Estimated Gas Usage: 21098 - 87614
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/40038.sol:637
+
+_to.call.value(_value)(_data)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: execute(address,uint256,bytes), txdata: 0xb61d27f601010101010101010101010180, value: 0x0
+
+==== Unchecked Call Return Value ====
+SWC ID: 104
+Severity: Low
+Contract: Wallet
+Function name: execute(address,uint256,bytes)
+PC address: 5353
+Estimated Gas Usage: 11852 - 72649
+The return value of a message call is not checked.
+External calls return a boolean value. If the callee contract halts with an exception, 'false' is returned and execution continues in the caller. It is usually recommended to wrap external calls into a require statement to prevent unexpected states.
+--------------------
+In file: /tmp/40038.sol:637
+
+_to.call.value(_value)(_data)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: execute(address,uint256,bytes), txdata: 0xb61d27f600000000000000000000000008, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: Wallet
+Function name: getOwner(uint256)
+PC address: 6708
+Estimated Gas Usage: 1200 - 1576
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/40038.sol:335
+
+ownerIndex + 1
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getOwner(uint256), txdata: 0xc41a360affffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Wallet
+Function name: getOwner(uint256)
+PC address: 6720
+Estimated Gas Usage: 707 - 802
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/40038.sol:335
+
+m_owners[ownerIndex + 1]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getOwner(uint256), txdata: 0xc41a360a04, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Wallet
+Function name: kill(address)
+PC address: 6912
+Estimated Gas Usage: 53366 - 238522
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/40038.sol:612
+
+tokenCtr.tokenSwapLock()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: kill(address), txdata: 0xcbf0b0c0, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Medium
+Contract: Wallet
+Function name: execute(address,uint256,bytes)
+PC address: 7591
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/40038.sol:366
+
+pending.yetNeeded = m_required
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: execute(address,uint256,bytes), txdata: 0xb61d27f6000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Medium
+Contract: Wallet
+Function name: execute(address,uint256,bytes)
+PC address: 7601
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/40038.sol:368
+
+pending.ownersDone = 0
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: execute(address,uint256,bytes), txdata: 0xb61d27f6000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Medium
+Contract: Wallet
+Function name: execute(address,uint256,bytes)
+PC address: 7630
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/40038.sol:369
+
+pending.index = m_pendingIndex.length++
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: execute(address,uint256,bytes), txdata: 0xb61d27f6000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Medium
+Contract: Wallet
+Function name: execute(address,uint256,bytes)
+PC address: 7669
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/40038.sol:370
+
+m_pendingIndex[pending.index] = _operation
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: execute(address,uint256,bytes), txdata: 0xb61d27f6000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: Wallet
+Function name: execute(address,uint256,bytes)
+PC address: 8522
+Estimated Gas Usage: 21945 - 122742
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/40038.sol:468
+
+if (today() > m_lastDay) {
+            m_spentToday = 0;
+            m_lastDay = today();
+        }
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: execute(address,uint256,bytes), txdata: 0xb61d27f600000000000000000000000002, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Low
+Contract: Wallet
+Function name: execute(address,uint256,bytes)
+PC address: 9028
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities. This issue is reported for internal compiler generated code.
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: execute(address,uint256,bytes), txdata: 0xb61d27f6000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+

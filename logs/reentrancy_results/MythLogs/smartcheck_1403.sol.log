@@ -1,0 +1,19 @@
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: RUNEToken
+Function name: transfer(address,uint256,bytes)
+PC address: 5217
+Estimated Gas Usage: 16832 - 62036
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/1403.sol:140
+
+rx.tokenFallback( msg.sender, value, data )
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: transfer(address,uint256,bytes), txdata: 0xbe45fd620000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000001, value: 0x0

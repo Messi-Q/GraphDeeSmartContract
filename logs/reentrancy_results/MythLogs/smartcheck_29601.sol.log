@@ -1,0 +1,420 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: ERC20
+Function name: constructor
+PC address: 376
+Estimated Gas Usage: 39585 - 185131
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit.
+--------------------
+In file: /tmp/29601.sol:126
+
+symbol = _tokenSymbol
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: ERC223Token
+Function name: constructor
+PC address: 382
+Estimated Gas Usage: 44616 - 210162
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit.
+--------------------
+In file: /tmp/29601.sol:126
+
+symbol = _tokenSymbol
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: GenesisToken
+Function name: constructor
+PC address: 415
+Estimated Gas Usage: 71185 - 338096
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit.
+--------------------
+In file: /tmp/29601.sol:126
+
+symbol = _tokenSymbol
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: Clout
+Function name: constructor
+PC address: 416
+Estimated Gas Usage: 87068 - 414545
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit.
+--------------------
+In file: /tmp/29601.sol:126
+
+symbol = _tokenSymbol
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: CLC
+Function name: constructor
+PC address: 479
+Estimated Gas Usage: 76644 - 364269
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit.
+--------------------
+In file: /tmp/29601.sol:126
+
+symbol = _tokenSymbol
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: ICO
+Function name: constructor
+PC address: 564
+Estimated Gas Usage: 97598 - 469546
+The binary exponentiation can overflow.
+The operands of the exponentiation operation are not sufficiently constrained. The exponentiation could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/29601.sol:989
+
+uint256(10) ** decimals
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: ICO
+Function name: constructor
+PC address: 569
+Estimated Gas Usage: 97598 - 469546
+The binary multiplication can overflow.
+The operands of the multiplication operation are not sufficiently constrained. The multiplication could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/29601.sol:989
+
+5000000 * (uint256(10) ** decimals)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: ICO
+Function name: constructor
+PC address: 679
+Estimated Gas Usage: 97598 - 469546
+The binary exponentiation can overflow.
+The operands of the exponentiation operation are not sufficiently constrained. The exponentiation could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/29601.sol:990
+
+uint256(10) ** decimals
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: ICO
+Function name: constructor
+PC address: 684
+Estimated Gas Usage: 97598 - 469546
+The binary multiplication can overflow.
+The operands of the multiplication operation are not sufficiently constrained. The multiplication could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/29601.sol:990
+
+3000000 * (uint256(10) ** decimals)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: ICO
+Function name: constructor
+PC address: 794
+Estimated Gas Usage: 97598 - 469546
+The binary exponentiation can overflow.
+The operands of the exponentiation operation are not sufficiently constrained. The exponentiation could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/29601.sol:991
+
+uint256(10) ** decimals
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: ICO
+Function name: constructor
+PC address: 799
+Estimated Gas Usage: 97598 - 469546
+The binary multiplication can overflow.
+The operands of the multiplication operation are not sufficiently constrained. The multiplication could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/29601.sol:991
+
+2000000 * (uint256(10) ** decimals)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: ERC223Token
+Function name: transferFrom(address,address,uint256)
+PC address: 3082
+Estimated Gas Usage: 392 - 487
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/29601.sol:99
+
+assert(msg.data.length == _numwords * 32 + 4)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: transferFrom(address,address,uint256), txdata: 0x23b872dd, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: ICO
+Function name: getIcoTokensAmount(uint256,uint256)
+PC address: 3757
+Estimated Gas Usage: 2138 - 2988
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/29601.sol:1049
+
+remainingValue * (uint256(10) ** decimals) / phase.price
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getIcoTokensAmount(uint256,uint256), txdata: 0x0655c58b, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: CLC
+Function name: transferFrom(address,address,uint256)
+PC address: 4056
+Estimated Gas Usage: 414 - 509
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/29601.sol:99
+
+assert(msg.data.length == _numwords * 32 + 4)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: transferFrom(address,address,uint256), txdata: 0x23b872dd, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: ERC223Token
+Function name: transfer(address,uint256)
+PC address: 4245
+Estimated Gas Usage: 579 - 674
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/29601.sol:99
+
+assert(msg.data.length == _numwords * 32 + 4)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: transfer(address,uint256), txdata: 0xa9059cbb, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: ICO
+Function name: phases(uint256)
+PC address: 4286
+Estimated Gas Usage: 768 - 863
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/29601.sol:943
+
+Phase[] public phases
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: phases(uint256), txdata: 0x2e37eef680, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: ICO
+Function name: etherReceivers(uint256)
+PC address: 5538
+Estimated Gas Usage: 1054 - 1149
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/29601.sol:950
+
+address[] public etherReceivers
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: etherReceivers(uint256), txdata: 0x940b29b2, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: CLC
+Function name: transfer(address,uint256)
+PC address: 5857
+Estimated Gas Usage: 689 - 784
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/29601.sol:99
+
+assert(msg.data.length == _numwords * 32 + 4)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: transfer(address,uint256), txdata: 0xa9059cbb, value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: CLC
+Function name: approveAndCall(address,uint256,bytes)
+PC address: 6328
+Estimated Gas Usage: 9955 - 36050
+Potential denial-of-service if block gas limit is reached.
+A message call is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit. This issue is reported for internal compiler generated code.
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: approveAndCall(address,uint256,bytes), txdata: 0xcae9ca510000000000000000000000000000000000000000000000000000000000000021, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: CLC
+Function name: approveAndCall(address,uint256,bytes)
+PC address: 6429
+Estimated Gas Usage: 9955 - 36050
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/29601.sol:166
+
+spender.receiveApproval(msg.sender, _value, this, _extraData)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: approveAndCall(address,uint256,bytes), txdata: 0xcae9ca51000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef000000000000000000000000000000000000000000000000000000000000000080, value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: CLC
+Function name: transfer(address,uint256,bytes)
+PC address: 8904
+Estimated Gas Usage: 6186 - 12419
+Potential denial-of-service if block gas limit is reached.
+A message call is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit. This issue is reported for internal compiler generated code.
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: transfer(address,uint256,bytes), txdata: 0xbe45fd620000000000000000000000000000000000000000000000000000000000000021, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: CLC
+Function name: transfer(address,uint256,bytes)
+PC address: 9004
+Estimated Gas Usage: 6186 - 12419
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/29601.sol:314
+
+receiver.tokenFallback(from, value, data)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: transfer(address,uint256,bytes), txdata: 0xbe45fd62000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef000000000000000000000000000000000000000000000000000000000000000080, value: 0x0
+

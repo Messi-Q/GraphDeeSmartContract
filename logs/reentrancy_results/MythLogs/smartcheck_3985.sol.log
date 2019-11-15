@@ -1,0 +1,121 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: Feeless
+Function name: performFeelessTransaction(address,address,bytes,uint256,bytes)
+PC address: 246
+Estimated Gas Usage: 20028 - 124470
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/3985.sol:72
+
+function performFeelessTransaction(address sender, address target, bytes data, uint256 nonce, bytes sig) public payable {
+        require(this == target);
+        bytes memory prefix = "\x19Ethereum Signed Message:\n32";
+        bytes32 hash = keccak256(prefix, keccak256(target, data, nonce));
+        msgSender = ECRecovery.recover(hash, sig);
+        require(msgSender == sender);
+        require(nonces[msgSender]++ == nonce);
+
+        require(target.call.value(msg.value)(data));
+        msgSender = address(0);
+    }
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: performFeelessTransaction(address,address,bytes,uint256,bytes), txdata: 0x51b7949501010101010101010101010100000000000000000000000000000000000000000000000000000000000000000901d12ebe1b195e5aa8748e62bd7734ae19b51f80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc, value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: Feeless
+Function name: performFeelessTransaction(address,address,bytes,uint256,bytes)
+PC address: 617
+Estimated Gas Usage: 15003 - 99445
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit. This issue is reported for internal compiler generated code.
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: performFeelessTransaction(address,address,bytes,uint256,bytes), txdata: 0x51b7949501010101010101010101010100000000000000000000000000000000000000000101010101010101010101010901d12ebe1b195e5aa8748e62bd7734ae19b51f80, value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: Feeless
+Function name: performFeelessTransaction(address,address,bytes,uint256,bytes)
+PC address: 1151
+Estimated Gas Usage: 14975 - 99747
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit. This issue is reported for internal compiler generated code.
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: performFeelessTransaction(address,address,bytes,uint256,bytes), txdata: 0x51b7949501010101010101010101010100000000000000000000000000000000000000000101010101010101010101010901d12ebe1b195e5aa8748e62bd7734ae19b51f80, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: Feeless
+Function name: performFeelessTransaction(address,address,bytes,uint256,bytes)
+PC address: 1179
+Estimated Gas Usage: 20028 - 124470
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/3985.sol:80
+
+target.call.value(msg.value)(data)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: performFeelessTransaction(address,address,bytes,uint256,bytes), txdata: 0x51b7949500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000901d12ebe1b195e5aa8748e62bd7734ae19b51f0000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000080, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Feeless
+Function name: performFeelessTransaction(address,address,bytes,uint256,bytes)
+PC address: 1232
+Estimated Gas Usage: 13809 - 63921
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/3985.sol:80
+
+target.call.value(msg.value)(data)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: performFeelessTransaction(address,address,bytes,uint256,bytes), txdata: 0x51b7949501010101010101010101010100000000000000000000000000000000000000000101010101010101010101010901d12ebe1b195e5aa8748e62bd7734ae19b51f80, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Low
+Contract: Feeless
+Function name: performFeelessTransaction(address,address,bytes,uint256,bytes)
+PC address: 1311
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/3985.sol:81
+
+msgSender = address(0)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: performFeelessTransaction(address,address,bytes,uint256,bytes), txdata: 0x51b7949500000000000000000000000000000000000000000000000000000000000000000101010101010101010101010901d12ebe1b195e5aa8748e62bd7734ae19b51f, value: 0x0
+

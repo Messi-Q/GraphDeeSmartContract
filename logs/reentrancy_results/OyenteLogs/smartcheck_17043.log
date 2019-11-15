@@ -1,0 +1,17 @@
+WARNING:root:You are using an untested version of z3. 4.5.0 is the officially tested version
+WARNING:root:You are using solc version 0.4.25, The latest supported version is 0.4.17
+INFO:root:Contract smart_contract_source_code/17043.sol:keepMyEther:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 99.5%
+INFO:symExec:	  Callstack bug: 	 True
+smart_contract_source_code/17043.sol:keepMyEther:13:9
+msg.sender.call.value(balances[msg.sender])()
+^
+INFO:symExec:	  Money concurrency bug: False
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 True
+smart_contract_source_code/17043.sol:keepMyEther:13:9
+msg.sender.call.value(balances[msg.sender])()
+^
+INFO:symExec:	====== Analysis Completed ======

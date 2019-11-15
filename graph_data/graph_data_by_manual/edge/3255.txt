@@ -1,2 +1,0 @@
-W1 S1 W1 1 IF
-W2 S2 W2 1 FW

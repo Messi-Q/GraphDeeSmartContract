@@ -1,0 +1,2 @@
+/tmp/40090.sol:255:23: Error: Fallback function cannot return values.
+    function() returns(bool) {

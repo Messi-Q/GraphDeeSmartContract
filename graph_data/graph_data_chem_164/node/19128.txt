@@ -1,7 +1,0 @@
- S0   S0   LimitedAC   W0  2  MSG 
- W0   W0   LimitedAC   C0  1  NULL 
- C0   C0   NoLimit   NULL  0  NULL 
- VAR0   VAR0   W0  1  BOOL 
- VAR0   VAR0   W0  1  ASSIGN 
- VAR1   VAR1   W0  1  BOOL 
- VAR2   VAR2   W0  1  ASSIGN 

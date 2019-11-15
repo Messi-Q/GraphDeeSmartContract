@@ -1,0 +1,246 @@
+WARNING:root:You are using solc version 0.4.21, The latest supported version is 0.4.19
+incomplete push instruction at 5380
+INFO:root:contract contracts/30460.sol:BasicToken:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.5%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/30460.sol:388:17: Warning: Integer Overflow.
+    uint256 c = a + b
+Integer Overflow occurs if:
+    balances[_to] = 85653202831209899131921273706816539903532775246499202405936884825549521553152
+    _value = 44369063854674067291029404066660873444229566625561754964912869797988903417852
+    balances[msg.sender] = 44369063854674067291029404066660873444229566625561754964912869797988903417852
+    _to = 1461501637330902918203684832716283019655932542975
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/30460.sol:BullToken:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 94.7%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/30460.sol:249:3: Warning: Integer Overflow.
+  address [] public holders
+contracts/30460.sol:240:1: Warning: Integer Overflow.
+contract BullToken is BurnableToken, PausableToken {
+^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    holders.push(to) = 105782898658114362639998236590588058411517566113314665475433552748888561006558
+    isHolder[to] = 0
+    transferEnabled = 95406826884961342500336545879718955523139276405473280
+contracts/30460.sol:286:7: Warning: Integer Overflow.
+      holders.push(to)
+Integer Overflow occurs if:
+    holders.push(to) = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    isHolder[to] = 0
+    transferEnabled = 95406826884961342500336545879718955523139276405473280
+contracts/30460.sol:388:17: Warning: Integer Overflow.
+    uint256 c = a + b
+Integer Overflow occurs if:
+    value = 90039963709783185383182011671143028455142572725495511918016039672582865158160
+    transferEnabled = 374144419156711147060143317175368453031918731001856
+    balances[_to] = 86909027033281470279957145972878974484462796601407401036195232476919723736991
+    allowed[_from][msg.sender] = 90039963709783185383182011671143028455142572725495511918016039672582865158160
+    balances[_from] = 90039963709783185383182011671143028455142572725495511918016039672582865158160
+    to = 1461501637330902918203684832716283019655932542975
+    isHolder[to] = 255
+contracts/30460.sol:273:7: Warning: Integer Overflow.
+      holders.push(to)
+Integer Overflow occurs if:
+    holders.push(to) = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    isHolder[to] = 0
+    transferEnabled = 95406826884961342500336545879718955523139276405473280
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/30460.sol:BullTokenCrowdsale:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 80.3%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/30460.sol:760:7: Warning: Callstack Depth Attack Vulnerability.
+      wallet.call.value(amount)()
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/30460.sol:BullTokenRefundVault:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.1%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 True
+INFO:symExec:contracts/30460.sol:388:17: Warning: Integer Overflow.
+    uint256 c = a + b
+Integer Overflow occurs if:
+    state = 0
+    deposited[investor] = 1
+    owner = 0
+INFO:symExec:Flow1
+contracts/30460.sol:574:5: Warning: Transaction-Ordering Dependency.
+    wallet.call.value(this.balance)()
+Flow2
+contracts/30460.sol:579:5: Warning: Transaction-Ordering Dependency.
+    wallet.call.value(this.balance)()
+INFO:symExec:contracts/30460.sol:579:5: Warning: Re-Entrancy Vulnerability.
+    wallet.call.value(this.balance)()
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/30460.sol:BurnableCrowdsale:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 19.2%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/30460.sol:BurnableToken:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.9%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/30460.sol:388:17: Warning: Integer Overflow.
+    uint256 c = a + b
+Integer Overflow occurs if:
+    balances[_to] = 95515132405035013240498949941729301185179799140209929091396633094036584928231
+    allowed[_from][msg.sender] = 37717208912933073374861050775867160511051478474789766132129094234564326678807
+    balances[_from] = 37717208912933073374861050775867160511051478474789766132129094234564326678807
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/30460.sol:Curatable:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.7%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/30460.sol:Ownable:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.5%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/30460.sol:Pausable:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.8%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/30460.sol:PausableToken:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.9%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/30460.sol:388:17: Warning: Integer Overflow.
+    uint256 c = a + b
+Integer Overflow occurs if:
+    _value = 37717208912933073374861050775867160511051478474789766132129094234564326678807
+    balances[_to] = 95515132405035013240498949941729301185179799140209929091396633094036584928231
+    allowed[_from][msg.sender] = 37717208912933073374861050775867160511051478474789766132129094234564326678807
+    balances[_from] = 37717208912933073374861050775867160511051478474789766132129094234564326678807
+    _to = 1461501637330902918203684832716283019655932542975
+    paused = 0
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/30460.sol:RefundVault:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 98.7%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/30460.sol:388:17: Warning: Integer Overflow.
+    uint256 c = a + b
+Integer Overflow occurs if:
+    state = 0
+    deposited[investor] = 1
+    owner = 0
+INFO:symExec:Flow1
+contracts/30460.sol:544:5: Warning: Transaction-Ordering Dependency.
+    wallet.transfer(this.balance)
+Flow2
+contracts/30460.sol:557:5: Warning: Transaction-Ordering Dependency.
+    investor.transfer(depositedValue)
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/30460.sol:SafeMath:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 100.0%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/30460.sol:StandardToken:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.9%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/30460.sol:388:17: Warning: Integer Overflow.
+    uint256 c = a + b
+Integer Overflow occurs if:
+    _value = 37717208912933073374861050775867160511051478474789766132129094234564326678807
+    balances[_to] = 95515132405035013240498949941729301185179799140209929091396633094036584928231
+    allowed[_from][msg.sender] = 37717208912933073374861050775867160511051478474789766132129094234564326678807
+    balances[_from] = 37717208912933073374861050775867160511051478474789766132129094234564326678807
+    _to = 1461501637330902918203684832716283019655932542975
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/30460.sol:Whitelist:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.9%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======

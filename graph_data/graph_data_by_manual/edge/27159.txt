@@ -1,2 +1,0 @@
-W VAR1 W 1 GB
-VAR1 S W 3 RG

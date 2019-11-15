@@ -1,0 +1,64 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: Escrow
+Function name: claim()
+PC address: 471
+Estimated Gas Usage: 5827 - 26488
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/37891.sol:16
+
+msg.sender.call.value(balance)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: deposit(address), txdata: 0xf340fa01bebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x1
+Caller: [ATTACKER], function: claim(), txdata: 0x4e71d92d, value: 0x0
+
+==== Unprotected Ether Withdrawal ====
+SWC ID: 105
+Severity: High
+Contract: Escrow
+Function name: claim()
+PC address: 471
+Estimated Gas Usage: 5827 - 26488
+Anyone can withdraw ETH from the contract account.
+Arbitrary senders other than the contract creator can withdraw ETH from the contract account without previously having sent an equivalent amount of ETH to it. This is likely to be a vulnerability.
+--------------------
+In file: /tmp/37891.sol:16
+
+msg.sender.call.value(balance)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: deposit(address), txdata: 0xf340fa01bebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x1
+Caller: [ATTACKER], function: claim(), txdata: 0x4e71d92d, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: Escrow
+Function name: deposit(address)
+PC address: 577
+Estimated Gas Usage: 5767 - 26052
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/37891.sol:8
+
+balances[_recipient] += msg.value
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: deposit(address), txdata: 0xf340fa01, value: 0x1
+Caller: [SOMEGUY], function: deposit(address), txdata: 0xf340fa01, value: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+

@@ -1,0 +1,84 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: keepMyEther
+Function name: fallback
+PC address: 145
+Estimated Gas Usage: 5561 - 25846
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/17043.sol:9
+
+balances[msg.sender] += msg.value
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x01010101, value: 0x1
+Caller: [CREATOR], function: unknown, txdata: 0x, value: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: keepMyEther
+Function name: withdraw()
+PC address: 390
+Estimated Gas Usage: 681 - 1152
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/17043.sol:13
+
+msg.sender.call.value(balances[msg.sender])()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: withdraw(), txdata: 0x3ccfd60b, value: 0x0
+Caller: [ATTACKER], function: withdraw(), txdata: 0x3ccfd60b, value: 0x0
+
+==== Unchecked Call Return Value ====
+SWC ID: 104
+Severity: Low
+Contract: keepMyEther
+Function name: withdraw()
+PC address: 390
+Estimated Gas Usage: 6504 - 61165
+The return value of a message call is not checked.
+External calls return a boolean value. If the callee contract halts with an exception, 'false' is returned and execution continues in the caller. It is usually recommended to wrap external calls into a require statement to prevent unexpected states.
+--------------------
+In file: /tmp/17043.sol:13
+
+msg.sender.call.value(balances[msg.sender])()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: withdraw(), txdata: 0x3ccfd60b, value: 0x0
+Caller: [CREATOR], function: withdraw(), txdata: 0x3ccfd60b, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Medium
+Contract: keepMyEther
+Function name: withdraw()
+PC address: 462
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/17043.sol:14
+
+balances[msg.sender] = 0
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: withdraw(), txdata: 0x3ccfd60b, value: 0x0
+

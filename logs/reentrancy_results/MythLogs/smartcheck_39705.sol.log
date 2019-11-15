@@ -1,0 +1,199 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: StepFunction
+Function name: constructor
+PC address: 94
+Estimated Gas Usage: 242 - 3108
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/39705.sol:288
+
+_initialValue / _nSteps
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: StepFunction
+Function name: getStepFunction(uint256)
+PC address: 342
+Estimated Gas Usage: 2405 - 2781
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/39705.sol:313
+
+nSteps + 1
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getStepFunction(uint256), txdata: 0xa4ec11b1, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: StepFunction
+Function name: getStepFunction(uint256)
+PC address: 343
+Estimated Gas Usage: 2405 - 2781
+The binary multiplication can overflow.
+The operands of the multiplication operation are not sufficiently constrained. The multiplication could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/39705.sol:313
+
+(nSteps + 1) * timeLeft
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getStepFunction(uint256), txdata: 0xa4ec11b1, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Phased
+Function name: getPhaseStartTime(uint256)
+PC address: 539
+Estimated Gas Usage: 649 - 744
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/39705.sol:205
+
+phaseEndTime[n-1]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getPhaseStartTime(uint256), txdata: 0x41de216401, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Phased
+Function name: phaseEndTime(uint256)
+PC address: 733
+Estimated Gas Usage: 680 - 775
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/39705.sol:162
+
+uint[] public phaseEndTime
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: phaseEndTime(uint256), txdata: 0xd41bcb81, value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: FDC
+Function name: constructor
+PC address: 749
+Estimated Gas Usage: 169960 - 778639
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit.
+--------------------
+In file: /tmp/39705.sol:515
+
+addPhase(round1StartTime)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: Phased
+Function name: getPhaseAtTime(uint256)
+PC address: 788
+Estimated Gas Usage: 837 - 1213
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/39705.sol:175
+
+if (time > now) { throw; }
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getPhaseAtTime(uint256), txdata: 0xe831884e, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: TokenTracker
+Function name: multFracCeiling(uint256,uint256,uint256)
+PC address: 992
+Estimated Gas Usage: 421 - 797
+The binary multiplication can overflow.
+The operands of the multiplication operation are not sufficiently constrained. The multiplication could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/39705.sol:63
+
+x * a
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: multFracCeiling(uint256,uint256,uint256), txdata: 0x2fabc174000000000000000000000000000000000000000000000000000000000000000378000a02850100aaaaaaaaaaab91050a5022021241084a80248110808442800040, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: TokenTracker
+Function name: multFracCeiling(uint256,uint256,uint256)
+PC address: 993
+Estimated Gas Usage: 421 - 797
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/39705.sol:63
+
+x * a + (b - 1)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: multFracCeiling(uint256,uint256,uint256), txdata: 0x2fabc17403080949202020090451a605c000244803021010800000fb31803338d00ac19186c28b88e0aa0c79fecc4b4095012050aab385e600add90d8e00204476009000e1, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: TokenTracker
+Function name: multFracCeiling(uint256,uint256,uint256)
+PC address: 1001
+Estimated Gas Usage: 333 - 428
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/39705.sol:63
+
+(x * a + (b - 1)) / b
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: multFracCeiling(uint256,uint256,uint256), txdata: 0x2fabc174010101010101010101010101010101010101010101010101010101010101010101, value: 0x0
+

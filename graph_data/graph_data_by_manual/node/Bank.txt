@@ -1,4 +1,0 @@
-S S NoLimit W 1 MSG
-W W NoLimit C 1 NULL
-C C NoLimit NULL 0 NULL
-VAR1 VAR1 W 2 ASSIGN

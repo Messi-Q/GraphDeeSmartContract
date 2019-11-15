@@ -1,0 +1,127 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: PreSaleFund
+Function name: withdraw()
+PC address: 707
+Estimated Gas Usage: 2355 - 3676
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/27263.sol:38
+
+this.loggedTransfer(this.balance, "", msg.sender, owner)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: Invest(), txdata: 0xc0819961, value: 0xde0b6b3a7640001
+Caller: [CREATOR], function: withdraw(), txdata: 0x3ccfd60b, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: PreSaleFund
+Function name: loggedTransfer(uint256,bytes32,address,address)
+PC address: 900
+Estimated Gas Usage: 388 - 669
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/27263.sol:14
+
+target.call.value(amount)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: Invest(), txdata: 0xc0819961, value: 0xde0b6b3a7640001
+Caller: [CREATOR], function: withdraw(), txdata: 0x3ccfd60b, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: PreSaleFund
+Function name: loggedTransfer(uint256,bytes32,address,address)
+PC address: 900
+Estimated Gas Usage: 388 - 669
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/27263.sol:14
+
+target.call.value(amount)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: Invest(), txdata: 0xc0819961, value: 0xde0b6b3a7640001
+Caller: [ATTACKER], function: Divest(uint256), txdata: 0xb0a94ef701, value: 0x0
+
+==== Unchecked Call Return Value ====
+SWC ID: 104
+Severity: Low
+Contract: PreSaleFund
+Function name: loggedTransfer(uint256,bytes32,address,address)
+PC address: 900
+Estimated Gas Usage: 1131 - 35412
+The return value of a message call is not checked.
+External calls return a boolean value. If the callee contract halts with an exception, 'false' is returned and execution continues in the caller. It is usually recommended to wrap external calls into a require statement to prevent unexpected states.
+--------------------
+In file: /tmp/27263.sol:14
+
+target.call.value(amount)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: Invest(), txdata: 0xc0819961, value: 0xde0b6b3a7640001
+Caller: [CREATOR], function: Divest(uint256), txdata: 0xb0a94ef701, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: PreSaleFund
+Function name: Divest(uint256)
+PC address: 1429
+Estimated Gas Usage: 2145 - 3326
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/27263.sol:27
+
+this.loggedTransfer(amount, "", msg.sender, owner)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: Invest(), txdata: 0xc0819961, value: 0xde0b6b3a7640001
+Caller: [ATTACKER], function: Divest(uint256), txdata: 0xb0a94ef701, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: PreSaleFund
+Function name: Invest()
+PC address: 1617
+Estimated Gas Usage: 5743 - 26028
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/27263.sol:21
+
+investors[msg.sender] += msg.value
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: Invest(), txdata: 0xc0819961, value: 0xde0b6b3a7640001
+Caller: [SOMEGUY], function: Invest(), txdata: 0xc0819961, value: 0xfffffffffffffffffffffffffffffffffffffffffffffffff21f494c589bffff
+

@@ -1,2 +1,0 @@
-W VAR1 W 1 RG
-VAR2 S W 4 RG

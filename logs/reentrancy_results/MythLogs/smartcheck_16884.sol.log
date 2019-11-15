@@ -1,0 +1,209 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: WithBonusPeriods
+Function name: constructor
+PC address: 219
+Estimated Gas Usage: 103662 - 508227
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit.
+--------------------
+In file: /tmp/16884.sol:181
+
+initBonusPeriod(1526342400, 1526947199, 10, 100)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: Crowdsale
+Function name: constructor
+PC address: 517
+Estimated Gas Usage: 135317 - 663736
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit.
+--------------------
+In file: /tmp/16884.sol:181
+
+initBonusPeriod(1526342400, 1526947199, 10, 100)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: WithBonusPeriods
+Function name: bonusPeriods(uint256)
+PC address: 878
+Estimated Gas Usage: 680 - 775
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/16884.sol:151
+
+BonusPeriod[] public bonusPeriods
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: transferOwnership(address), txdata: 0xf2fde38b00000000000000000000000001, value: 0x0
+Caller: [ATTACKER], function: bonusPeriods(uint256), txdata: 0xe9fdfb8980, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Crowdsale
+Function name: mintETHRewards(address,uint256)
+PC address: 4275
+Estimated Gas Usage: 824 - 1435
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/16884.sol:500
+
+_contract.call.value(_amount)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: start(uint256,uint256,address), txdata: 0xa51fe1130009c08001080110a80400094881020102ffffffffffffffffffffffffc010000009c08001080110a80400094881020103000000000000000000000000000c9900000000000000000000000080, value: 0x0
+Caller: [CREATOR], function: mintETHRewards(address,uint256), txdata: 0x18c9ef97, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: Crowdsale
+Function name: isActive()
+PC address: 4408
+Estimated Gas Usage: 2498 - 3204
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/16884.sol:573
+
+started &&
+
+
+      totalCollected < hardCap &&
+
+
+      block.timestamp >= startTimestamp &&
+      block.timestamp < endTimestamp
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: start(uint256,uint256,address), txdata: 0xa51fe11300000042001080000039590c107fffff8000000000000000000000000000000000000042001080000039590c107fffff8000000000000000000000000004000000000000000000000000000001, value: 0x0
+Caller: [CREATOR], function: isActive(), txdata: 0x22f3e2d4, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: Crowdsale
+Function name: start(uint256,uint256,address)
+PC address: 6522
+Estimated Gas Usage: 29960 - 132432
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/16884.sol:528
+
+require(_startTimestamp >= block.timestamp)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: start(uint256,uint256,address), txdata: 0xa51fe113dc0000000000b101000800000000000000030000000000000000000000000000dc0000000000b10100080000000000000003000000000000000000000003f81200000000000000000000000004, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Crowdsale
+Function name: releaseTokens()
+PC address: 7094
+Estimated Gas Usage: 3720 - 5086
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/16884.sol:663
+
+token.releaseForTransfer()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: releaseTokens(), txdata: 0xa96f8668, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Crowdsale
+Function name: mintTokenRewards(address,uint256)
+PC address: 7409
+Estimated Gas Usage: 2551 - 3777
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/16884.sol:652
+
+token.transferByCrowdsale(_contract, _amount)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: mintTokenRewards(address,uint256), txdata: 0xb23c1f19, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Crowdsale
+Function name: bonusPeriods(uint256)
+PC address: 7726
+Estimated Gas Usage: 1318 - 1413
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/16884.sol:151
+
+BonusPeriod[] public bonusPeriods
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: bonusPeriods(uint256), txdata: 0xe9fdfb8980, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: Crowdsale
+Function name: isSuccessful()
+PC address: 7803
+Estimated Gas Usage: 3013 - 3389
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/16884.sol:595
+
+block.timestamp >= endTimestamp && totalCollected >= minimalGoal
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: isSuccessful(), txdata: 0xec4cd0cf, value: 0x0
+

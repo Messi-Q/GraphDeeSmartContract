@@ -1,0 +1,23 @@
+WARNING:root:You are using solc version 0.4.21, The latest supported version is 0.4.19
+INFO:root:contract contracts/27263.sol:PreSaleFund:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 98.9%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 True
+INFO:symExec:contracts/27263.sol:28:13: Warning: Integer Underflow.
+            investors[msg.sender] -= amount
+Integer Underflow occurs if:
+    investors[msg.sender] = 95780971304118053647396689196894323976171195136475134
+    amount = 95780971304118053647396689196894323976171195136475136
+INFO:symExec:contracts/27263.sol:21:13: Warning: Integer Overflow.
+            investors[msg.sender] += msg.value
+Integer Overflow occurs if:
+    investors[msg.sender] = 67606803465988544512558867833847644795746605046665031481628858099221143297437
+INFO:symExec:contracts/27263.sol:14:11: Warning: Re-Entrancy Vulnerability.
+       if(target.call.value(amount)()
+INFO:symExec:	====== Analysis Completed ======

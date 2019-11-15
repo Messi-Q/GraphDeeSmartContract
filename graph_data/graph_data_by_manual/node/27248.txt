@@ -1,4 +1,0 @@
-S S LimitedAC W 3 MSG
-W W LimitedAC NULL 0 NULL
-C C NoLimit NULL 0 NULL
-MSG MSG W 2 BOOL

@@ -1,0 +1,118 @@
+WARNING:root:You are using evm version 1.8.2. The supported version is 1.7.3
+WARNING:root:You are using solc version 0.4.21, The latest supported version is 0.4.19
+incomplete push instruction at 22183
+INFO:root:contract contracts/39269.sol:Bakt:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 56.1%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/39269.sol:739:9: Warning: Integer Underflow.
+        TX memory tx = pendingTxs[ptxTail]
+Integer Underflow occurs if:
+    __reMutex = 338953138925153547590470800371487866880
+    holders[_addr].id = 255
+contracts/39269.sol:567:16: Warning: Integer Underflow.
+        return this.balance - committedEther
+Integer Underflow occurs if:
+    committedEther = 1
+contracts/39269.sol:1038:17: Warning: Integer Underflow.
+        return (dividendPoints - _holder.lastClaimed
+Integer Underflow occurs if:
+    dividendPoints = 0
+INFO:symExec:contracts/39269.sol:630:9: Warning: Integer Overflow.
+        from.allowances
+Integer Overflow occurs if:
+    __reMutex = 0
+    holders[_from].allowances[msg.sender] = 0
+    _amount = 0
+    holders[_addr].id = 255
+contracts/39269.sol:891:16: Warning: Integer Overflow.
+        delete holder.offerAmount
+Integer Overflow occurs if:
+    __reMutex = 0
+    trustee = 0
+contracts/39269.sol:295:5: Warning: Integer Overflow.
+    mapping (address => Holder) public holders
+contracts/39269.sol:601:16: Warning: Integer Overflow.
+        return holders[_addr].tokenBalance
+contracts/39269.sol:1038:57: Warning: Integer Overflow.
+        return (dividendPoints - _holder.lastClaimed) * _holder.tokenBalance
+contracts/39269.sol:916:16: Warning: Integer Overflow.
+        return holder.etherBalance
+contracts/39269.sol:877:9: Warning: Integer Overflow.
+        holder.offerAmount
+Integer Overflow occurs if:
+    __reMutex = 0
+    _addr = 1461501637330902918203684832716283019655932542975
+    holders[_addr].id = 0
+    _amount = 0
+    totalSupply = 340282366920938463462374607431768211455
+    trustee = 0
+contracts/39269.sol:641:9: Warning: Integer Overflow.
+        holders[msg.sender].allowances
+Integer Overflow occurs if:
+    __reMutex = 0
+contracts/39269.sol:651:16: Warning: Integer Overflow.
+        return holders[_owner].allowances
+contracts/39269.sol:791:5: Warning: Integer Overflow.
+    function execute(address _to, uint _value, bytes _data)
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _data = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/39269.sol:847:9: Warning: Integer Overflow.
+        holder.lastClaimed
+Integer Overflow occurs if:
+    __reMutex = 0
+    _addr = 1461501637330902918203684832716283019655932542975
+    holders[_addr].id = 0
+    _amount = 0
+    totalSupply = 340282366920938463462374607431768211455
+    trustee = 0
+contracts/39269.sol:1038:34: Warning: Integer Overflow.
+        return (dividendPoints - _holder.lastClaimed
+contracts/39269.sol:776:17: Warning: Integer Overflow.
+        require(holders[msg.sender].tokenBalance
+Integer Overflow occurs if:
+    __reMutex = 0
+contracts/39269.sol:1045:9: Warning: Integer Overflow.
+        _holder.etherBalance
+Integer Overflow occurs if:
+    __reMutex = 0
+    holders[_from].allowances[msg.sender] = 0
+    _amount = 0
+    holders[_addr].id = 255
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/39269.sol:BaktFactory:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 8.6%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:Flow1
+contracts/39269.sol:179:9: Warning: Transaction-Ordering Dependency.
+        owner.transfer(this.balance)
+Flow2
+contracts/39269.sol:74:9: Warning: Transaction-Ordering Dependency.
+        selfdestruct(msg.sender)
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/39269.sol:RegBase:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.4%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======

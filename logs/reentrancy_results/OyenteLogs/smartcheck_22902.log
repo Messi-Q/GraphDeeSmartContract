@@ -1,0 +1,397 @@
+WARNING:root:You are using solc version 0.4.21, The latest supported version is 0.4.19
+INFO:root:contract contracts/22902.sol:BuildingStatus:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.1%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/22902.sol:ConvertQuote:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 56.9%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/22902.sol:635:1: Warning: Integer Underflow.
+contract ConvertQuote is ETHPriceProvider {
+^
+Spanning multiple lines.
+Integer Underflow occurs if:
+    state = 0
+    OAR = 0
+    owner = 0
+contracts/22902.sol:624:25: Warning: Integer Underflow.
+      bytes32 queryId = oraclize_query(delay, "URL", url, gasLimit)
+Integer Underflow occurs if:
+    state = 0
+    oraclize = 0
+    OAR = 0
+    owner = 0
+contracts/22902.sol:435:3: Warning: Integer Underflow.
+  string public url
+INFO:symExec:contracts/22902.sol:600:3: Warning: Integer Overflow.
+  function __callback(bytes32 myid, string result) public {
+  ^
+Spanning multiple lines.
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/22902.sol:Crowdsale:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 57.8%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 True
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/22902.sol:1330:39: Warning: Integer Underflow.
+    require(checkBalanceContract() > (totalTokens - withdrawedTokens
+Integer Underflow occurs if:
+    totalTokens = 0
+    withdrawedTokens = 1
+    owner = 0
+contracts/22902.sol:1258:12: Warning: Integer Underflow.
+    return hardCapToken - totalTokens
+Integer Underflow occurs if:
+    hardCapToken = 0
+    totalTokens = 1
+contracts/22902.sol:1254:12: Warning: Integer Underflow.
+    return hardCap - usdRaised
+Integer Underflow occurs if:
+    hardCap = 33554427
+    state = 1
+    usdRaised = 115792089237316195423570985008687907851908855197956810185604085578185788358656
+    startDate = 0
+    paused = 0
+    minimalContribution = 0
+INFO:symExec:contracts/22902.sol:660:3: Warning: Integer Overflow.
+  function tokenFallback(address _from, uint _value, bytes _data) public pure {
+  ^
+Spanning multiple lines.
+INFO:symExec:Flow1
+contracts/22902.sol:1158:7: Warning: Transaction-Ordering Dependency.
+      msg.sender.transfer(msg.value)
+Flow2
+contracts/22902.sol:1346:10: Warning: Transaction-Ordering Dependency.
+    if (!msg.sender.send(ethContributed)
+INFO:symExec:contracts/22902.sol:1173:5: Warning: Timestamp Dependency.
+    if (now > endDate) {
+    ^
+Spanning multiple lines.
+contracts/22902.sol:1150:5: Warning: Timestamp Dependency.
+    require(now >= startDate)
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/22902.sol:ERC223ReceivingContract:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 21.2%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/22902.sol:660:3: Warning: Integer Overflow.
+  function tokenFallback(address _from, uint _value, bytes _data) public pure {
+  ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _data = 115792089237316195423570985008687907853269984665640564039457584007913129639932
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/22902.sol:Hold:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 76.5%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 True
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/22902.sol:914:9: Warning: Timestamp Dependency.
+        require(now > dateDeployed + 183 days)
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/22902.sol:OraclizeC:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 77.8%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/22902.sol:435:3: Warning: Integer Underflow.
+  string public url
+contracts/22902.sol:431:1: Warning: Integer Underflow.
+contract OraclizeC is Ownable, usingOraclize {
+^
+Spanning multiple lines.
+Integer Underflow occurs if:
+    owner = 0
+INFO:symExec:contracts/22902.sol:107:3: Warning: Integer Overflow.
+  function __callback(bytes32 myid, string result) public {
+  ^
+Spanning multiple lines.
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/22902.sol:Ownable:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.5%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/22902.sol:Pausable:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.8%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/22902.sol:PermissionManager:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.8%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/22902.sol:Registry:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 98.9%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/22902.sol:378:39: Warning: Integer Overflow.
+     ContributionEdited(_contributor, contributorList[_contributor].contributionETH
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 0
+contracts/22902.sol:412:9: Warning: Integer Overflow.
+        contributorList[_contributor].contributionRNTB
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 0
+contracts/22902.sol:355:9: Warning: Integer Overflow.
+        contributorList[_contributor].contributionETH
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 0
+contracts/22902.sol:385:5: Warning: Integer Overflow.
+    contributorList[_contributor].tokensIssued
+contracts/22902.sol:368:175: Warning: Integer Overflow.
+    ContributionAdded(_contributor, contributorList[_contributor].contributionETH, contributorList[_contributor].contributionUSD, contributorList[_contributor].tokensIssued, contributorList[_contributor].quoteUSD
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 255
+contracts/22902.sol:398:14: Warning: Integer Overflow.
+      return contributorList[_contributor].contributionUSD
+contracts/22902.sol:388:5: Warning: Integer Overflow.
+    nextContributorIndex++
+Integer Overflow occurs if:
+    nextContributorIndex = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/22902.sol:368:131: Warning: Integer Overflow.
+    ContributionAdded(_contributor, contributorList[_contributor].contributionETH, contributorList[_contributor].contributionUSD, contributorList[_contributor].tokensIssued
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 255
+contracts/22902.sol:368:37: Warning: Integer Overflow.
+    ContributionAdded(_contributor, contributorList[_contributor].contributionETH
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 255
+contracts/22902.sol:364:7: Warning: Integer Overflow.
+      contributorList[_contributor].contributionUSD
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 255
+contracts/22902.sol:358:9: Warning: Integer Overflow.
+        contributorList[_contributor].quoteUSD
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 0
+contracts/22902.sol:386:5: Warning: Integer Overflow.
+    contributorList[_contributor].quoteUSD
+contracts/22902.sol:366:7: Warning: Integer Overflow.
+      contributorList[_contributor].quoteUSD
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 255
+contracts/22902.sol:389:175: Warning: Integer Overflow.
+    ContributionAdded(_contributor, contributorList[_contributor].contributionETH, contributorList[_contributor].contributionUSD, contributorList[_contributor].tokensIssued, contributorList[_contributor].quoteUSD
+contracts/22902.sol:357:9: Warning: Integer Overflow.
+        contributorList[_contributor].tokensIssued
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 0
+contracts/22902.sol:383:5: Warning: Integer Overflow.
+    contributorList[_contributor].contributionETH
+contracts/22902.sol:368:84: Warning: Integer Overflow.
+    ContributionAdded(_contributor, contributorList[_contributor].contributionETH, contributorList[_contributor].contributionUSD
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 255
+contracts/22902.sol:389:84: Warning: Integer Overflow.
+    ContributionAdded(_contributor, contributorList[_contributor].contributionETH, contributorList[_contributor].contributionUSD
+contracts/22902.sol:378:133: Warning: Integer Overflow.
+     ContributionEdited(_contributor, contributorList[_contributor].contributionETH, contributorList[_contributor].contributionUSD, contributorList[_contributor].tokensIssued
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 0
+contracts/22902.sol:414:9: Warning: Integer Overflow.
+        nextContributorIndex++
+Integer Overflow occurs if:
+    nextContributorIndex = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    contributorList[_contributor].isActive = 0
+contracts/22902.sol:389:131: Warning: Integer Overflow.
+    ContributionAdded(_contributor, contributorList[_contributor].contributionETH, contributorList[_contributor].contributionUSD, contributorList[_contributor].tokensIssued
+contracts/22902.sol:384:5: Warning: Integer Overflow.
+    contributorList[_contributor].contributionUSD
+contracts/22902.sol:416:7: Warning: Integer Overflow.
+      contributorList[_contributor].contributionETH
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 255
+contracts/22902.sol:363:7: Warning: Integer Overflow.
+      contributorList[_contributor].contributionETH
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 255
+contracts/22902.sol:312:3: Warning: Integer Overflow.
+  mapping(address => ContributorData) public contributorList
+contracts/22902.sol:364:7: Warning: Integer Overflow.
+      contributorList[_contributor].contributionUSD += _amusd
+Integer Overflow occurs if:
+    contributorList[_contributor].contributionUSD = 1
+    _amusd = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    contributorList[_contributor].isActive = 255
+contracts/22902.sol:361:9: Warning: Integer Overflow.
+        nextContributorIndex++
+Integer Overflow occurs if:
+    nextContributorIndex = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    contributorList[_contributor].isActive = 0
+contracts/22902.sol:394:14: Warning: Integer Overflow.
+      return contributorList[_contributor].contributionETH
+contracts/22902.sol:374:9: Warning: Integer Overflow.
+        contributorList[_contributor].contributionUSD
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 255
+contracts/22902.sol:365:7: Warning: Integer Overflow.
+      contributorList[_contributor].tokensIssued += _tokens
+Integer Overflow occurs if:
+    contributorList[_contributor].tokensIssued = 1
+    _tokens = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    contributorList[_contributor].isActive = 255
+contracts/22902.sol:376:9: Warning: Integer Overflow.
+        contributorList[_contributor].quoteUSD
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 255
+contracts/22902.sol:375:9: Warning: Integer Overflow.
+        contributorList[_contributor].tokensIssued
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 255
+contracts/22902.sol:356:9: Warning: Integer Overflow.
+        contributorList[_contributor].contributionUSD
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 0
+contracts/22902.sol:378:177: Warning: Integer Overflow.
+     ContributionEdited(_contributor, contributorList[_contributor].contributionETH, contributorList[_contributor].contributionUSD, contributorList[_contributor].tokensIssued, contributorList[_contributor].quoteUSD
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 0
+contracts/22902.sol:365:7: Warning: Integer Overflow.
+      contributorList[_contributor].tokensIssued
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 255
+contracts/22902.sol:378:86: Warning: Integer Overflow.
+     ContributionEdited(_contributor, contributorList[_contributor].contributionETH, contributorList[_contributor].contributionUSD
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 0
+contracts/22902.sol:416:7: Warning: Integer Overflow.
+      contributorList[_contributor].contributionETH += _amount
+Integer Overflow occurs if:
+    contributorList[_contributor].contributionETH = 1
+    _amount = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    contributorList[_contributor].isActive = 255
+contracts/22902.sol:363:7: Warning: Integer Overflow.
+      contributorList[_contributor].contributionETH += _amount
+Integer Overflow occurs if:
+    contributorList[_contributor].contributionETH = 1
+    _amount = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    contributorList[_contributor].isActive = 255
+contracts/22902.sol:402:14: Warning: Integer Overflow.
+      return contributorList[_contributor].contributionRNTB
+contracts/22902.sol:389:37: Warning: Integer Overflow.
+    ContributionAdded(_contributor, contributorList[_contributor].contributionETH
+contracts/22902.sol:406:14: Warning: Integer Overflow.
+      return contributorList[_contributor].tokensIssued
+contracts/22902.sol:373:9: Warning: Integer Overflow.
+        contributorList[_contributor].contributionETH
+Integer Overflow occurs if:
+    contributorList[_contributor].isActive = 255
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/22902.sol:SafeMath:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 100.0%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/22902.sol:UnityToken:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 67.6%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/22902.sol:750:3: Warning: Integer Overflow.
+  function transfer(address _to, uint _value, bytes _data) public returns (bool success) {
+  ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _data = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/22902.sol:555:17: Warning: Integer Overflow.
+    uint256 c = a + b
+Integer Overflow occurs if:
+    balances[_to] = 85653202831209899131921273706816539903532775246499202405936884825549521553152
+    _value = 44369063854674067291029404066660873444229566625561754964912869797988903417852
+    balances[_owner] = 44369063854674067291029404066660873444229566625561754964912869797988903417852
+contracts/22902.sol:733:3: Warning: Integer Overflow.
+  function transfer(address _to, uint _value, bytes _data, string _custom_fallback) public returns (bool success) {
+  ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _data = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/22902.sol:usingOraclize:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 58.5%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/22902.sol:107:3: Warning: Integer Overflow.
+  function __callback(bytes32 myid, string result) public {
+  ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    result = 115792089237316195423570985008687907853269984665640564039457584007913129639932
+INFO:symExec:	====== Analysis Completed ======

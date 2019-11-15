@@ -1,0 +1,213 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: SafeMath
+Function name: safeSub(uint256,uint256)
+PC address: 416
+Estimated Gas Usage: 241 - 336
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/14458.sol:20
+
+assert(b <= a)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: safeSub(uint256,uint256), txdata: 0xa293d1e8000000000000000000000000000000000000000000000000000000000000008001, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: SafeMath
+Function name: safeDiv(uint256,uint256)
+PC address: 440
+Estimated Gas Usage: 260 - 355
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/14458.sol:16
+
+a / b
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: safeDiv(uint256,uint256), txdata: 0xb5931f7c, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: SafeMath
+Function name: safeAdd(uint256,uint256)
+PC address: 532
+Estimated Gas Usage: 344 - 439
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/14458.sol:26
+
+assert(c>=a && c>=b)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: safeAdd(uint256,uint256), txdata: 0xe6cb901301f080a8028c0ac207c3a44480b5b0e9d39148fffffdfffffffbfd4f82bab260ff, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: BankeraToken
+Function name: setReward(uint64,uint256)
+PC address: 5183
+Estimated Gas Usage: 3276 - 4881
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/14458.sol:123
+
+assert(rewardInfo.roundNumber == _roundNumber)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: setReward(uint64,uint256), txdata: 0x205360e000000000000000000000000000000000000000000000000001, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 120
+Severity: Low
+Contract: BankeraToken
+Function name: createRounds(uint256)
+PC address: 8839
+Estimated Gas Usage: 1568 - 1663
+A control flow decision is made based on a predictable variable.
+The block.number environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/14458.sol:433
+
+if(blocksAfterLastRound >= blocksPerRound){
+
+                        uint256 roundsNeedToCreate = safeDiv(blocksAfterLastRound, blocksPerRound);
+                        if(roundsNeedToCreate > maxRounds){
+                                roundsNeedToCreate = maxRounds;
+                        }
+                        lastBlockNumberInRound = safeAdd(lastBlockNumberInRound, safeMul(roundsNeedToCreate, blocksPerRound));
+                        for (uint256 i = 0; i < roundsNeedToCreate; i++) {
+                                updateRoundInformation();
+                        }
+                }
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: createRounds(uint256), txdata: 0x76323253, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 120
+Severity: Low
+Contract: BankeraToken
+Function name: setReward(uint64,uint256)
+PC address: 9704
+Estimated Gas Usage: 14279 - 56544
+A control flow decision is made based on a predictable variable.
+The block.number environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/14458.sol:20
+
+assert(b <= a)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: setReward(uint64,uint256), txdata: 0x205360e0, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: BankeraToken
+Function name: safeSub(uint256,uint256)
+PC address: 9705
+Estimated Gas Usage: 835 - 930
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/14458.sol:20
+
+assert(b <= a)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: safeSub(uint256,uint256), txdata: 0xa293d1e8000000000000000000000000000000000000000000000000000000000000008001, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: BankeraToken
+Function name: transferFrom(address,address,uint256)
+PC address: 9935
+Estimated Gas Usage: 5401 - 6776
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/14458.sol:16
+
+a / b
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: transferFrom(address,address,uint256), txdata: 0x23b872dd010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: BankeraToken
+Function name: safeAdd(uint256,uint256)
+PC address: 11736
+Estimated Gas Usage: 1136 - 1231
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/14458.sol:26
+
+assert(c>=a && c>=b)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: safeAdd(uint256,uint256), txdata: 0xe6cb901301f9ded8c1279ac4340829b0edc896d8a82501250920c8d3835341ec880591d8ff, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 120
+Severity: Low
+Contract: BankeraToken
+Function name: setReward(uint64,uint256)
+PC address: 12952
+Estimated Gas Usage: 14279 - 56544
+A control flow decision is made based on a predictable variable.
+The block.number environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/14458.sol:459
+
+if(blocksAfterLastRound >= blocksPerRound){
+                        updateRoundsInformation(blocksAfterLastRound);
+                }
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: setReward(uint64,uint256), txdata: 0x205360e0, value: 0x0
+

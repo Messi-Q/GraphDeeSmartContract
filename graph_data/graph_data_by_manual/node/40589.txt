@@ -1,3 +1,0 @@
-S S LimitedAC W 3 MSG
-W W LimitedAC C 4 NULL
-C C LimitedAC NULL 0 NULL

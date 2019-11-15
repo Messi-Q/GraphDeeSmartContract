@@ -4,11 +4,9 @@ import argparse
 def parameter_parser():
     # Experiment parameters
     parser = argparse.ArgumentParser(description='Smart contract vulnerability detection based on graph neural network')
-    parser.add_argument('-D', '--dataset', type=str, default='SMART_CONTRACT_COMPARE_CHEM_FULLNODES_1584',
-                        choices=['SMART_CONTRACT_BY_AUTOMATIC_TOOL', 'SMART_CONTRACT_BY_MANUAL',
-                                 'SMART_CONTRACT_COMPARE_CHEM_FULLNODES_1486', 'SMART_CONTRACT_COMPARE_CHEM_CORENODES_1486',
-                                 'SMART_CONTRACT_COMPARE_CHEM_CORENODES_1764', 'SMART_CONTRACT_COMPARE_CHEM_CORENODES_1584',
-                                 'SMART_CONTRACT_COMPARE_CHEM_FULLNODES_1584'])
+    parser.add_argument('-D', '--dataset', type=str, default='REENTRANCY_FULLNODES_1671',
+                        choices=['REENTRANCY_CORENODES_1671', 'REENTRANCY_FULLNODES_1671',
+                                 'LOOP_CORENODES_1317', 'LOOP_FULLNODES_1317'])
     parser.add_argument('-M', '--model', type=str, default='gcn_modify',
                         choices=['gcn_modify', 'mgcn', 'gat', 'gcn_origin'])
     parser.add_argument('--lr', type=float, default=0.002, help='learning rate')
@@ -16,7 +14,7 @@ def parameter_parser():
     parser.add_argument('--wd', type=float, default=1e-4, help='weight decay')
     parser.add_argument('-d', '--dropout', type=float, default=0.2, help='dropout rate')
     parser.add_argument('-f', '--filters', type=str, default='64,64,64', help='number of filters in each layer')
-    parser.add_argument('--n_hidden', type=int, default=250,
+    parser.add_argument('--n_hidden', type=int, default=256,
                         help='number of hidden units in a fully connected layer after the last conv layer')
     parser.add_argument('--epochs', type=int, default=50, help='number of epochs')
     parser.add_argument('-b', '--batch_size', type=int, default=32, help='batch size')

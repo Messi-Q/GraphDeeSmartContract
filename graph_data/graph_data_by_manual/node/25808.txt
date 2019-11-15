@@ -1,3 +1,0 @@
-S S NoLimit W 2 MSG
-W W NoLimit NULL 0 NULL
-C C NoLimit NULL 0 NULL

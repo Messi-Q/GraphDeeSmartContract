@@ -1,0 +1,80 @@
+WARNING:root:You are using an untested version of z3. 4.5.0 is the officially tested version
+WARNING:root:You are using solc version 0.4.25, The latest supported version is 0.4.17
+INFO:root:Contract smart_contract_source_code/21900.sol:BasicToken:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 99.6%
+INFO:symExec:	  Callstack bug: 	 False
+INFO:symExec:	  Money concurrency bug: False
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 False
+INFO:root:Contract smart_contract_source_code/21900.sol:Crowdsale:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 99.7%
+INFO:symExec:	  Callstack bug: 	 False
+INFO:symExec:	  Money concurrency bug: False
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 True
+smart_contract_source_code/21900.sol:Crowdsale:204:17
+owner.call.value(msg.value)()
+^
+INFO:root:Contract smart_contract_source_code/21900.sol:GGPCToken:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 90.8%
+INFO:symExec:	  Callstack bug: 	 False
+INFO:symExec:	  Money concurrency bug: False
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 True
+smart_contract_source_code/21900.sol:GGPCToken:204:17
+owner.call.value(msg.value)()
+^
+INFO:root:Contract smart_contract_source_code/21900.sol:Ownable:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 99.5%
+INFO:symExec:	  Callstack bug: 	 False
+INFO:symExec:	  Money concurrency bug: False
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 False
+INFO:root:Contract smart_contract_source_code/21900.sol:Pausable:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 99.8%
+INFO:symExec:	  Callstack bug: 	 False
+INFO:symExec:	  Money concurrency bug: False
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 False
+INFO:root:Contract smart_contract_source_code/21900.sol:PausableToken:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 99.9%
+INFO:symExec:	  Callstack bug: 	 False
+INFO:symExec:	  Money concurrency bug: False
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 False
+INFO:root:Contract smart_contract_source_code/21900.sol:SafeMath:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 100.0%
+INFO:symExec:	  Callstack bug: 	 False
+INFO:symExec:	  Money concurrency bug: False
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 False
+INFO:root:Contract smart_contract_source_code/21900.sol:StandardToken:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 99.8%
+INFO:symExec:	  Callstack bug: 	 False
+INFO:symExec:	  Money concurrency bug: False
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 False
+INFO:symExec:	====== Analysis Completed ======
+INFO:symExec:	====== Analysis Completed ======
+INFO:symExec:	====== Analysis Completed ======
+INFO:symExec:	====== Analysis Completed ======
+INFO:symExec:	====== Analysis Completed ======
+INFO:symExec:	====== Analysis Completed ======
+INFO:symExec:	====== Analysis Completed ======
+INFO:symExec:	====== Analysis Completed ======

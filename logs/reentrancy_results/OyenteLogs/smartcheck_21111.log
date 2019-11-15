@@ -1,0 +1,207 @@
+WARNING:root:You are using solc version 0.4.21, The latest supported version is 0.4.19
+INFO:root:contract contracts/21111.sol:ERC20:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.3%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/21111.sol:PresalePool:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 65.5%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/21111.sol:82:3: Warning: Integer Overflow.
+  uint[] public ethRefundAmount
+contracts/21111.sol:228:25: Warning: Integer Overflow.
+      uint pct = _toPct(c.balance
+Integer Overflow occurs if:
+    ethRefundAmount.length = 1
+    tokenAddr = 1461501637330902918203684832716283019655932542975
+    contractStage = 3
+contracts/21111.sol:420:19: Warning: Integer Overflow.
+    for (uint i = c.tokensClaimed
+contracts/21111.sol:421:58: Warning: Integer Overflow.
+      tokenAmount = tokenAmount.add(_applyPct(c.balance, d.pct
+contracts/21111.sol:399:15: Warning: Integer Overflow.
+    balance = c.balance
+contracts/21111.sol:319:5: Warning: Integer Overflow.
+    contributionCaps[level]
+Integer Overflow occurs if:
+    level = 2361183241434822606846
+    contributionCaps.length = 2361183241434822606848
+    cap = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    owner = 2
+    contributionCaps[0] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/21111.sol:241:14: Warning: Integer Overflow.
+      for (i=c.tokensClaimed
+Integer Overflow occurs if:
+    ethRefundAmount.length = 0
+    tokenAddr = 1461501637330902918203684832716283019655932542975
+    contractStage = 3
+contracts/21111.sol:242:59: Warning: Integer Overflow.
+        tokenAmount = tokenAmount.add(_applyPct(c.balance,d.pct
+Integer Overflow occurs if:
+    ethRefundAmount.length = 0
+    tokenAddr = 1461501637330902918203684832716283019655932542975
+    contractStage = 3
+contracts/21111.sol:421:47: Warning: Integer Overflow.
+      tokenAmount = tokenAmount.add(_applyPct(c.balance
+contracts/21111.sol:242:59: Warning: Integer Overflow.
+        tokenAmount = tokenAmount.add(_applyPct(c.balance,d.pct[i]
+Integer Overflow occurs if:
+    ethRefundAmount.length = 0
+    tokenAddr = 1461501637330902918203684832716283019655932542975
+    contractStage = 3
+contracts/21111.sol:303:19: Warning: Integer Overflow.
+    uint amount = c.balance
+Integer Overflow occurs if:
+    owner = 2
+    cap = 0
+    contributionCaps.length = 1
+contracts/21111.sol:420:51: Warning: Integer Overflow.
+    for (uint i = c.tokensClaimed[tokenAddr]; i < d.pct
+contracts/21111.sol:57:3: Warning: Integer Overflow.
+  uint[] public contributionCaps
+contracts/21111.sol:239:24: Warning: Integer Overflow.
+    if (d.pct.length > c.tokensClaimed
+Integer Overflow occurs if:
+    ethRefundAmount.length = 0
+    tokenAddr = 1461501637330902918203684832716283019655932542975
+    contractStage = 3
+contracts/21111.sol:490:5: Warning: Integer Overflow.
+    d.pct
+Integer Overflow occurs if:
+    owner = 3
+    locked = 0
+    feePct = 0
+    notDefault = 0
+contracts/21111.sol:188:5: Warning: Integer Overflow.
+    ethRefundAmount.push(msg.value)
+Integer Overflow occurs if:
+    contractStage = 3
+    ethRefundAmount.push(msg.value) = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/21111.sol:421:58: Warning: Integer Overflow.
+      tokenAmount = tokenAmount.add(_applyPct(c.balance, d.pct[i]
+contracts/21111.sol:304:5: Warning: Integer Overflow.
+    c.cap
+Integer Overflow occurs if:
+    owner = 2
+    cap = 0
+    contributionCaps.length = 1
+contracts/21111.sol:403:17: Warning: Integer Overflow.
+          cap = contributionCaps[cap]
+Integer Overflow occurs if:
+    contributionCaps.length = 115792089237316195423570985008687907853269984665640564039457583867175641284608
+    contractStage = 1
+    nextCapTime = 0
+contracts/21111.sol:489:5: Warning: Integer Overflow.
+    d.balanceRemaining
+Integer Overflow occurs if:
+    owner = 3
+    locked = 0
+    feePct = 0
+    notDefault = 0
+contracts/21111.sol:397:13: Warning: Integer Overflow.
+      cap = c.cap
+contracts/21111.sol:352:39: Warning: Integer Overflow.
+      if (contributionCaps[i]>amount) contributionCaps[i]
+Integer Overflow occurs if:
+    contributionCaps[0] = 57896044618658097711785492504343953926634992332820282019728792003956564819968
+    amount = 100000000000000000
+    owner = 2
+    contributionCaps[i] = 100000000000000001
+    contributionCaps[i] = 100000000000000000
+    contributionCaps[i] = 100000000000000000
+    contributionCaps[i] = 100000000000000000
+contracts/21111.sol:239:9: Warning: Integer Overflow.
+    if (d.pct
+Integer Overflow occurs if:
+    ethRefundAmount.length = 0
+    tokenAddr = 1461501637330902918203684832716283019655932542975
+    contractStage = 3
+contracts/21111.sol:271:3: Warning: Integer Overflow.
+  function authorizeMany (address[] addr, uint cap) public onlyOwner {
+  ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    addr = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/21111.sol:405:17: Warning: Integer Overflow.
+          cap = nextContributionCaps[cap]
+Integer Overflow occurs if:
+    nextCapTime = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    nextContributionCaps[cap] = 115792089237316195423558725044360980742403117889423361565988634094660782915584
+    contributionCaps.length = 115792089237316195423558725044360980742403117889423361565988634094660782915584
+    contractStage = 1
+contracts/21111.sol:242:49: Warning: Integer Overflow.
+        tokenAmount = tokenAmount.add(_applyPct(c.balance
+Integer Overflow occurs if:
+    ethRefundAmount.length = 0
+    tokenAddr = 1461501637330902918203684832716283019655932542975
+    contractStage = 3
+contracts/21111.sol:179:5: Warning: Integer Overflow.
+    c.balance
+Integer Overflow occurs if:
+    contributionCaps[0] = 1
+    contributionCaps[0] = 0
+    contractStage = 1
+    nextCapTime = 0
+contracts/21111.sol:352:11: Warning: Integer Overflow.
+      if (contributionCaps[i]
+Integer Overflow occurs if:
+    contributionCaps[0] = 57896044618658097711785492504343953926634992332820282019728792003956564819968
+    amount = 100000000000000000
+    owner = 2
+contracts/21111.sol:76:3: Warning: Integer Overflow.
+  uint [] public nextContributionCaps
+contracts/21111.sol:241:44: Warning: Integer Overflow.
+      for (i=c.tokensClaimed[tokenAddr]; i<d.pct
+Integer Overflow occurs if:
+    ethRefundAmount.length = 0
+    tokenAddr = 1461501637330902918203684832716283019655932542975
+    contractStage = 3
+contracts/21111.sol:40:1: Warning: Integer Overflow.
+contract PresalePool {
+^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    ethRefundAmount.push(msg.value) = 105782898658114362639998236590588058411517566113314665475433552748888561006558
+    contractStage = 3
+contracts/21111.sol:227:34: Warning: Integer Overflow.
+    if (ethRefundAmount.length > c.ethRefund
+Integer Overflow occurs if:
+    ethRefundAmount.length = 1
+    tokenAddr = 1461501637330902918203684832716283019655932542975
+    contractStage = 3
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/21111.sol:SafeMath:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 100.0%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/21111.sol:WhiteList:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 98.7%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======

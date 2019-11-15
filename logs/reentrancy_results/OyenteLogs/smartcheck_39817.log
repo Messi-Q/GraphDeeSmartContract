@@ -1,0 +1,112 @@
+WARNING:root:You are using evm version 1.8.2. The supported version is 1.7.3
+WARNING:root:You are using solc version 0.4.21, The latest supported version is 0.4.19
+INFO:root:contract contracts/39817.sol:ProfitContainerAdapter:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 96.7%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 True
+INFO:symExec:contracts/39817.sol:467:16: Warning: Re-Entrancy Vulnerability.
+        assert(profitContainerLocation.call.value(this.balance)()
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/39817.sol:SafeMath:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 100.0%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/39817.sol:ShopKeeper:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 65.2%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/39817.sol:393:5: Warning: Integer Overflow.
+    function configureTokenDividend(address token_, bool hD_, address dA_, bytes dD_) onlyA {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    dD_ = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/39817.sol:Token:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 69.5%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/39817.sol:62:3: Warning: Integer Underflow.
+  string public name
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/39817.sol:ValueToken:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 83.6%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/39817.sol:62:3: Warning: Integer Underflow.
+  string public name
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/39817.sol:ValueTrader:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 50.4%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/39817.sol:62:3: Warning: Integer Underflow.
+  string public name
+contracts/39817.sol:207:16: Warning: Integer Underflow.
+        assert(tokenManage[token_].divContractAddress.call.value(0)(tokenManage[token_].divData)
+Integer Underflow occurs if:
+    tokenManage[token_].divContractAddress.call.value(0)(tokenManage[token_].divData) = 1
+    tokenManage[token_].hasDividend = 255
+    owner = 0
+INFO:symExec:contracts/39817.sol:207:16: Warning: Integer Overflow.
+        assert(tokenManage[token_].divContractAddress
+Integer Overflow occurs if:
+    tokenManage[token_].hasDividend = 255
+    owner = 0
+contracts/39817.sol:207:69: Warning: Integer Overflow.
+        assert(tokenManage[token_].divContractAddress.call.value(0)(tokenManage[token_].divData
+Integer Overflow occurs if:
+    tokenManage[token_].hasDividend = 255
+    owner = 0
+contracts/39817.sol:198:5: Warning: Integer Overflow.
+    function configureTokenDividend(address token_, bool hD_, address dA_, bytes dD_) owned {
+    ^
+Spanning multiple lines.
+contracts/39817.sol:207:16: Warning: Integer Overflow.
+        assert(tokenManage[token_].divContractAddress.call.value(0)(tokenManage[token_].divData)
+Integer Overflow occurs if:
+    tokenManage[token_].divContractAddress.call.value(0)(tokenManage[token_].divData) = 115792089237316195423570985008687907853269984665640564039457584007913129639681
+    tokenManage[token_].hasDividend = 255
+    owner = 0
+INFO:symExec:contracts/39817.sol:299:16: Warning: Callstack Depth Attack Vulnerability.
+        assert(msg.sender.call.value(amount)()
+contracts/39817.sol:313:18: Warning: Callstack Depth Attack Vulnerability.
+          assert(msg.sender.call.value(outValue)()
+INFO:symExec:	====== Analysis Completed ======

@@ -1,0 +1,346 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: Multiplexor
+Function name: multiCall(address[],uint256[])
+PC address: 284
+Estimated Gas Usage: 1676 - 41970
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/23421.sol:229
+
+function multiCall(address[] _address, uint[] _amount) payable public returns(bool) {
+        for (uint i = 0; i < _address.length; i++) {
+            _safeCall(_address[i], _amount[i]);
+        }
+        return true;
+    }
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: multiCall(address[],uint256[]), txdata: 0x1476e40fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdc, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: Multiplexor
+Function name: multiCall(address[],uint256[])
+PC address: 345
+Estimated Gas Usage: 1676 - 41970
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/23421.sol:229
+
+function multiCall(address[] _address, uint[] _amount) payable public returns(bool) {
+        for (uint i = 0; i < _address.length; i++) {
+            _safeCall(_address[i], _amount[i]);
+        }
+        return true;
+    }
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: multiCall(address[],uint256[]), txdata: 0x1476e40f8000000000000000000000000000000000000000000000000000000000000010ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: Multiplexor
+Function name: multiTransfer(address[],uint256[])
+PC address: 525
+Estimated Gas Usage: 1726 - 42020
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/23421.sol:215
+
+function multiTransfer(address[] _address, uint[] _amount) payable public returns(bool) {
+        for (uint i = 0; i < _address.length; i++) {
+            _safeTransfer(_address[i], _amount[i]);
+        }
+        return true;
+    }
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: multiTransfer(address[],uint256[]), txdata: 0x1e89d5458000000000000000000000000000000000000000000000000000000000000010fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: Multiplexor
+Function name: multiTransferTightlyPacked(bytes32[])
+PC address: 731
+Estimated Gas Usage: 1658 - 39695
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/23421.sol:208
+
+function multiTransferTightlyPacked(bytes32[] _addressAndAmount) payable public returns(bool) {
+        for (uint i = 0; i < _addressAndAmount.length; i++) {
+            _safeTransfer(address(_addressAndAmount[i] >> 96), uint(uint96(_addressAndAmount[i])));
+        }
+        return true;
+    }
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: multiTransferTightlyPacked(bytes32[]), txdata: 0x2a17e397ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdc, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: Multiplexor
+Function name: multiCallTightlyPacked(bytes32[])
+PC address: 1538
+Estimated Gas Usage: 1828 - 39865
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/23421.sol:222
+
+function multiCallTightlyPacked(bytes32[] _addressAndAmount) payable public returns(bool) {
+        for (uint i = 0; i < _addressAndAmount.length; i++) {
+            _safeCall(address(_addressAndAmount[i] >> 96), uint(uint96(_addressAndAmount[i])));
+        }
+        return true;
+    }
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: multiCallTightlyPacked(bytes32[]), txdata: 0xac66777fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdc, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Multiplexor
+Function name: multiCall(address[],uint256[])
+PC address: 2179
+Estimated Gas Usage: 1689 - 41981
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/23421.sol:231
+
+_amount[i]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: multiCall(address[],uint256[]), txdata: 0x1476e40f8000000000000000000000000000000000000000000000000000000000000000c0, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Multiplexor
+Function name: multiTransfer(address[],uint256[])
+PC address: 2276
+Estimated Gas Usage: 1739 - 42031
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/23421.sol:217
+
+_amount[i]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: multiTransfer(address[],uint256[]), txdata: 0x1e89d5458000000000000000000000000000000000000000000000000000000000000000c0, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Multiplexor
+Function name: multiERC20Transfer(address,address[],uint256[])
+PC address: 2966
+Estimated Gas Usage: 830 - 6471
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/23421.sol:245
+
+_amount[i]
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: multiERC20Transfer(address,address[],uint256[]), txdata: 0x35a21728000000000000000000000000000000000000000000000000000000000000000080, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Escapable
+Function name: escapeHatch(address)
+PC address: 3285
+Estimated Gas Usage: 2756 - 4407
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/23421.sol:177
+
+token.balanceOf(this)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: escapeHatch(address), txdata: 0xa142d60800000000000000000000000001, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Escapable
+Function name: escapeHatch(address)
+PC address: 3543
+Estimated Gas Usage: 4874 - 41512
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/23421.sol:178
+
+token.transfer(escapeHatchDestination, balance)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: escapeHatch(address), txdata: 0xa142d60800000000000000000000000001, value: 0x0
+
+==== Multiple Calls in a Single Transaction ====
+SWC ID: 113
+Severity: Low
+Contract: Escapable
+Function name: escapeHatch(address)
+PC address: 3543
+Estimated Gas Usage: 6557 - 78013
+Multiple calls are executed in the same transaction.
+This call is executed after a previous call in the same transaction. Try to isolate each call, transfer or send into its own transaction.
+--------------------
+In file: /tmp/23421.sol:178
+
+token.transfer(escapeHatchDestination, balance)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: escapeHatch(address), txdata: 0xa142d60800000000000000000000000001, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Multiplexor
+Function name: escapeHatch(address)
+PC address: 4853
+Estimated Gas Usage: 2844 - 4495
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/23421.sol:177
+
+token.balanceOf(this)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: escapeHatch(address), txdata: 0xa142d60800000000000000000000000001, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: Multiplexor
+Function name: multiCall(address[],uint256[])
+PC address: 6235
+Estimated Gas Usage: 1813 - 42384
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/23421.sol:257
+
+_to.call.value(_amount)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: multiCall(address[],uint256[]), txdata: 0x1476e40f80, value: 0x0
+
+==== Unprotected Ether Withdrawal ====
+SWC ID: 105
+Severity: High
+Contract: Multiplexor
+Function name: multiCallTightlyPacked(bytes32[])
+PC address: 6235
+Estimated Gas Usage: 938 - 4601
+Anyone can withdraw ETH from the contract account.
+Arbitrary senders other than the contract creator can withdraw ETH from the contract account without previously having sent an equivalent amount of ETH to it. This is likely to be a vulnerability.
+--------------------
+In file: /tmp/23421.sol:257
+
+_to.call.value(_amount)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: multiCallTightlyPacked(bytes32[]), txdata: 0xac66777f81, value: 0x0
+
+==== Unprotected Ether Withdrawal ====
+SWC ID: 105
+Severity: High
+Contract: Multiplexor
+Function name: multiTransferTightlyPacked(bytes32[])
+PC address: 6340
+Estimated Gas Usage: 761 - 4424
+Anyone can withdraw ETH from the contract account.
+Arbitrary senders other than the contract creator can withdraw ETH from the contract account without previously having sent an equivalent amount of ETH to it. This is likely to be a vulnerability.
+--------------------
+In file: /tmp/23421.sol:252
+
+_to.transfer(_amount)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: multiTransferTightlyPacked(bytes32[]), txdata: 0x2a17e39782, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: Multiplexor
+Function name: multiERC20Transfer(address,address[],uint256[])
+PC address: 6623
+Estimated Gas Usage: 1802 - 8102
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/23421.sol:262
+
+_token.transferFrom(msg.sender, _to, _amount)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: multiERC20Transfer(address,address[],uint256[]), txdata: 0x35a21728000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef80, value: 0x0
+

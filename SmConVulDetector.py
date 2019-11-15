@@ -66,7 +66,7 @@ class DataReader():
             if data['features'] is not None:
                 assert N == len(data['features'][sample_id]), (N, len(data['features'][sample_id]))
             n = np.sum(adj)  # total sum of edges
-            assert n % 2 == 0, n
+            # assert n % 2 == 0, n
             n_edges.append(int(n / 2))  # undirected edges, so need to divide by 2
             if not np.allclose(adj, adj.T):
                 print(sample_id, 'not symmetric')

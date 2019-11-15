@@ -1,0 +1,80 @@
+WARNING:root:You are using solc version 0.4.21, The latest supported version is 0.4.19
+INFO:root:contract contracts/17518.sol:Delegable:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 84.3%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/17518.sol:25:5: Warning: Integer Overflow.
+    mapping(address => DelegateLog) public delegates
+contracts/17518.sol:63:9: Warning: Integer Overflow.
+        delegateLog.ended
+Integer Overflow occurs if:
+    owner = 0
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/17518.sol:Ownable:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.5%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/17518.sol:RipioOracle:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 47.4%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  True
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/17518.sol:138:9: Warning: Integer Underflow.
+        return infoUrl
+Integer Underflow occurs if:
+    return infoUrl = 1
+INFO:symExec:contracts/17518.sol:84:5: Warning: Integer Overflow.
+    function addCurrency(string ticker) public onlyOwner returns (bool) {
+    ^
+Spanning multiple lines.
+contracts/17518.sol:93:5: Warning: Integer Overflow.
+    function encodeCurrency(string currency) public pure returns (bytes32 o) {
+    ^
+Spanning multiple lines.
+contracts/17518.sol:169:5: Warning: Integer Overflow.
+    function sendTransaction(address to, uint256 value, bytes data) public onlyOwner returns (bool) {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    data = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/17518.sol:63:9: Warning: Integer Overflow.
+        delegateLog.ended
+Integer Overflow occurs if:
+    owner = 0
+contracts/17518.sol:75:5: Warning: Integer Overflow.
+    bytes32[] public currencies
+contracts/17518.sol:25:5: Warning: Integer Overflow.
+    mapping(address => DelegateLog) public delegates
+contracts/17518.sol:175:5: Warning: Integer Overflow.
+    function getRate(bytes32 currency, bytes data) public returns (uint256, uint256) {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    data = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/17518.sol:148:5: Warning: Integer Overflow.
+    function setUrl(string _url) public onlyOwner returns (bool) {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    _url = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:contracts/17518.sol:170:16: Warning: Callstack Depth Attack Vulnerability.
+        return to.call.value(value)(data)
+INFO:symExec:	====== Analysis Completed ======

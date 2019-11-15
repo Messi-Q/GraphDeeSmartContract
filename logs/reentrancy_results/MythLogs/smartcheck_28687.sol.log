@@ -1,0 +1,302 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: Log
+Function name: AddMessage(address,uint256,string)
+PC address: 163
+Estimated Gas Usage: 60464 - 284795
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/28687.sol:55
+
+function AddMessage(address _adr,uint _val,string _data)
+    public
+    {
+        LastMsg.Sender = _adr;
+        LastMsg.Time = now;
+        LastMsg.Val = _val;
+        LastMsg.Data = _data;
+        History.push(LastMsg);
+    }
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: AddMessage(address,uint256,string), txdata: 0x4c2f04a4ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdc, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: Log
+Function name: AddMessage(address,uint256,string)
+PC address: 184
+Estimated Gas Usage: 50324 - 234469
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/28687.sol:55
+
+function AddMessage(address _adr,uint _val,string _data)
+    public
+    {
+        LastMsg.Sender = _adr;
+        LastMsg.Time = now;
+        LastMsg.Val = _val;
+        LastMsg.Data = _data;
+        History.push(LastMsg);
+    }
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: AddMessage(address,uint256,string), txdata: 0x4c2f04a4ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff80, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: PrivateBank
+Function name: CashOut(uint256)
+PC address: 426
+Estimated Gas Usage: 787 - 1258
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/28687.sol:29
+
+msg.sender.call.value(_am)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: CashOut(uint256), txdata: 0x9ffa0711, value: 0x0
+Caller: [ATTACKER], function: CashOut(uint256), txdata: 0x9ffa0711, value: 0x0
+
+==== Unchecked Call Return Value ====
+SWC ID: 104
+Severity: Low
+Contract: PrivateBank
+Function name: CashOut(uint256)
+PC address: 426
+Estimated Gas Usage: 1525 - 35996
+The return value of a message call is not checked.
+External calls return a boolean value. If the callee contract halts with an exception, 'false' is returned and execution continues in the caller. It is usually recommended to wrap external calls into a require statement to prevent unexpected states.
+--------------------
+In file: /tmp/28687.sol:29
+
+msg.sender.call.value(_am)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: CashOut(uint256), txdata: 0x9ffa0711, value: 0x0
+Caller: [ATTACKER], function: CashOut(uint256), txdata: 0x9ffa0711, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Medium
+Contract: PrivateBank
+Function name: CashOut(uint256)
+PC address: 510
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/28687.sol:30
+
+balances[msg.sender]-=_am
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: CashOut(uint256), txdata: 0x9ffa0711, value: 0x0
+
+==== Integer Underflow ====
+SWC ID: 101
+Severity: High
+Contract: Log
+Function name: AddMessage(address,uint256,string)
+PC address: 745
+Estimated Gas Usage: 60464 - 284795
+The binary subtraction can underflow.
+The operands of the subtraction operation are not sufficiently constrained. The subtraction could therefore result in an integer underflow. Prevent the underflow by checking inputs or ensure sure that the underflow is caught by an assertion.
+--------------------
+In file: /tmp/28687.sol:62
+
+History.push(LastMsg)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: AddMessage(address,uint256,string), txdata: 0x4c2f04a40000000000000000000000000000000000000000000000000000000000000021, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: PrivateBank
+Function name: CashOut(uint256)
+PC address: 768
+Estimated Gas Usage: 8415 - 64162
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/28687.sol:31
+
+TransferLog.AddMessage(msg.sender,_am,"CashOut")
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: CashOut(uint256), txdata: 0x9ffa0711, value: 0x0
+Caller: [ATTACKER], function: CashOut(uint256), txdata: 0x9ffa0711, value: 0x0
+
+==== Multiple Calls in a Single Transaction ====
+SWC ID: 113
+Severity: Low
+Contract: PrivateBank
+Function name: CashOut(uint256)
+PC address: 768
+Estimated Gas Usage: 9159 - 98906
+Multiple calls are executed in the same transaction.
+This call is executed after a previous call in the same transaction. Try to isolate each call, transfer or send into its own transaction.
+--------------------
+In file: /tmp/28687.sol:31
+
+TransferLog.AddMessage(msg.sender,_am,"CashOut")
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: CashOut(uint256), txdata: 0x9ffa0711, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Medium
+Contract: PrivateBank
+Function name: CashOut(uint256)
+PC address: 768
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/28687.sol:31
+
+TransferLog.AddMessage(msg.sender,_am,"CashOut")
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: CashOut(uint256), txdata: 0x9ffa0711, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Log
+Function name: History(uint256)
+PC address: 804
+Estimated Gas Usage: 636 - 731
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/28687.sol:51
+
+Message[] public History
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: AddMessage(address,uint256,string), txdata: 0x4c2f04a40000000000000000000000000000000000000000000000000000000000000021, value: 0x0
+Caller: [CREATOR], function: History(uint256), txdata: 0xa21f036880, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: Low
+Contract: Log
+Function name: AddMessage(address,uint256,string)
+PC address: 1105
+Estimated Gas Usage: 50324 - 234469
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion. This issue is reported for internal compiler generated code.
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: AddMessage(address,uint256,string), txdata: 0x4c2f04a4ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc1, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: Low
+Contract: Log
+Function name: AddMessage(address,uint256,string)
+PC address: 1119
+Estimated Gas Usage: 50324 - 234469
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion. This issue is reported for internal compiler generated code.
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: AddMessage(address,uint256,string), txdata: 0x4c2f04a4ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc1, value: 0x0
+
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: Log
+Function name: AddMessage(address,uint256,string)
+PC address: 1128
+Estimated Gas Usage: 55443 - 259774
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit. This issue is reported for internal compiler generated code.
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: AddMessage(address,uint256,string), txdata: 0x4c2f04a40000000000000000000000000000000000000000000000000000000000000021, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: PrivateBank
+Function name: Deposit()
+PC address: 1138
+Estimated Gas Usage: 7494 - 28865
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/28687.sol:23
+
+TransferLog.AddMessage(msg.sender,msg.value,"Deposit")
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: CashOut(uint256), txdata: 0x9ffa0711, value: 0x0
+Caller: [CREATOR], function: Deposit(), txdata: 0xed21248c, value: 0xde0b6b3a7640000
+
+==== Integer Underflow ====
+SWC ID: 101
+Severity: Low
+Contract: Log
+Function name: AddMessage(address,uint256,string)
+PC address: 1180
+Estimated Gas Usage: 60464 - 284795
+The binary subtraction can underflow.
+The operands of the subtraction operation are not sufficiently constrained. The subtraction could therefore result in an integer underflow. Prevent the underflow by checking inputs or ensure sure that the underflow is caught by an assertion. This issue is reported for internal compiler generated code.
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: AddMessage(address,uint256,string), txdata: 0x4c2f04a40000000000000000000000000000000000000000000000000000000000000021, value: 0x0
+

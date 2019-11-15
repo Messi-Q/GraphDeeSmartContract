@@ -1,0 +1,22 @@
+WARNING:root:You are using an untested version of z3. 4.5.0 is the officially tested version
+WARNING:root:You are using solc version 0.4.25, The latest supported version is 0.4.17
+INFO:root:Contract smart_contract_source_code/Bank_attack.sol:Attack:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 99.2%
+INFO:symExec:	  Callstack bug: 	 False
+INFO:symExec:	  Money concurrency bug: True
+Flow 1:
+smart_contract_source_code/Bank_attack.sol:Attack:11:13
+victim.call.value(amount)(bytes4(keccak256("Deposit()")))
+^
+Flow 2:
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 True
+smart_contract_source_code/Bank_attack.sol:Attack:11:13
+victim.call.value(amount)(bytes4(keccak256("Deposit()")))
+^
+smart_contract_source_code/Bank_attack.sol:Attack:16:9
+victim.call(bytes4(keccak256("CashOut(uint256)")), amount)
+^
+INFO:symExec:	====== Analysis Completed ======

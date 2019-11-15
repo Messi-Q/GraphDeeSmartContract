@@ -1,2 +1,0 @@
-W MSG W 1 RG
-MSG S W 2 RG

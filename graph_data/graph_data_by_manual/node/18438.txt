@@ -1,3 +1,0 @@
-S S NoLimit W 2 INNADD
-W W NoLimit C 1 NULL
-C C NoLimit NULL 0 NULL

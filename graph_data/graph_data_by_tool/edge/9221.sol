@@ -1,2 +1,0 @@
-W1 S1 W1 1 IT
-W0 S0 W0 1 GN

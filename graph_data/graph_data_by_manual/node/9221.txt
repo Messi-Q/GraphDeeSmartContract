@@ -1,5 +1,0 @@
-S1 S1 NoLimit W1 2 MSG
-S2 S2 NoLimit W2 2 MSG
-W1 W1 NoLimit C 1 NULL
-W2 W2 NoLimit NULL 0 NULL
-C C NoLimit NULL 0 NULL

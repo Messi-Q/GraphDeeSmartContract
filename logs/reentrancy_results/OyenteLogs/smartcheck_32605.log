@@ -1,0 +1,67 @@
+WARNING:root:You are using solc version 0.4.21, The latest supported version is 0.4.19
+INFO:root:contract contracts/32605.sol:MetaIdentityManager:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 53.9%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/32605.sol:174:38: Warning: Integer Underflow.
+        owners[identity][newOwner] = now - userTimeLock
+Integer Underflow occurs if:
+    owners[identity][owner] = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    userTimeLock = 1
+    limiter[identity][sender] = 115792089237316195423570985008687907853269984665640564039457584007913129639934
+    adminRate = 1
+    adminTimeLock = 1
+    relay = 0
+    owners[identity][owner] = 0
+contracts/32605.sol:157:37: Warning: Integer Underflow.
+        owners[msg.sender][owner] = now - adminTimeLock
+Integer Underflow occurs if:
+    adminTimeLock = 1
+    recoveryKeys[msg.sender] = 0
+INFO:symExec:contracts/32605.sol:143:5: Warning: Integer Overflow.
+    function createIdentityWithCall(address owner, address recoveryKey, address destination, bytes data) public validAddress(recoveryKey) {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    data = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+contracts/32605.sol:163:5: Warning: Integer Overflow.
+    function forwardTo(address sender, Proxy identity, address destination, uint value, bytes data) public onlyAuthorized onlyOwner(identity, sender){
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    data = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/32605.sol:Owned:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 99.6%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/32605.sol:Proxy:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 52.9%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/32605.sol:28:5: Warning: Integer Overflow.
+    function forward(address destination, uint value, bytes data) public onlyOwner {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    data = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:	====== Analysis Completed ======

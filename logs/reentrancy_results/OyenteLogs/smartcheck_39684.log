@@ -1,0 +1,56 @@
+WARNING:root:You are using evm version 1.8.2. The supported version is 1.7.3
+WARNING:root:You are using solc version 0.4.21, The latest supported version is 0.4.19
+INFO:root:contract contracts/39684.sol:EtherprisesLLC:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 59.5%
+INFO:symExec:	  Integer Underflow: 			 True
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): True
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/39684.sol:12:5: Warning: Integer Underflow.
+    string[] public prose
+INFO:symExec:contracts/39684.sol:76:9: Warning: Integer Overflow.
+        expiresAt[msg.sender] += 1 years
+Integer Overflow occurs if:
+    expiresAt[msg.sender] = 115792089237316195423570985008687907853269984665640564039457584007913114714624
+contracts/39684.sol:12:5: Warning: Integer Overflow.
+    string[] public prose
+contracts/39684.sol:10:5: Warning: Integer Overflow.
+    address[] public series
+contracts/39684.sol:100:5: Warning: Integer Overflow.
+    function createSeries(bytes name, uint shares, string industry, string symbol, address extraContract) payable returns (address seriesAddress, uint seriesId) {
+    ^
+Spanning multiple lines.
+contracts/39684.sol:61:5: Warning: Integer Overflow.
+    function addAmendment(string newAmendment) ifGeneralManager {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    newAmendment = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:Flow1
+contracts/39684.sol:103:42: Warning: Transaction-Ordering Dependency.
+        var(latestAddress, latestName) = SeriesFactory(seriesFactory).createSeries.value(msg.value)(seriesId, name, shares, industry, symbol, msg.sender, extraContract)
+Flow2
+contracts/39684.sol:136:17: Warning: Transaction-Ordering Dependency.
+            if (latestSeriesForUser[msg.sender].call.value(msg.value)()
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/39684.sol:SeriesFactory:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 40.9%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/39684.sol:149:5: Warning: Integer Overflow.
+    function createSeries (uint seriesId, bytes name, uint shares, string industry, string symbol, address manager, address extraContract) payable returns (address addr, bytes32 newName) {
+    ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    name = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:	====== Analysis Completed ======

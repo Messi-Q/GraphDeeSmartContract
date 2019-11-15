@@ -1,0 +1,248 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Attack
+Function name: fallback
+PC address: 323
+Estimated Gas Usage: 817 - 1899
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/Bank_attack.sol:30
+
+victim.call(bytes4(keccak256("CashOut(uint256)")), msg.value)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x01010101, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: Attack
+Function name: fallback
+PC address: 323
+Estimated Gas Usage: 817 - 1899
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/Bank_attack.sol:30
+
+victim.call(bytes4(keccak256("CashOut(uint256)")), msg.value)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: setVictim(address), txdata: 0x0b439621bebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x01010101, value: 0x0
+
+==== Unchecked Call Return Value ====
+SWC ID: 104
+Severity: Low
+Contract: Attack
+Function name: fallback
+PC address: 323
+Estimated Gas Usage: 1528 - 36610
+The return value of a message call is not checked.
+External calls return a boolean value. If the callee contract halts with an exception, 'false' is returned and execution continues in the caller. It is usually recommended to wrap external calls into a require statement to prevent unexpected states.
+--------------------
+In file: /tmp/Bank_attack.sol:30
+
+victim.call(bytes4(keccak256("CashOut(uint256)")), msg.value)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: setVictim(address), txdata: 0x0b439621, value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x01010101, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Attack
+Function name: startAttack(uint256)
+PC address: 846
+Estimated Gas Usage: 1339 - 2326
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/Bank_attack.sol:11
+
+victim.call.value(amount)(bytes4(keccak256("Deposit()")))
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: startAttack(uint256), txdata: 0xc792413f, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: Attack
+Function name: startAttack(uint256)
+PC address: 846
+Estimated Gas Usage: 1339 - 2326
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/Bank_attack.sol:11
+
+victim.call.value(amount)(bytes4(keccak256("Deposit()")))
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: setVictim(address), txdata: 0x0b439621bebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+Caller: [ATTACKER], function: startAttack(uint256), txdata: 0xc792413f, value: 0x0
+
+==== Unchecked Call Return Value ====
+SWC ID: 104
+Severity: Low
+Contract: Attack
+Function name: startAttack(uint256)
+PC address: 846
+Estimated Gas Usage: 3485 - 73459
+The return value of a message call is not checked.
+External calls return a boolean value. If the callee contract halts with an exception, 'false' is returned and execution continues in the caller. It is usually recommended to wrap external calls into a require statement to prevent unexpected states.
+--------------------
+In file: /tmp/Bank_attack.sol:11
+
+victim.call.value(amount)(bytes4(keccak256("Deposit()")))
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: setVictim(address), txdata: 0x0b439621, value: 0x0
+Caller: [ATTACKER], function: startAttack(uint256), txdata: 0xc792413f, value: 0x0
+
+==== Unprotected Ether Withdrawal ====
+SWC ID: 105
+Severity: High
+Contract: Attack
+Function name: step1(uint256)
+PC address: 846
+Estimated Gas Usage: 1231 - 2218
+Anyone can withdraw ETH from the contract account.
+Arbitrary senders other than the contract creator can withdraw ETH from the contract account without previously having sent an equivalent amount of ETH to it. This is likely to be a vulnerability.
+--------------------
+In file: /tmp/Bank_attack.sol:11
+
+victim.call.value(amount)(bytes4(keccak256("Deposit()")))
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: setVictim(address), txdata: 0x0b439621bebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+Caller: [ATTACKER], function: step1(uint256), txdata: 0x30df213901, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Attack
+Function name: startAttack(uint256)
+PC address: 1070
+Estimated Gas Usage: 2752 - 38726
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/Bank_attack.sol:16
+
+victim.call(bytes4(keccak256("CashOut(uint256)")), amount)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: startAttack(uint256), txdata: 0xc792413f, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: Attack
+Function name: startAttack(uint256)
+PC address: 1070
+Estimated Gas Usage: 2752 - 38726
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/Bank_attack.sol:16
+
+victim.call(bytes4(keccak256("CashOut(uint256)")), amount)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: setVictim(address), txdata: 0x0b439621bebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+Caller: [ATTACKER], function: startAttack(uint256), txdata: 0xc792413f, value: 0x0
+
+==== Multiple Calls in a Single Transaction ====
+SWC ID: 113
+Severity: Low
+Contract: Attack
+Function name: startAttack(uint256)
+PC address: 1070
+Estimated Gas Usage: 3485 - 73459
+Multiple calls are executed in the same transaction.
+This call is executed after a previous call in the same transaction. Try to isolate each call, transfer or send into its own transaction.
+--------------------
+In file: /tmp/Bank_attack.sol:16
+
+victim.call(bytes4(keccak256("CashOut(uint256)")), amount)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: startAttack(uint256), txdata: 0xc792413f, value: 0x0
+
+==== Unchecked Call Return Value ====
+SWC ID: 104
+Severity: Low
+Contract: Attack
+Function name: startAttack(uint256)
+PC address: 1070
+Estimated Gas Usage: 3485 - 73459
+The return value of a message call is not checked.
+External calls return a boolean value. If the callee contract halts with an exception, 'false' is returned and execution continues in the caller. It is usually recommended to wrap external calls into a require statement to prevent unexpected states.
+--------------------
+In file: /tmp/Bank_attack.sol:16
+
+victim.call(bytes4(keccak256("CashOut(uint256)")), amount)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: setVictim(address), txdata: 0x0b439621, value: 0x0
+Caller: [ATTACKER], function: startAttack(uint256), txdata: 0xc792413f, value: 0x0
+
+==== Unprotected Selfdestruct ====
+SWC ID: 106
+Severity: High
+Contract: Attack
+Function name: stopAttack()
+PC address: 1135
+Estimated Gas Usage: 635 - 1060
+The contract can be killed by anyone.
+Arbitrary senders can kill this contract.
+--------------------
+In file: /tmp/Bank_attack.sol:21
+
+selfdestruct(owner)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: stopAttack(), txdata: 0xa3844f06, value: 0x0
+

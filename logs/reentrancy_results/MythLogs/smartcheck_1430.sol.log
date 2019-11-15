@@ -1,0 +1,57 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Potential denial-of-service if block gas limit is reached ====
+SWC ID: 128
+Severity: Low
+Contract: FsTKerWallet
+Function name: recoverAndSetSecretHash(string,bytes32)
+PC address: 3354
+Estimated Gas Usage: 7245 - 33027
+Potential denial-of-service if block gas limit is reached.
+A storage modification is executed in a loop. Be aware that the transaction may fail to execute if the loop is unbounded and the necessary gas exceeds the block gas limit. This issue is reported for internal compiler generated code.
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: recoverAndSetSecretHash(string,bytes32), txdata: 0x1c2f2f9f800000000000000000000000000000000000000000000000000000000000000401, value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Medium
+Contract: FsTKerWallet
+Function name: getERCBalance(address)
+PC address: 5887
+Estimated Gas Usage: 1305 - 1776
+A call to a user-supplied address is executed.
+The callee address of an external message call can be set by the caller. Note that the callee can contain arbitrary code and may re-enter any function in this contract. Review the business logic carefully to prevent averse effects on the contract state.
+--------------------
+In file: /tmp/1430.sol:42
+
+erc.balanceOf(address(this))
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: getERCBalance(address), txdata: 0x8fbb3813bebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: FsTKerWallet
+Function name: getFSTBalance()
+PC address: 6521
+Estimated Gas Usage: 1723 - 2524
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/1430.sol:34
+
+FST.balanceOf(address(this))
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: getFSTBalance(), txdata: 0xae117f3e, value: 0x0
+
+

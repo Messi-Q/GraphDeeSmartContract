@@ -1,0 +1,37 @@
+WARNING:root:You are using solc version 0.4.21, The latest supported version is 0.4.19
+INFO:root:contract contracts/21241.sol:AuctusTokenSale:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 45.8%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 True
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/21241.sol:6:15: Warning: Integer Overflow.
+		uint256 c = a + b
+Integer Overflow occurs if:
+    saleWasSet = 255
+    invested[msg.sender] = 1
+    remainingTokens = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+    endTime = 0
+    startTime = 0
+contracts/21241.sol:116:2: Warning: Integer Overflow.
+	function tokenFallback(address, uint256 value, bytes) public {
+	^
+Spanning multiple lines.
+INFO:symExec:contracts/21241.sol:93:3: Warning: Timestamp Dependency.
+		require(weiRaised < softCap && now > endTime)
+INFO:symExec:	====== Analysis Completed ======
+INFO:root:contract contracts/21241.sol:SafeMath:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 100.0%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 False
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 False
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:	====== Analysis Completed ======

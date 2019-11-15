@@ -1,2 +1,0 @@
-W VAR1 W 2 RH
-VAR1 S W 3 AH

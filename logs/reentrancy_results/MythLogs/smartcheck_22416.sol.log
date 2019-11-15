@@ -1,0 +1,190 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: TokenBank
+Function name: fallback
+PC address: 778
+Estimated Gas Usage: 6010 - 26295
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/22416.sol:65
+
+Holders[msg.sender]+=msg.value
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0x01010101, value: 0x1
+Caller: [SOMEGUY], function: unknown, txdata: 0x, value: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: Token
+Function name: WithdrawToken(address,uint256,address)
+PC address: 949
+Estimated Gas Usage: 1006 - 2183
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/22416.sol:37
+
+token.call(bytes4(sha3("transfer(address,uint256)")),to,amount)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeOwner(address), txdata: 0xa6f9dae1, value: 0x0
+Caller: [CREATOR], function: WithdrawToken(address,uint256,address), txdata: 0xc7de2d13, value: 0x0
+
+==== Unchecked Call Return Value ====
+SWC ID: 104
+Severity: Low
+Contract: Token
+Function name: WithdrawToken(address,uint256,address)
+PC address: 949
+Estimated Gas Usage: 1733 - 36910
+The return value of a message call is not checked.
+External calls return a boolean value. If the callee contract halts with an exception, 'false' is returned and execution continues in the caller. It is usually recommended to wrap external calls into a require statement to prevent unexpected states.
+--------------------
+In file: /tmp/22416.sol:37
+
+token.call(bytes4(sha3("transfer(address,uint256)")),to,amount)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeOwner(address), txdata: 0xa6f9dae1, value: 0x0
+Caller: [CREATOR], function: WithdrawToken(address,uint256,address), txdata: 0xc7de2d13, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: TokenBank
+Function name: WitdrawTokenToHolder(address,address,uint256)
+PC address: 1779
+Estimated Gas Usage: 7121 - 29008
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/22416.sol:37
+
+token.call(bytes4(sha3("transfer(address,uint256)")),to,amount)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0x01010101, value: 0x1
+Caller: [CREATOR], function: WitdrawTokenToHolder(address,address,uint256), txdata: 0x2e2a51bdbebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeee, value: 0x0
+
+==== Unchecked Call Return Value ====
+SWC ID: 104
+Severity: Low
+Contract: TokenBank
+Function name: WitdrawTokenToHolder(address,address,uint256)
+PC address: 1779
+Estimated Gas Usage: 7865 - 63752
+The return value of a message call is not checked.
+External calls return a boolean value. If the callee contract halts with an exception, 'false' is returned and execution continues in the caller. It is usually recommended to wrap external calls into a require statement to prevent unexpected states.
+--------------------
+In file: /tmp/22416.sol:37
+
+token.call(bytes4(sha3("transfer(address,uint256)")),to,amount)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0x01010101, value: 0x1
+Caller: [CREATOR], function: WitdrawTokenToHolder(address,address,uint256), txdata: 0x2e2a51bdbebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeee, value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: TokenBank
+Function name: WithdrawToHolder(address,uint256)
+PC address: 2012
+Estimated Gas Usage: 1399 - 2200
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/22416.sol:78
+
+_addr.call.value(_wei)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0x01010101, value: 0x1
+Caller: [CREATOR], function: WithdrawToHolder(address,uint256), txdata: 0xf8ff612ebebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeee, value: 0x0
+
+==== Unchecked Call Return Value ====
+SWC ID: 104
+Severity: Low
+Contract: TokenBank
+Function name: WithdrawToHolder(address,uint256)
+PC address: 2012
+Estimated Gas Usage: 2140 - 36941
+The return value of a message call is not checked.
+External calls return a boolean value. If the callee contract halts with an exception, 'false' is returned and execution continues in the caller. It is usually recommended to wrap external calls into a require statement to prevent unexpected states.
+--------------------
+In file: /tmp/22416.sol:78
+
+_addr.call.value(_wei)()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0x01010101, value: 0x1
+Caller: [CREATOR], function: WithdrawToHolder(address,uint256), txdata: 0xf8ff612ebebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeee, value: 0x0
+
+==== Integer Underflow ====
+SWC ID: 101
+Severity: High
+Contract: TokenBank
+Function name: WithdrawToHolder(address,uint256)
+PC address: 2091
+Estimated Gas Usage: 7663 - 62654
+The binary subtraction can underflow.
+The operands of the subtraction operation are not sufficiently constrained. The subtraction could therefore result in an integer underflow. Prevent the underflow by checking inputs or ensure sure that the underflow is caught by an assertion.
+--------------------
+In file: /tmp/22416.sol:79
+
+Holders[_addr]-=_wei
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x00010101, value: 0x1
+Caller: [CREATOR], function: WithdrawToHolder(address,uint256), txdata: 0xf8ff612e808080808080808080808080deadbeefdeadbeefdeadbeefdeadbeefdeadbeef40, value: 0x0
+
+==== State change after external call ====
+SWC ID: 107
+Severity: Medium
+Contract: TokenBank
+Function name: WithdrawToHolder(address,uint256)
+PC address: 2097
+Estimated Gas Usage: None - None
+The contract account state is changed after an external call.
+Consider that the called contract could re-enter the function before this state change takes place. This can lead to business logic vulnerabilities.
+--------------------
+In file: /tmp/22416.sol:79
+
+Holders[_addr]-=_wei
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x, value: 0x1
+Caller: [CREATOR], function: WithdrawToHolder(address,uint256), txdata: 0xf8ff612ebebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+

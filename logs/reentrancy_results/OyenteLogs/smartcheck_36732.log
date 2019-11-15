@@ -1,0 +1,37 @@
+WARNING:root:You are using solc version 0.4.21, The latest supported version is 0.4.19
+INFO:root:contract contracts/36732.sol:EnjinBuyer:
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM Code Coverage: 			 76.1%
+INFO:symExec:	  Integer Underflow: 			 False
+INFO:symExec:	  Integer Overflow: 			 True
+INFO:symExec:	  Parity Multisig Bug 2: 		 False
+INFO:symExec:	  Callstack Depth Attack Vulnerability:  False
+INFO:symExec:	  Transaction-Ordering Dependence (TOD): False
+INFO:symExec:	  Timestamp Dependency: 		 True
+INFO:symExec:	  Re-Entrancy Vulnerability: 		 False
+INFO:symExec:contracts/36732.sol:141:5: Warning: Integer Overflow.
+    buy_bounty += msg.value
+Integer Overflow occurs if:
+    buy_bounty = 1
+    developer = 0
+contracts/36732.sol:176:5: Warning: Integer Overflow.
+    balances[msg.sender] += msg.value
+Integer Overflow occurs if:
+    balances[msg.sender] = 1
+    eth_cap = 1
+    bought_tokens = 0
+    kill_switch = 0
+contracts/36732.sol:149:5: Warning: Integer Overflow.
+    withdraw_bounty += msg.value
+Integer Overflow occurs if:
+    withdraw_bounty = 1
+    developer = 0
+contracts/36732.sol:69:3: Warning: Integer Overflow.
+  function activate_kill_switch(string password) {
+  ^
+Spanning multiple lines.
+Integer Overflow occurs if:
+    password = 115792089237316195423570985008687907853269984665640564039457584007913129639935
+INFO:symExec:contracts/36732.sol:156:5: Warning: Timestamp Dependency.
+    if (now < earliest_buy_time) return;
+INFO:symExec:	====== Analysis Completed ======

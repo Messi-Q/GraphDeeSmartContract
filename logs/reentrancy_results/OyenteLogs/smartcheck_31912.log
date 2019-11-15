@@ -1,0 +1,30 @@
+WARNING:root:You are using solc version 0.4.25, The latest supported version is 0.4.17
+INFO:root:Contract smart_contract_source_code/31912.sol:Array256Lib:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 48.5%
+INFO:symExec:	  Callstack bug: 	 False
+INFO:symExec:	  Money concurrency bug: False
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 False
+Traceback (most recent call last):
+  File "/home/jion1/Downloads/oyente-0.2.7/oyente/symExec.py", line 2359, in main
+    build_cfg_and_analyze()
+  File "/home/jion1/Downloads/oyente-0.2.7/oyente/symExec.py", line 214, in build_cfg_and_analyze
+    full_sym_exec()  # jump targets are constructed on the fly
+  File "/home/jion1/Downloads/oyente-0.2.7/oyente/symExec.py", line 514, in full_sym_exec
+    return sym_exec_block(params)
+  File "/home/jion1/Downloads/oyente-0.2.7/oyente/symExec.py", line 717, in sym_exec_block
+    raise e
+Exception: timeout
+Traceback (most recent call last):
+  File "oyente.py", line 256, in <module>
+    main()
+  File "oyente.py", line 242, in main
+    analyze(processed_evm_file, disasm_file, SourceMap(cname, args.source))
+  File "oyente.py", line 109, in analyze
+    symExec.main(disasm_file, args.source, source_map)
+  File "/home/jion1/Downloads/oyente-0.2.7/oyente/symExec.py", line 2366, in main
+    raise e
+Exception: timeout
+INFO:symExec:	====== Analysis Completed ======

@@ -1,0 +1,301 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: BonusScheme
+Function name: getBonusTokens(uint256)
+PC address: 416
+Estimated Gas Usage: 6550 - 7793
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/14741.sol:173
+
+block.timestamp >= startOfFirstBonus && block.timestamp <= endOfFirstBonus
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getBonusTokens(uint256), txdata: 0x7976eaa202, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: BonusScheme
+Function name: getBonusTokens(uint256)
+PC address: 429
+Estimated Gas Usage: 6550 - 7793
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/14741.sol:173
+
+if (block.timestamp >= startOfFirstBonus && block.timestamp <= endOfFirstBonus) {
+                        _tokenAmount = _tokenAmount.mul(firstBonus).div(100);
+                } else if (block.timestamp >= startOfSecondBonus && block.timestamp <= endOfSecondBonus) {
+                        _tokenAmount = _tokenAmount.mul(secondBonus).div(100);
+                } else if (block.timestamp >= startOfThirdBonus && block.timestamp <= endOfThirdBonus) {
+                        _tokenAmount = _tokenAmount.mul(thirdBonus).div(100);
+                } else if (block.timestamp >= startOfFourthBonus && block.timestamp <= endOfFourthBonus) {
+                        _tokenAmount = _tokenAmount.mul(fourthBonus).div(100);
+                } else if (block.timestamp >= startOfFifthBonus && block.timestamp <= endOfFifthBonus) {
+                        _tokenAmount = _tokenAmount.mul(fifthBonus).div(100);
+                } else _tokenAmount=0
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getBonusTokens(uint256), txdata: 0x7976eaa202, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: BonusScheme
+Function name: getBonusTokens(uint256)
+PC address: 488
+Estimated Gas Usage: 6550 - 7793
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/14741.sol:175
+
+block.timestamp >= startOfSecondBonus && block.timestamp <= endOfSecondBonus
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getBonusTokens(uint256), txdata: 0x7976eaa202, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: BonusScheme
+Function name: getBonusTokens(uint256)
+PC address: 501
+Estimated Gas Usage: 6550 - 7793
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/14741.sol:175
+
+if (block.timestamp >= startOfSecondBonus && block.timestamp <= endOfSecondBonus) {
+                        _tokenAmount = _tokenAmount.mul(secondBonus).div(100);
+                } else if (block.timestamp >= startOfThirdBonus && block.timestamp <= endOfThirdBonus) {
+                        _tokenAmount = _tokenAmount.mul(thirdBonus).div(100);
+                } else if (block.timestamp >= startOfFourthBonus && block.timestamp <= endOfFourthBonus) {
+                        _tokenAmount = _tokenAmount.mul(fourthBonus).div(100);
+                } else if (block.timestamp >= startOfFifthBonus && block.timestamp <= endOfFifthBonus) {
+                        _tokenAmount = _tokenAmount.mul(fifthBonus).div(100);
+                } else _tokenAmount=0
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getBonusTokens(uint256), txdata: 0x7976eaa202, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: BonusScheme
+Function name: getBonusTokens(uint256)
+PC address: 560
+Estimated Gas Usage: 6550 - 7793
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/14741.sol:177
+
+block.timestamp >= startOfThirdBonus && block.timestamp <= endOfThirdBonus
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getBonusTokens(uint256), txdata: 0x7976eaa202, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: BonusScheme
+Function name: getBonusTokens(uint256)
+PC address: 573
+Estimated Gas Usage: 6550 - 7793
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/14741.sol:177
+
+if (block.timestamp >= startOfThirdBonus && block.timestamp <= endOfThirdBonus) {
+                        _tokenAmount = _tokenAmount.mul(thirdBonus).div(100);
+                } else if (block.timestamp >= startOfFourthBonus && block.timestamp <= endOfFourthBonus) {
+                        _tokenAmount = _tokenAmount.mul(fourthBonus).div(100);
+                } else if (block.timestamp >= startOfFifthBonus && block.timestamp <= endOfFifthBonus) {
+                        _tokenAmount = _tokenAmount.mul(fifthBonus).div(100);
+                } else _tokenAmount=0
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getBonusTokens(uint256), txdata: 0x7976eaa202, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: BonusScheme
+Function name: getBonusTokens(uint256)
+PC address: 632
+Estimated Gas Usage: 6550 - 7793
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/14741.sol:179
+
+block.timestamp >= startOfFourthBonus && block.timestamp <= endOfFourthBonus
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getBonusTokens(uint256), txdata: 0x7976eaa202, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: BonusScheme
+Function name: getBonusTokens(uint256)
+PC address: 645
+Estimated Gas Usage: 6550 - 7793
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/14741.sol:179
+
+if (block.timestamp >= startOfFourthBonus && block.timestamp <= endOfFourthBonus) {
+                        _tokenAmount = _tokenAmount.mul(fourthBonus).div(100);
+                } else if (block.timestamp >= startOfFifthBonus && block.timestamp <= endOfFifthBonus) {
+                        _tokenAmount = _tokenAmount.mul(fifthBonus).div(100);
+                } else _tokenAmount=0
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getBonusTokens(uint256), txdata: 0x7976eaa202, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: BonusScheme
+Function name: getBonusTokens(uint256)
+PC address: 704
+Estimated Gas Usage: 6550 - 7793
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/14741.sol:181
+
+block.timestamp >= startOfFifthBonus && block.timestamp <= endOfFifthBonus
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getBonusTokens(uint256), txdata: 0x7976eaa202, value: 0x0
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: BonusScheme
+Function name: getBonusTokens(uint256)
+PC address: 717
+Estimated Gas Usage: 6550 - 7793
+A control flow decision is made based on a predictable variable.
+The block.timestamp environment variable is used in to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables for random number generation or to make critical control flow decisions.
+--------------------
+In file: /tmp/14741.sol:181
+
+if (block.timestamp >= startOfFifthBonus && block.timestamp <= endOfFifthBonus) {
+                        _tokenAmount = _tokenAmount.mul(fifthBonus).div(100);
+                } else _tokenAmount=0
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getBonusTokens(uint256), txdata: 0x7976eaa202, value: 0x0
+
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: BonusScheme
+Function name: getBonusTokens(uint256)
+PC address: 1238
+Estimated Gas Usage: 6550 - 7793
+The binary multiplication can overflow.
+The operands of the multiplication operation are not sufficiently constrained. The multiplication could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/14741.sol:11
+
+a * b
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: getBonusTokens(uint256), txdata: 0x7976eaa216, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: BonusScheme
+Function name: getBonusTokens(uint256)
+PC address: 1261
+Estimated Gas Usage: 5512 - 5937
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/14741.sol:12
+
+assert(c / a == b)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: transferOwnership(address), txdata: 0xf2fde38bbebebebebebebebebebebebedeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, value: 0x0
+Caller: [ATTACKER], function: getBonusTokens(uint256), txdata: 0x7976eaa256, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: RefundVault
+Function name: deposit(address)
+PC address: 2402
+Estimated Gas Usage: 1885 - 2830
+A reachable exception has been detected.
+It is possible to trigger an exception (opcode 0xfe). Exceptions can be caused by type errors, division by zero, out-of-bounds array access, or assert violations. Note that explicit `assert()` should only be used to check invariants. Use `require()` for regular input checking.
+--------------------
+In file: /tmp/14741.sol:30
+
+assert(c >= a)
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: deposit(address), txdata: 0xf340fa01, value: 0x1
+Caller: [CREATOR], function: deposit(address), txdata: 0xf340fa01, value: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+
+
+Exception ignored in: <bound method AstRef.__del__ of BitVec(256)>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/z3/z3.py", line 305, in __del__
+    Z3_dec_ref(self.ctx.ref(), self.as_ast())
+  File "/usr/local/lib/python3.6/dist-packages/z3/z3core.py", line 1417, in Z3_dec_ref
+    _elems.f(a0, a1)
+ctypes.ArgumentError: argument 1: <class 'KeyboardInterrupt'>:

@@ -1,0 +1,25 @@
+WARNING:root:You are using an untested version of z3. 4.5.0 is the officially tested version
+WARNING:root:You are using solc version 0.4.25, The latest supported version is 0.4.17
+INFO:root:Contract smart_contract_source_code/9221.sol:EtherBet:
+INFO:symExec:Running, please wait...
+INFO:symExec:	============ Results ===========
+INFO:symExec:	  EVM code coverage: 	 98.3%
+INFO:symExec:	  Callstack bug: 	 False
+INFO:symExec:	  Money concurrency bug: True
+Flow 1:
+smart_contract_source_code/9221.sol:EtherBet:10:9
+msg.sender.call.value(2 ether)()
+^
+Flow 2:
+smart_contract_source_code/9221.sol:EtherBet:42:9
+msg.sender.call.value( amount * (1 ether))()
+^
+INFO:symExec:	  Time dependency bug: 	 False
+INFO:symExec:	  Reentrancy bug: 	 True
+smart_contract_source_code/9221.sol:EtherBet:10:9
+msg.sender.call.value(2 ether)()
+^
+smart_contract_source_code/9221.sol:EtherBet:42:9
+msg.sender.call.value( amount * (1 ether))()
+^
+INFO:symExec:	====== Analysis Completed ======

@@ -1,2 +1,0 @@
-W VAR1 W 2 IT
-VAR1 S W 4 IT

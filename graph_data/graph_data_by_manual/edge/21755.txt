@@ -1,2 +1,0 @@
-W S W 1 GB
-S VAR1 W 3 GB

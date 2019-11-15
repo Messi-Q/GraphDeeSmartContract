@@ -1,0 +1,41 @@
+solc successfully installed at: /root/.py-solc/solc-v0.4.25/bin/solc
+==== Integer Overflow ====
+SWC ID: 101
+Severity: High
+Contract: MoldCoin
+Function name: constructor
+PC address: 483
+Estimated Gas Usage: 91959 - 440664
+The binary addition can overflow.
+The operands of the addition operation are not sufficiently constrained. The addition could therefore result in an integer overflow. Prevent the overflow by checking inputs or ensure sure that the overflow is caught by an assertion.
+--------------------
+In file: /tmp/35617.sol:172
+
+startDatetime + 120 * 1 hours
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+
+==== External Call To Fixed Address ====
+SWC ID: 107
+Severity: Low
+Contract: MoldCoinBonus
+Function name: buyWithBonus(address)
+PC address: 960
+Estimated Gas Usage: 1898 - 2934
+The contract executes an external message call.
+An external function call to a fixed contract address is executed. Make sure that the callee contract has been reviewed carefully.
+--------------------
+In file: /tmp/35617.sol:297
+
+fundAddress.halted()
+
+--------------------
+Transaction Sequence:
+
+Caller: [CREATOR], data: [CONTRACT CREATION], value: 0x0
+Caller: [CREATOR], function: changeAdmin(address), txdata: 0x8f283970, value: 0x0
+Caller: [CREATOR], function: buyWithBonus(address), txdata: 0x27dba807, value: 0x0
+

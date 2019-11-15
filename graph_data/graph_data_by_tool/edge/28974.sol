@@ -1,2 +1,0 @@
-W0 S0 W0 1 RH
-C0 W0 C0 1 FW
