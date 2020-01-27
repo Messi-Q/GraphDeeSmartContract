@@ -21,5 +21,8 @@ do seed=$(( ( RANDOM % 10000 )  + 1 ));
 python SmConVulDetector.py --model gcn_modify --seed $seed | tee logs/smartcheck_"$i".log;
 done
 ```
-Then, you can find the training results in the `results/GraphDeeLogs`.
+Then, you can find the training results in the `logs/`.
 
+
+### dataset
+Ethereum smart contracts: Etherscan_contract[dataset](https://drive.google.com/open?id=1h9aFFSsL7mK4NmVJd4So7IJlFj9u0HRv)
