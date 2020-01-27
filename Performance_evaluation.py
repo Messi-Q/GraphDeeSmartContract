@@ -2,7 +2,7 @@ import numpy as np
 from os.path import join as pjoin
 from sklearn.metrics import confusion_matrix
 
-data_dir = "./reentrancy_results/"
+data_dir = "./logs/timestamp_results/"
 
 
 # Performance evaluation, tools : SmartCheck, Securify, Mythril, Oyente
@@ -19,12 +19,10 @@ smartcheck_label = read_label("smartcheck_label_185.txt", line_parse_fn=lambda s
 myth_label = read_label("myth_label_185.txt", line_parse_fn=lambda s: int(float(s.strip())))
 oyente_label = read_label("oyente_label_185.txt", line_parse_fn=lambda s: int(float(s.strip())))
 
-# tn, fp, fn, tp = confusion_matrix(securify_label, ground_truth).ravel()
-# tn, fp, fn, tp = confusion_matrix(smartcheck_label, ground_truth).ravel()
-tn, fp, fn, tp = confusion_matrix(myth_label, ground_truth).ravel()
-# tn, fp, fn, tp = confusion_matrix(oyente_label, ground_truth).ravel()
-
-# tn, fn, fp, tp = confusion_matrix(securify_label, ground_truth).ravel()
+# tn, fp, fn, tp = confusion_matrix(ground_truth, securify_label).ravel()
+tn, fp, fn, tp = confusion_matrix(ground_truth, smartcheck_label).ravel()
+# tn, fp, fn, tp = confusion_matrix(ground_truth, myth_label).ravel()
+# tn, fp, fn, tp = confusion_matrix(ground_truth, oyente_label).ravel()
 
 print(tn, fn, fp, tp)
 

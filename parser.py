@@ -4,7 +4,7 @@ import argparse
 def parameter_parser():
     # Experiment parameters
     parser = argparse.ArgumentParser(description='Smart contract vulnerability detection based on graph neural network')
-    parser.add_argument('-D', '--dataset', type=str, default='REENTRANCY_FULLNODES_1671',
+    parser.add_argument('-D', '--dataset', type=str, default='LOOP_FULLNODES_1317',
                         choices=['REENTRANCY_CORENODES_1671', 'REENTRANCY_FULLNODES_1671',
                                  'LOOP_CORENODES_1317', 'LOOP_FULLNODES_1317'])
     parser.add_argument('-M', '--model', type=str, default='gcn_modify',
@@ -25,7 +25,7 @@ def parameter_parser():
     parser.add_argument('--seed', type=int, default=50, help='random seed')
     parser.add_argument('--shuffle_nodes', action='store_true', default=True, help='shuffle nodes for debugging')
     parser.add_argument('-F', '--folds', default=5, choices=[3, 5, 10], help='n-fold cross validation')
-    parser.add_argument('-a', '--adj_sq', action='store_true', default=False,
+    parser.add_argument('-a', '--adj_sq', action='store_true', default=True,
                         help='use A^2 instead of A as an adjacency matrix')
     parser.add_argument('-s', '--scale_identity', action='store_true', default=False,
                         help='use 2I instead of I for self connections')

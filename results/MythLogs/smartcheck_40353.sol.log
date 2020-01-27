@@ -1,2 +1,0 @@
-Error: Member "value" not found or not visible after argument-dependent lookup in function () external returns (uint256) - did you forget the "payable" modifier?
-                tokens = account.buyTokens.value(msg.value)();

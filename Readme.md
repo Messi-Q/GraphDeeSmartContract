@@ -18,7 +18,7 @@ Repeating 10 times for different seeds with `train.sh`.
 ```shell
 for i in $(seq 1 10);
 do seed=$(( ( RANDOM % 10000 )  + 1 ));
-python SmConVulDetector.py --model gcn_modify --seed $seed | tee results/GraphDeeLogs/smartcheck_"$i".log;
+python SmConVulDetector.py --model gcn_modify --seed $seed | tee logs/smartcheck_"$i".log;
 done
 ```
 Then, you can find the training results in the `results/GraphDeeLogs`.

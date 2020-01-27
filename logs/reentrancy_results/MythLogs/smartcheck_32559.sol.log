@@ -1,2 +1,0 @@
-/tmp/32559.sol:84:47: Error: This type is only supported in the new experimental ABI encoder. Use "pragma experimental ABIEncoderV2;" to enable the feature.
-  function getFallback() view public returns (TKN) {
