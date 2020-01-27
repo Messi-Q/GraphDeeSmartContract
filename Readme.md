@@ -25,4 +25,4 @@ Then, you can find the training results in the `logs/`.
 
 
 ### dataset
-Ethereum smart contracts: Etherscan_contract[dataset](https://drive.google.com/open?id=1h9aFFSsL7mK4NmVJd4So7IJlFj9u0HRv)
+Ethereum smart contracts:  Etherscan_contract. [dataset](https://drive.google.com/open?id=1h9aFFSsL7mK4NmVJd4So7IJlFj9u0HRv)
