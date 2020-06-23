@@ -227,7 +227,7 @@ for fold_id in range(n_folds):
     optimizer = optim.Adam(train_params, lr=args.lr, betas=(0.5, 0.999), weight_decay=args.wd)
     scheduler = lr_scheduler.MultiStepLR(optimizer, args.lr_decay_steps, gamma=0.1)  # dynamic adjustment lr
     # loss_fn = F.nll_loss  # when model is gcn_origin or gat, use this
-    loss_fn = F.cross_entropy  # when model is gcn_modify or mgcn, use this
+    loss_fn = F.cross_entropy  # when model is gcn_modify, use this
 
 
     def train(train_loader):
@@ -240,7 +240,7 @@ for fold_id in range(n_folds):
                 data[i] = data[i].to(args.device)
             optimizer.zero_grad()
             # output = model(data[0], data[1])  # when model is gcn_origin or gat, use this
-            output = model(data)  # when model is gcn_modify or mgcn, use this
+            output = model(data)  # when model is gcn_modify, use this
             loss = loss_fn(output, data[4])
             loss.backward()
             optimizer.step()
@@ -267,7 +267,7 @@ for fold_id in range(n_folds):
             for i in range(len(data)):
                 data[i] = data[i].to(args.device)
             # output = model(data[0], data[1])  # when model is gcn_origin or gat, use this
-            output = model(data)  # when model is gcn_modify or mgcn, use this
+            output = model(data)  # when model is gcn_modify, use this
             loss = loss_fn(output, data[4], reduction='sum')
             test_loss += loss.item()
             n_samples += len(output)
