@@ -8,7 +8,7 @@ def parameter_parser():
                         choices=['REENTRANCY_CORENODES_1671', 'REENTRANCY_FULLNODES_1671',
                                  'LOOP_CORENODES_1317', 'LOOP_FULLNODES_1317'])
     parser.add_argument('-M', '--model', type=str, default='gcn_modify',
-                        choices=['gcn_modify', 'mgcn', 'gat', 'gcn_origin'])
+                        choices=['gcn_modify', 'gat', 'gcn_origin'])
     parser.add_argument('--lr', type=float, default=0.002, help='learning rate')
     parser.add_argument('--lr_decay_steps', type=str, default='1,3', help='learning rate')
     parser.add_argument('--wd', type=float, default=1e-4, help='weight decay')

@@ -5,7 +5,7 @@ We also present a automation tool of generate graph.
 
 ### Running project
 * To run program, use this command: python SmConVulDetector.py.
-* In addition, you can use specific hyperparameters to train the model. All the hyperparameters can be found in `parser.py`.
+* In addition, you can use specific hyper-parameters to train the model. All the hyper-parameters can be found in `parser.py`.
 
 Examples:
 ```shell
@@ -27,10 +27,15 @@ Then, you can find the training results in the `logs/`.
 ### Dataset
 Original smart contract source code:
 
-Ethereum smart contracts:  [Etherscan_contract](https://drive.google.com/open?id=1h9aFFSsL7mK4NmVJd4So7IJlFj9u0HRv)
+Ethereum smart contracts: [Etherscan_contract](https://drive.google.com/open?id=1h9aFFSsL7mK4NmVJd4So7IJlFj9u0HRv)
 
 Vntchain smart contacts: [Vntchain_contract](https://drive.google.com/open?id=1FTb__ERCOGNGM9dTeHLwAxBLw7X5Td4v)
 
 The train data after normalization:
 
 `data/LOOP_CORENODES_1317`, `LOOP_FULLNODES_1317`, `REENTRANCY_CORENODES_1671`, `REENTRANCY_FULLNODES_1671`
+
+
+### Reference
+1. The code borrows from [Graph_unet](https://github.com/bknyaz/graph_nn)
+2. Thomas N. Kipf, Max Welling, Semi-Supervised Classification with Graph Convolutional Networks, ICLR 2017

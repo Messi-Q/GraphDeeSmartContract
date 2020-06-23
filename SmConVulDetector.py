@@ -15,7 +15,6 @@ from load_data import split_ids, GraphData, collate_batch
 from models.gcn_modify import GCN_MODIFY
 from models.gcn_origin import GCN_ORIGIN
 from models.gat import GAT
-from models.mgcn import MGCN
 from sklearn import metrics
 
 print('using torch', torch.__version__)
@@ -211,15 +210,6 @@ for fold_id in range(n_folds):
                            n_hidden=64,
                            n_class=loaders[0].dataset.num_classes,
                            dropout=args.dropout).to(args.device)
-    elif args.model == 'mgcn':
-        model = MGCN(in_features=loaders[0].dataset.num_features,
-                     out_features=loaders[0].dataset.num_classes,
-                     n_relations=2,
-                     n_hidden=args.n_hidden,
-                     filters=args.filters,
-                     dropout=args.dropout,
-                     adj_sq=args.adj_sq,
-                     scale_identity=args.scale_identity).to(args.device)
     elif args.model == 'gat':
         model = GAT(nfeat=loaders[0].dataset.num_features,
                     nhid=64,
