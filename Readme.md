@@ -8,8 +8,8 @@ This repo is a python implementation of smart contract vulnerability detection o
 
 Examples:
 ```shell
-python SmConVulDetector.py --dataset data/SMART_CONTRACT_BY_MANUAL
-python SmConVulDetector.py --dataset data/SMART_CONTRACT_BY_MANUAL --model gcn_modify --n_hidden 192 --lr 0.001 -f 64,64,64 --dropout 0.1 --vector_dim 100 --epochs 50 --lr_decay_steps 10,20 
+python SmConVulDetector.py --dataset training_data/REENTRANCY_CORENODES_1671
+python SmConVulDetector.py --dataset training_data/REENTRANCY_CORENODES_1671 --model gcn_modify --n_hidden 192 --lr 0.001 -f 64,64,64 --dropout 0.1 --vector_dim 100 --epochs 50 --lr_decay_steps 10,20 
 ```
 
 Using script：
@@ -32,9 +32,9 @@ Vntchain smart contacts: [Vntchain_contract](https://drive.google.com/open?id=1F
 
 The train data after normalization:
 
-`data/LOOP_CORENODES_1317`, `LOOP_FULLNODES_1317`, `REENTRANCY_CORENODES_1671`, `REENTRANCY_FULLNODES_1671`
+`training_data/LOOP_CORENODES_1317`, `LOOP_FULLNODES_1317`, `REENTRANCY_CORENODES_1671`, `REENTRANCY_FULLNODES_1671`
 
 
 ### Reference
-1. The code borrows from [Graph_unet](https://github.com/bknyaz/graph_nn)
+1. The code borrows from [graph_unet](https://github.com/bknyaz/graph_nn)
 2. Thomas N. Kipf, Max Welling, Semi-Supervised Classification with Graph Convolutional Networks, ICLR 2017
