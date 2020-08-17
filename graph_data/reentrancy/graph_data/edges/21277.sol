@@ -1,2 +1,0 @@
-S0 VAR0 S0 3 RG
-W0 S0 W0 1 RE

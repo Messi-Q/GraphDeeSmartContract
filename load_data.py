@@ -21,7 +21,7 @@ def split_ids(ids, folds):
     return train_ids, test_ids
 
 
-# Universal data loader and reader
+# Universal training_data loader and reader
 class GraphData(torch.utils.data.Dataset):
     def __init__(self, datareader, fold_id, split):
         self.fold_id = fold_id

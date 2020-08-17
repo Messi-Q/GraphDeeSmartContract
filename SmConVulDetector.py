@@ -32,12 +32,12 @@ torch.cuda.manual_seed(args.seed)
 torch.cuda.manual_seed_all(args.seed)
 rnd_state = np.random.RandomState(args.seed)
 
-print('Loading data...')
+print('Loading training_data...')
 
 
 class DataReader():
     """
-    Class to read the txt files containing all data of the dataset
+    Class to read the txt files containing all training_data of the dataset
     """
 
     def __init__(self, data_dir, rnd_state=None, use_cont_node_attr=False, folds=n_folds):
@@ -111,8 +111,8 @@ class DataReader():
         for u in np.unique(features_all):
             print('feature {}, count {}/{}'.format(u, np.count_nonzero(features_all == u), len(features_all)))
 
-        N_graphs = len(labels)  # number of samples (graphs) in data
-        assert N_graphs == len(data['adj_list']) == len(features_onehot), 'invalid data'
+        N_graphs = len(labels)  # number of samples (graphs) in training_data
+        assert N_graphs == len(data['adj_list']) == len(features_onehot), 'invalid training_data'
 
         # Create test sets first
         train_ids, test_ids = split_ids(rnd_state.permutation(N_graphs), folds=folds)
@@ -143,7 +143,7 @@ class DataReader():
             node1 = int(edge[0].strip()) - 1  # -1 because of zero-indexing in our code
             node2 = int(edge[1].strip()) - 1
             graph_id = nodes[node1]
-            assert graph_id == nodes[node2], ('invalid data', graph_id, nodes[node2])
+            assert graph_id == nodes[node2], ('invalid training_data', graph_id, nodes[node2])
             if graph_id not in adj_dict:
                 n = len(graphs[graph_id])
                 adj_dict[graph_id] = np.zeros((n, n))
@@ -183,7 +183,7 @@ class DataReader():
         return node_features_lst
 
 
-datareader = DataReader(data_dir='./data/%s/' % args.dataset, rnd_state=rnd_state,
+datareader = DataReader(data_dir='./training_data/%s/' % args.dataset, rnd_state=rnd_state,
                         use_cont_node_attr=args.use_cont_node_attr, folds=args.folds)
 
 # train and test
@@ -239,7 +239,7 @@ for fold_id in range(n_folds):
             for i in range(len(data)):
                 data[i] = data[i].to(args.device)
             optimizer.zero_grad()
-            # output = model(data[0], data[1])  # when model is gcn_origin or gat, use this
+            # output = model(training_data[0], training_data[1])  # when model is gcn_origin or gat, use this
             output = model(data)  # when model is gcn_modify, use this
             loss = loss_fn(output, data[4])
             loss.backward()
@@ -266,7 +266,7 @@ for fold_id in range(n_folds):
         for batch_idx, data in enumerate(test_loader):
             for i in range(len(data)):
                 data[i] = data[i].to(args.device)
-            # output = model(data[0], data[1])  # when model is gcn_origin or gat, use this
+            # output = model(training_data[0], training_data[1])  # when model is gcn_origin or gat, use this
             output = model(data)  # when model is gcn_modify, use this
             loss = loss_fn(output, data[4], reduction='sum')
             test_loss += loss.item()

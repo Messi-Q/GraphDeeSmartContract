@@ -18,7 +18,7 @@ def parameter_parser():
                         help='number of hidden units in a fully connected layer after the last conv layer')
     parser.add_argument('--epochs', type=int, default=50, help='number of epochs')
     parser.add_argument('-b', '--batch_size', type=int, default=32, help='batch size')
-    parser.add_argument('-t', '--threads', type=int, default=2, help='number of threads to load data')
+    parser.add_argument('-t', '--threads', type=int, default=2, help='number of threads to load training_data')
     parser.add_argument('--log_interval', type=int, default=1,
                         help='interval (number of batches) of logging')
     parser.add_argument('--device', type=str, default='cpu', choices=['cuda', 'cpu'])
