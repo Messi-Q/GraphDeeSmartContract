@@ -38,3 +38,21 @@ The train data after normalization:
 ### Reference
 1. The code borrows from [graph_unet](https://github.com/bknyaz/graph_nn)
 2. Thomas N. Kipf, Max Welling, Semi-Supervised Classification with Graph Convolutional Networks, ICLR 2017
+3. Smart Contract Vulnerability Detection using Graph Neural Network.
+```
+@inproceedings{ijcai2020-454,
+  title     = {Smart Contract Vulnerability Detection using Graph Neural Network},
+  author    = {Zhuang, Yuan and Liu, Zhenguang and Qian, Peng and Liu, Qi and Wang, Xiang and He, Qinming},
+  booktitle = {Proceedings of the Twenty-Ninth International Joint Conference on
+               Artificial Intelligence, {IJCAI-20}},
+  publisher = {International Joint Conferences on Artificial Intelligence Organization},             
+  editor    = {Christian Bessiere},	
+  pages     = {3283--3290},
+  year      = {2020},
+  month     = {7},
+  note      = {Main track}
+  doi       = {10.24963/ijcai.2020/454},
+  url       = {https://doi.org/10.24963/ijcai.2020/454},
+}
+```
+
