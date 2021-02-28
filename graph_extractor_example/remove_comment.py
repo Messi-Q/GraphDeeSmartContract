@@ -40,8 +40,8 @@ def remove_comment(inputFile, outputFile):
 
 
 if __name__ == '__main__':
-    original_dir = "../contract_data/reentancy/source_code/22247.sol"
-    output_dir = "../contract_data/reentancy/22247.sol"
+    original_dir = "../data/reentancy/source_code/22247.sol"
+    output_dir = "../data/reentancy/22247.sol"
 
     # dir = os.listdir(original_dir)
     # for i in dir:
