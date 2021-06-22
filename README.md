@@ -67,5 +67,5 @@ The train data after normalization:
 
 
 ### Reference
-1. The code borrows from [graph_unet](https://github.com/bknyaz/graph_nn)
+1. A fraction of the code reuses the code of [graph_unet](https://github.com/bknyaz/graph_nn)
 2. Thomas N. Kipf, Max Welling, Semi-Supervised Classification with Graph Convolutional Networks, ICLR 2017
