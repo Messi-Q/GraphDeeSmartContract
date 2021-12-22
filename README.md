@@ -22,16 +22,13 @@ pip install scikit-learn
 ## Citation
 Please use this citation if you want to cite our [paper](https://www.ijcai.org/Proceedings/2020/0454.pdf) or codebase in your paper:
 ```
-@inproceedings{ijcai2020-454,
-  title     = {Smart Contract Vulnerability Detection using Graph Neural Network},
-  author    = {Zhuang, Yuan and Liu, Zhenguang and Qian, Peng and Liu, Qi and Wang, Xiang and He, Qinming},
-  booktitle = {Proceedings of the Twenty-Ninth International Joint Conference on
-               Artificial Intelligence, {IJCAI-20}},
-  publisher = {International Joint Conferences on Artificial Intelligence Organization}, 
-  pages     = {3283--3290},
-  year      = {2020},
+@inproceedings{zhuang2020smart,
+  title={Smart Contract Vulnerability Detection using Graph Neural Network.},
+  author={Zhuang, Yuan and Liu, Zhenguang and Qian, Peng and Liu, Qi and Wang, Xiang and He, Qinming},
+  booktitle={IJCAI},
+  pages={3283--3290},
+  year={2020}
 }
-
 ``` 
 
 
