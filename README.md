@@ -33,7 +33,7 @@ Please use this citation in your paper if you refer to our [paper](https://www.i
 
 
 ## Running project
-* To run program, please use this command: python SMVulDetector.py.
+* To run program, please use this command: python3 SMVulDetector.py.
 * In addition, you can set specific hyper-parameters, and all the hyper-parameters can be found in `parser.py`.
 
 Examples:
