@@ -54,9 +54,7 @@ Then, you can find the training results in the `logs/`.
 
 
 ### Dataset
-ESC: [Ethereum Smart Contracts](https://drive.google.com/open?id=1h9aFFSsL7mK4NmVJd4So7IJlFj9u0HRv)
-
-VSC: [Vntchain Smart Contacts](https://drive.google.com/open?id=1FTb__ERCOGNGM9dTeHLwAxBLw7X5Td4v)
+For original dataset, please turn to the dataset [repo](https://github.com/Messi-Q/Smart-Contract-Dataset).
 
 The train data after normalization:
 
