@@ -1,26 +1,26 @@
-# GraphDeeSmartContract ![GitHub stars](https://img.shields.io/github/stars/Messi-Q/GraphDeeSmartContract.svg?style=plastic) ![GitHub forks](https://img.shields.io/github/forks/Messi-Q/GraphDeeSmartContract.svg?color=blue&style=plastic) ![License](https://img.shields.io/github/license/Messi-Q/GraphDeeSmartContract.svg?color=blue&style=plastic)
+# GraphDeeSmartContract ![GitHub stars](https://img.shields.io/github/stars/Messi-Q/GraphDeeSmartContract.svg?style=plastic) ![GitHub forks](https://img.shields.io/github/forks/Messi-Q/GraphDeeSmartContract.svg?color=blue&style=plastic)
 
 This repo is a python implementation of smart contract vulnerability detection using graph neural networks (DR-GCN).
 
 
 ## Requirements
 ### Required Packages
-* **python**3 or above
-* **PyTorch**1.0.0
-* **numpy**1.18.2
-* **sklearn** for model evaluation
+* **python** 3+ (pycharm 3.7 used in our project)
+* **PyTorch** 1.0.0
+* **numpy** 1.18.2
+* **sklearn** 0.20.2
 
 Run the following script to install the required packages.
 ```
 pip install --upgrade pip
 pip install torch==1.0.0
 pip install numpy==1.18.2
-pip install scikit-learn
+pip install scikit-learn==0.20.2
 ```
 
 
 ## Citation
-Please use this citation if you want to cite our [paper](https://www.ijcai.org/Proceedings/2020/0454.pdf) or codebase in your paper:
+Please use this citation in your paper if you refer to our [paper](https://www.ijcai.org/Proceedings/2020/0454.pdf) or code.
 ```
 @inproceedings{zhuang2020smart,
   title={Smart Contract Vulnerability Detection using Graph Neural Network.},
@@ -33,13 +33,13 @@ Please use this citation if you want to cite our [paper](https://www.ijcai.org/P
 
 
 ## Running project
-* To run program, use this command: python SMVulDetector.py.
-* In addition, you can use specific hyper-parameters to train the model. All the hyper-parameters can be found in `parser.py`.
+* To run program, please use this command: python SMVulDetector.py.
+* In addition, you can set specific hyper-parameters, and all the hyper-parameters can be found in `parser.py`.
 
 Examples:
 ```shell
-python SMVulDetector.py --dataset training_data/REENTRANCY_CORENODES_1671
-python SMVulDetector.py --dataset training_data/REENTRANCY_CORENODES_1671 --model gcn_modify --n_hidden 192 --lr 0.001 -f 64,64,64 --dropout 0.1 --vector_dim 100 --epochs 50 --lr_decay_steps 10,20 
+python3 SMVulDetector.py --dataset training_data/REENTRANCY_CORENODES_1671
+python3 SMVulDetector.py --dataset training_data/REENTRANCY_CORENODES_1671 --model gcn_modify --n_hidden 192 --lr 0.001 -f 64,64,64 --dropout 0.1 --vector_dim 100 --epochs 50 --lr_decay_steps 10,20 
 ```
 
 Using script：
@@ -47,7 +47,7 @@ Repeating 10 times for different seeds with `train.sh`.
 ```shell
 for i in $(seq 1 10);
 do seed=$(( ( RANDOM % 10000 )  + 1 ));
-python SMVulDetector.py --model gcn_modify --seed $seed | tee logs/smartcheck_"$i".log;
+python3 SMVulDetector.py --model gcn_modify --seed $seed | tee logs/smartcheck_"$i".log;
 done
 ```
 Then, you can find the training results in the `logs/`.
@@ -60,7 +60,7 @@ VSC: [Vntchain Smart Contacts](https://drive.google.com/open?id=1FTb__ERCOGNGM9d
 
 The train data after normalization:
 
-`training_data/LOOP_CORENODES_1317`, `LOOP_FULLNODES_1317`, `REENTRANCY_CORENODES_1671`, `REENTRANCY_FULLNODES_1671`
+`training_data/REENTRANCY_CORENODES_1671`, `REENTRANCY_FULLNODES_1671`
 
 
 ### Reference
