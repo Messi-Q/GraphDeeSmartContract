@@ -59,7 +59,7 @@ For original dataset, please turn to the dataset [repo](https://github.com/Messi
 The normalized train data can be found in
 `training_data/REENTRANCY_CORENODES_1671`, `REENTRANCY_FULLNODES_1671`
 
-Note that the instruction of constructing the dataset can be found in the [GraphLearning](https://ls11-www.cs.tu-dortmund.de/staff/morris/graphkerneldatasets), and the `XXX_node_attributes` can be obtained using our designed [tools](https://github.com/Messi-Q/GraphFeatureExtractor). 
+Note that the instruction of constructing the dataset can be found in the [GraphLearning](https://ls11-www.cs.tu-dortmund.de/staff/morris/graphkerneldatasets), and the `XXX_node_attributes` can be obtained using our designed [tools](https://github.com/Messi-Q/SourceGraphExtractor). 
 
 
 ### Reference
