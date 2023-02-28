@@ -5,7 +5,7 @@ This repo is a python implementation of smart contract vulnerability detection u
 
 ## Requirements
 ### Required Packages
-* **python** 3+ (pycharm 3.7 used in our project)
+* **python** 3+ (python 3.7 used in our project)
 * **PyTorch** 1.0.0
 * **numpy** 1.18.2
 * **sklearn** 0.20.2
@@ -56,11 +56,13 @@ Then, you can find the training results in the `logs/`.
 ### Dataset
 For original dataset, please turn to the dataset [repo](https://github.com/Messi-Q/Smart-Contract-Dataset).
 
-The train data after normalization:
-
+The normalized train data can be found in
 `training_data/REENTRANCY_CORENODES_1671`, `REENTRANCY_FULLNODES_1671`
+
+Note that the instruction of constructing the dataset can be found in the [GraphLearning](https://ls11-www.cs.tu-dortmund.de/staff/morris/graphkerneldatasets), and the `XXX_node_attributes` can be obtained using our designed [tools](https://github.com/Messi-Q/GraphFeatureExtractor). 
 
 
 ### Reference
 1. A fraction of the code reuses the code of [graph_unet](https://github.com/bknyaz/graph_nn).
 2. Thomas N. Kipf, Max Welling, Semi-Supervised Classification with Graph Convolutional Networks, ICLR 2017.
+
